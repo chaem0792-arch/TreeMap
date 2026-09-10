@@ -131,15 +131,38 @@
     margin-top: -26px;
     background: var(--ink);
     color: #fff;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 10px 12px;
+    border-radius: 10px;
     font-size: 12.5px;
     line-height: 1.5;
-    white-space: nowrap;
+    white-space: normal;
+    width: 168px;
     box-shadow: var(--shadow);
     z-index: 20;
   }
   .callout b{ font-weight: 600; }
+  .callout-photo{
+    display:block;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,.08);
+  }
+  .callout-photo-placeholder{
+    display:none;
+    width:100%;
+    height:100px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-radius:6px;
+    margin-bottom:8px;
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.65);
+    font-size: 11.5px;
+  }
   .callout-link{
     display: inline-block;
     margin-top: 6px;
@@ -338,7 +361,9 @@
     <div class="divider"></div>
     <div class="tools-note">
       <b>일러두기</b><br>
-      두 번째 사진(항공 촬영본)을 참고해 대략적인 초기 위치를 잡아두었습니다. 두 지도의 각도와 축척이 달라 정확히 일치하지 않을 수 있어요. <b>편집 모드</b>에서 핀을 눌러 위치·이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.
+      두 번째 사진(항공 촬영본)을 참고해 대략적인 초기 위치를 잡아두었습니다. 두 지도의 각도와 축척이 달라 정확히 일치하지 않을 수 있어요. <b>편집 모드</b>에서 핀을 눌러 위치·이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
+      <b>나무 사진</b><br>
+      이 파일과 같은 위치에 <code>photos</code> 폴더를 만들고, 수종 코드 이름으로 사진을 넣어주세요. 예: 소나무 → <code>photos/pine.jpg</code>, 은행나무 → <code>photos/ginkgo.jpg</code>. 사진이 없는 수종은 팝업에 "사진 준비 중"이 표시돼요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
@@ -424,6 +449,38 @@ let pins = [
 ];
 let nextId = 27;
 
+/* ---------- 핀 데이터 저장/불러오기 (브라우저 localStorage) ---------- */
+/* 같은 브라우저에서 사이트를 나갔다 들어와도 추가/삭제한 핀이 그대로 남습니다.
+   단, localStorage는 "이 브라우저에만" 저장되므로 다른 컴퓨터/브라우저와는
+   자동으로 공유되지 않습니다. 여러 기기에서 같은 데이터를 쓰려면 편집 후
+   '내보내기(JSON)'로 백업하고, 다른 기기에서 '가져오기(JSON)'로 불러오세요. */
+const PIN_STORAGE_KEY = 'schoolTreeMap_pins_v1';
+
+function loadPinsFromStorage(){
+  try{
+    const raw = localStorage.getItem(PIN_STORAGE_KEY);
+    if(raw){
+      const data = JSON.parse(raw);
+      if(Array.isArray(data) && data.length){
+        pins = data;
+        nextId = Math.max(0, ...pins.map(p => p.id || 0)) + 1;
+      }
+    }
+  }catch(err){
+    console.error('저장된 핀 데이터를 불러오지 못했습니다.', err);
+  }
+}
+
+function savePinsToStorage(){
+  try{
+    localStorage.setItem(PIN_STORAGE_KEY, JSON.stringify(pins));
+  }catch(err){
+    console.error('핀 데이터를 저장하지 못했습니다.', err);
+  }
+}
+
+loadPinsFromStorage();
+
 /* ---------- 상태 ---------- */
 let editMode = false;
 let hiddenSpecies = new Set();
@@ -499,7 +556,13 @@ function showCallout(p, pinEl){
   c.className = 'callout';
   c.style.left = p.x + '%';
   c.style.top = p.y + '%';
-  c.innerHTML = `<b>${p.name}</b><br>${sp.name}<br><a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>`;
+  c.innerHTML = `
+    <img class="callout-photo" src="photos/${sp.id}.jpg" alt="${sp.name} 사진"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="callout-photo-placeholder">📷 사진 준비 중</div>
+    <b>${p.name}</b><br>${sp.name}<br>
+    <a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>
+  `;
   mapFrame.appendChild(c);
   setTimeout(() => {
     document.addEventListener('click', function h(){ c.remove(); document.removeEventListener('click', h); });
@@ -566,12 +629,14 @@ document.getElementById('savePinBtn').addEventListener('click', () => {
   } else if(draftLatLng){
     pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y });
   }
+  savePinsToStorage();
   closeModal();
   renderSpeciesList();
   renderPins();
 });
 deletePinBtn.addEventListener('click', () => {
   pins = pins.filter(p => p.id !== editingPinId);
+  savePinsToStorage();
   closeModal();
   renderSpeciesList();
   renderPins();
@@ -603,6 +668,7 @@ document.getElementById('importFile').addEventListener('change', (e) => {
       if(Array.isArray(data)){
         pins = data;
         nextId = Math.max(0, ...pins.map(p => p.id||0)) + 1;
+        savePinsToStorage();
         renderSpeciesList();
         renderPins();
       }
