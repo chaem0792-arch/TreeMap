@@ -134,13 +134,21 @@
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 12.5px;
-    line-height: 1.4;
+    line-height: 1.5;
     white-space: nowrap;
-    pointer-events: none;
     box-shadow: var(--shadow);
     z-index: 20;
   }
   .callout b{ font-weight: 600; }
+  .callout-link{
+    display: inline-block;
+    margin-top: 6px;
+    color: #CFE3D4;
+    text-decoration: underline;
+    font-size: 12px;
+    pointer-events: auto;
+  }
+  .callout-link:hover{ color: #fff; }
   .callout::after{
     content:"";
     position:absolute;
@@ -357,25 +365,28 @@
 
 <script>
 /* ---------- 수종(species) 정의 : 색상은 자유롭게 바꿔 쓰세요 ---------- */
+/* pageUrl: 나무 종별 개별 페이지 경로입니다. 깃허브에 각 수종 페이지를 올린 뒤
+   실제 경로(예: "https://아이디.github.io/저장소/trees/pine.html")로 바꿔 주세요.
+   지금은 저장소 안의 상대 경로(trees/수종id.html)로 기본 설정되어 있습니다. */
 const SPECIES = [
-  { id: "pine",       name: "소나무",     color: "#4C6B3F" },
-  { id: "ginkgo",      name: "은행나무",   color: "#C9A227" },
-  { id: "zelkova",     name: "느티나무",   color: "#6E8B3D" },
-  { id: "maple",       name: "단풍나무",   color: "#B5502B" },
-  { id: "cherry",      name: "벚나무",     color: "#D98CA6" },
-  { id: "forsythia",   name: "개나리",     color: "#E8B93A" },
-  { id: "yew",         name: "주목",       color: "#2F5D45" },
-  { id: "pagoda",      name: "회화나무",   color: "#7A8B5A" },
-  { id: "crapemyrtle", name: "배롱나무",   color: "#C24E6B" },
-  { id: "metasequoia", name: "메타세쿼이아", color: "#8B5A2B" },
-  { id: "thuja",       name: "측백나무",   color: "#3E6B5C" },
-  { id: "euonymus",    name: "사철나무",   color: "#3F7A52" },
-  { id: "trumpetvine", name: "능소화",     color: "#E0632E" },
-  { id: "rose",        name: "장미",       color: "#B23A55" },
-  { id: "hibiscus",    name: "무궁화",     color: "#9B5FB3" },
-  { id: "quince",      name: "모과나무",   color: "#C8892C" },
-  { id: "silktree",    name: "자귀나무",   color: "#D46FA6" },
-  { id: "plum",        name: "매실나무",   color: "#E7DCC0" },
+  { id: "pine",       name: "소나무",     color: "#4C6B3F", pageUrl: "trees/pine.html" },
+  { id: "ginkgo",      name: "은행나무",   color: "#C9A227", pageUrl: "trees/ginkgo.html" },
+  { id: "zelkova",     name: "느티나무",   color: "#6E8B3D", pageUrl: "trees/zelkova.html" },
+  { id: "maple",       name: "단풍나무",   color: "#B5502B", pageUrl: "trees/maple.html" },
+  { id: "cherry",      name: "벚나무",     color: "#D98CA6", pageUrl: "trees/cherry.html" },
+  { id: "forsythia",   name: "개나리",     color: "#E8B93A", pageUrl: "trees/forsythia.html" },
+  { id: "yew",         name: "주목",       color: "#2F5D45", pageUrl: "trees/yew.html" },
+  { id: "pagoda",      name: "회화나무",   color: "#7A8B5A", pageUrl: "trees/pagoda.html" },
+  { id: "crapemyrtle", name: "배롱나무",   color: "#C24E6B", pageUrl: "trees/crapemyrtle.html" },
+  { id: "metasequoia", name: "메타세쿼이아", color: "#8B5A2B", pageUrl: "trees/metasequoia.html" },
+  { id: "thuja",       name: "측백나무",   color: "#3E6B5C", pageUrl: "trees/thuja.html" },
+  { id: "euonymus",    name: "사철나무",   color: "#3F7A52", pageUrl: "trees/euonymus.html" },
+  { id: "trumpetvine", name: "능소화",     color: "#E0632E", pageUrl: "trees/trumpetvine.html" },
+  { id: "rose",        name: "장미",       color: "#B23A55", pageUrl: "trees/rose.html" },
+  { id: "hibiscus",    name: "무궁화",     color: "#9B5FB3", pageUrl: "trees/hibiscus.html" },
+  { id: "quince",      name: "모과나무",   color: "#C8892C", pageUrl: "trees/quince.html" },
+  { id: "silktree",    name: "자귀나무",   color: "#D46FA6", pageUrl: "trees/silktree.html" },
+  { id: "plum",        name: "매실나무",   color: "#E7DCC0", pageUrl: "trees/plum.html" },
 ];
 const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 
@@ -486,7 +497,7 @@ function showCallout(p, pinEl){
   c.className = 'callout';
   c.style.left = p.x + '%';
   c.style.top = p.y + '%';
-  c.innerHTML = `<b>${p.name}</b><br>${sp.name}`;
+  c.innerHTML = `<b>${p.name}</b><br>${sp.name}<br><a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>`;
   mapFrame.appendChild(c);
   setTimeout(() => {
     document.addEventListener('click', function h(){ c.remove(); document.removeEventListener('click', h); });
