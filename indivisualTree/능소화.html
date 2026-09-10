@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나무 소개</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -69,11 +70,13 @@ body {
 .tree-name {
     text-align: center;
     margin: 12px 0 0;
+
     font-family: "Jua", sans-serif;
     font-size: 40px;
     color: #55745a;
 }
 
+/* 장식 */
 .name-box::before {
     content: "🌿";
     position: absolute;
@@ -124,7 +127,7 @@ body {
     padding: 28px 42px;
 }
 
-/* 본문 글씨 크기 */
+/* 관찰 포인트 / 주요 특징 내용 */
 .content {
     margin: 0;
     font-size: 22px;
@@ -141,7 +144,7 @@ body {
     padding-left: 5px;
 }
 
-/* 장식 */
+/* 관찰 포인트 장식 */
 .observation::after {
     content: "🌱";
     position: absolute;
@@ -150,6 +153,7 @@ body {
     font-size: 25px;
 }
 
+/* 주요 특징 */
 .features {
     background: #e3eee9;
 }
@@ -162,14 +166,15 @@ body {
     font-size: 23px;
 }
 
+/* 꽃 / 열매 */
 .flower {
     background: #eef1e1;
     min-height: 285px;
 }
 
-/* 꽃/열매 본문 */
+/* 꽃 / 열매 내용 */
 .flower-text {
-    font-size: 21px;
+    font-size: 22px;
     line-height: 2.3;
     font-weight: 600;
 }
