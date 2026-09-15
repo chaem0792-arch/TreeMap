@@ -410,42 +410,24 @@ const SPECIES = [
   { id: "rose",        name: "장미",       color: "#B23A55", pageUrl: "trees/rose.html" },
   { id: "hibiscus",    name: "무궁화",     color: "#9B5FB3", pageUrl: "trees/hibiscus.html" },
   { id: "quince",      name: "모과나무",   color: "#C8892C", pageUrl: "trees/quince.html" },
-  { id: "silktree",    name: "자귀나무",   color: "#D46FA6", pageUrl: "trees/silktree.html" },
-  { id: "plum",        name: "매실나무",   color: "#E7DCC0", pageUrl: "trees/plum.html" },
+  { id: "persimmon",    name: "감나무",   color: "#D46FA6", pageUrl: "./indivisualTree/감나무.html" },
+  { id: "plum",        name: "매화나무",   color: "#E7DCC0", pageUrl: "trees/plum.html" },
   { id: "cornus",      name: "산수유나무", color: "#D8A13A", pageUrl: "./indivisualTree/산수유나무.html" },
-  { id: "plumblossom", name: "매화나무",   color: "#F0A8C0", pageUrl: "./indivisualTree/매화나무.html" },
 ];
 const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 let pins = [
-  { id:1,  name:"정문 화단 개나리",       species:"forsythia",   x:14, y:16 },
-  { id:2,  name:"본관 옆 느티나무",       species:"zelkova",     x:22, y:21 },
-  { id:3,  name:"본관 앞 소나무",         species:"pine",        x:26, y:14 },
-  { id:4,  name:"강당 앞 은행나무",       species:"ginkgo",      x:44, y:10 },
-  { id:5,  name:"강당 옆 은행나무",       species:"ginkgo",      x:50, y:10 },
-  { id:6,  name:"체육관 앞 주목",         species:"yew",         x:58, y:19 },
-  { id:7,  name:"테니스장 옆 단풍나무 1", species:"maple",       x:60, y:30 },
-  { id:8,  name:"테니스장 옆 단풍나무 2", species:"maple",       x:66, y:33 },
-  { id:9,  name:"테니스장 옆 벚나무",     species:"cherry",      x:56, y:34 },
-  { id:10, name:"운동장 가 회화나무",     species:"pagoda",      x:33, y:36 },
-  { id:11, name:"운동장 가 느티나무",     species:"zelkova",     x:27, y:41 },
-  { id:12, name:"운동장 가 소나무 1",     species:"pine",        x:20, y:44 },
-  { id:13, name:"운동장 가 소나무 2",     species:"pine",        x:18, y:48 },
-  { id:14, name:"산책로 배롱나무",        species:"crapemyrtle", x:37, y:55 },
-  { id:15, name:"산책로 모과나무",        species:"quince",      x:32, y:58 },
-  { id:16, name:"산책로 매실나무",        species:"plum",        x:40, y:60 },
-  { id:17, name:"본관 화단 장미",         species:"rose",        x:24, y:31 },
-  { id:18, name:"본관 화단 무궁화",       species:"hibiscus",    x:29, y:33 },
-  { id:19, name:"강당(돔) 앞 메타세쿼이아 1", species:"metasequoia", x:63, y:52 },
-  { id:20, name:"강당(돔) 앞 메타세쿼이아 2", species:"metasequoia", x:70, y:56 },
-  { id:21, name:"강당(돔) 옆 능소화",     species:"trumpetvine", x:78, y:50 },
-  { id:22, name:"강당(돔) 뒤 측백나무",   species:"thuja",       x:74, y:62 },
-  { id:23, name:"강당(돔) 뒤 자귀나무",   species:"silktree",    x:68, y:65 },
-  { id:24, name:"운동장 남쪽 사철나무",   species:"euonymus",    x:45, y:70 },
-  { id:25, name:"축구장 가 은행나무",     species:"ginkgo",      x:38, y:78 },
-  { id:26, name:"축구장 가 단풍나무",     species:"maple",       x:50, y:84 },
+  {   "id": 27, "name": "지송관 옆 능소화", "species": "trumpetvine", "x": 60.8, "y": 78.2  },
+  {  "id": 28, "name": "본관 앞 배롱나무", "species": "crapemyrtle","x": 26.8, "y": 59.8 },
+  {    "id": 29,    "name": "과학관 앞 매화나무",    "species": "plum",    "x": 46.1,    "y": 52.5  },
+  {    "id": 30,    "name": "농구장 앞 단풍나무",    "species": "maple",    "x": 76.4,    "y": 69.3  },
+  {    "id": 31,    "name": "본관 앞 산수유나무",    "species": "cornus",    "x": 39.9,    "y": 56  },
+  {    "id": 32,    "name": "언덕길 매화나무",    "species": "plum",    "x": 71.3,    "y": 66.6  }
+  {    "id": 33,    "name": "본관 앞 감나무",    "species": "persimmon",    "x": 48,    "y": 53.9, image: "./images/본관 앞 감나무.jpg
+   "  }
+
 ];
 let nextId = 27;
 
