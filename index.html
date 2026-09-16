@@ -363,7 +363,7 @@
       <b>일러두기</b><br>
       두 번째 사진(항공 촬영본)을 참고해 대략적인 초기 위치를 잡아두었습니다. 두 지도의 각도와 축척이 달라 정확히 일치하지 않을 수 있어요. <b>편집 모드</b>에서 핀을 눌러 위치·이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
       <b>나무 사진</b><br>
-      이 파일과 같은 위치에 <code>photos</code> 폴더를 만들고, 수종 코드 이름으로 사진을 넣어주세요. 예: 소나무 → <code>photos/pine.jpg</code>, 은행나무 → <code>photos/ginkgo.jpg</code>. 사진이 없는 수종은 팝업에 "사진 준비 중"이 표시돼요.
+      편집 모드에서 핀마다 <b>사진 경로</b>를 따로 지정할 수 있어요. 이 파일과 같은 위치에 <code>images</code> 폴더를 만들고 실제 사진을 넣은 뒤, 경로를 <code>./images/파일명.jpg</code> 형태로 입력하면 그 나무만의 사진이 표시돼요. 비워두면 <code>photos/수종코드.jpg</code>(수종 대표 사진)를 대신 찾아요. 예: 소나무 → <code>photos/pine.jpg</code>. 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
@@ -380,6 +380,8 @@
     <input type="text" id="pinNameInput" placeholder="예: 정문 앞 느티나무">
     <label>수종</label>
     <select id="pinSpeciesInput"></select>
+    <label>사진 경로 (선택, 비워두면 수종 대표 사진이 표시돼요)</label>
+    <input type="text" id="pinImageInput" placeholder="예: ./images/본관 앞 감나무.jpg">
     <div class="modal-actions">
       <button class="btn-danger" id="deletePinBtn" style="display:none;">삭제</button>
       <button class="btn-secondary" id="cancelModalBtn">취소</button>
@@ -419,15 +421,13 @@ const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 let pins = [
-  {   "id": 27, "name": "지송관 옆 능소화", "species": "trumpetvine", "x": 60.8, "y": 78.2  },
-  {  "id": 28, "name": "본관 앞 배롱나무", "species": "crapemyrtle","x": 26.8, "y": 59.8 },
-  {    "id": 29,    "name": "과학관 앞 매화나무",    "species": "plum",    "x": 46.1,    "y": 52.5  },
-  {    "id": 30,    "name": "농구장 앞 단풍나무",    "species": "maple",    "x": 76.4,    "y": 69.3  },
-  {    "id": 31,    "name": "본관 앞 산수유나무",    "species": "cornus",    "x": 39.9,    "y": 56  },
-  {    "id": 32,    "name": "언덕길 매화나무",    "species": "plum",    "x": 71.3,    "y": 66.6  }
-  {    "id": 33,    "name": "본관 앞 감나무",    "species": "persimmon",    "x": 48,    "y": 53.9, image: "./images/본관 앞 감나무.jpg
-   "  }
-
+  { "id": 27, "name": "지송관 옆 능소화",     "species": "trumpetvine", "x": 60.8, "y": 78.2 },
+  { "id": 28, "name": "본관 앞 배롱나무",     "species": "crapemyrtle", "x": 26.8, "y": 59.8 },
+  { "id": 29, "name": "과학관 앞 매화나무",   "species": "plum",       "x": 46.1, "y": 52.5 },
+  { "id": 30, "name": "농구장 앞 단풍나무",   "species": "maple",      "x": 76.4, "y": 69.3 },
+  { "id": 31, "name": "본관 앞 산수유나무",   "species": "cornus",     "x": 39.9, "y": 56   },
+  { "id": 32, "name": "언덕길 매화나무",     "species": "plum",       "x": 71.3, "y": 66.6 },
+  { "id": 33, "name": "본관 앞 감나무",       "species": "persimmon",  "x": 48,   "y": 53.9, "image": "./images/본관 앞 감나무.jpg" }
 ];
 let nextId = 27;
 
@@ -478,6 +478,7 @@ const modalBackdrop = document.getElementById('modalBackdrop');
 const modalTitle = document.getElementById('modalTitle');
 const pinNameInput = document.getElementById('pinNameInput');
 const pinSpeciesInput = document.getElementById('pinSpeciesInput');
+const pinImageInput = document.getElementById('pinImageInput');
 const deletePinBtn = document.getElementById('deletePinBtn');
 const viewModeBtn = document.getElementById('viewModeBtn');
 const editModeBtn = document.getElementById('editModeBtn');
@@ -534,12 +535,13 @@ function renderPins(){
 function showCallout(p, pinEl){
   document.querySelectorAll('.callout').forEach(c => c.remove());
   const sp = speciesById[p.species];
+  const photoSrc = p.image || `photos/${sp.id}.jpg`;
   const c = document.createElement('div');
   c.className = 'callout';
   c.style.left = p.x + '%';
   c.style.top = p.y + '%';
   c.innerHTML = `
-    <img class="callout-photo" src="photos/${sp.id}.jpg" alt="${sp.name} 사진"
+    <img class="callout-photo" src="${photoSrc}" alt="${p.name} 사진"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <div class="callout-photo-placeholder">📷 사진 준비 중</div>
     <b>${p.name}</b><br>${sp.name}<br>
@@ -579,6 +581,7 @@ function fillSpeciesSelect(selectedId){
 function openAddModal(){
   modalTitle.textContent = '나무 추가';
   pinNameInput.value = '';
+  pinImageInput.value = '';
   fillSpeciesSelect(SPECIES[0].id);
   deletePinBtn.style.display = 'none';
   modalBackdrop.classList.add('show');
@@ -589,6 +592,7 @@ function openEditModal(pin){
   draftLatLng = null;
   modalTitle.textContent = '나무 정보 수정';
   pinNameInput.value = pin.name;
+  pinImageInput.value = pin.image || '';
   fillSpeciesSelect(pin.species);
   deletePinBtn.style.display = 'block';
   modalBackdrop.classList.add('show');
@@ -604,12 +608,16 @@ function closeModal(){
 document.getElementById('savePinBtn').addEventListener('click', () => {
   const name = pinNameInput.value.trim();
   const species = pinSpeciesInput.value;
+  const image = pinImageInput.value.trim();
   if(!name){ pinNameInput.focus(); return; }
   if(editingPinId){
     const p = pins.find(p => p.id === editingPinId);
     p.name = name; p.species = species;
+    if(image) p.image = image; else delete p.image;
   } else if(draftLatLng){
-    pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y });
+    const newPin = { id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y };
+    if(image) newPin.image = image;
+    pins.push(newPin);
   }
   savePinsToStorage();
   closeModal();
