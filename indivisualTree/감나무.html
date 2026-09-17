@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나무 소개 페이지</title>
+    <!-- 귀여운 눈에 띄는 한국어 폰트 불러오기 (Gamja Flower, Gaegu) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gamja+Flower&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 스타일 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Gamja Flower', 'Gaegu', cursive, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 전체 그리드 레이아웃 컨테이너 */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* 왼쪽:오른쪽 비율 */
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 왼쪽 Column (나무이름 + 나무사진) */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 오른쪽 Column (관찰 포인트 + 주요 특징 + 꽃/열매) */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 각 박스 공통 카드 스타일 */
+        .card {
+            background-color: #dce3ea; /* 이미지의 연회색/소라색 느낌 반영 */
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 헤더/제목 스타일 */
+        .card h2 {
+            font-size: 1.6rem;
+            color: #334155;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        /* 내용 텍스트 스타일 */
+        .card p {
+            font-size: 1.2rem;
+            color: #475569;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        /* 나무 이름 박스 특별 높이 지정 */
+        .card.tree-name {
+            min-height: 80px;
+            background-color: #d0dbe5;
+        }
+
+        /* 나무 사진 영역 */
+        .card.tree-photo {
+            flex: 1;
+            min-height: 380px;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        /* <img> 태그 스타일 */
+        .tree-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* 오른쪽 박스들의 균등 비율 채우기 */
+        .right-column .card {
+            flex: 1;
+            min-height: 140px;
+            align-items: flex-start; /* 텍스트는 좌측 정렬되도록 변경 설정 가능 */
+            text-align: left;
+        }
+
+        .right-column .card h2 {
+            align-self: center; /* 타이틀은 중앙 정렬 */
+        }
+
+        /* 반응형 (모바일) 대응 */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .card.tree-photo {
+                min-height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 왼쪽 영역 -->
+        <div class="left-column">
+            <!-- 1. 나무 이름 -->
+            <div class="card tree-name">
+                <h2>나무이름</h2>
+                <!-- <p>예: 느티나무</p> -->
+            </div>
+
+            <!-- 2. 나무 사진 -->
+            <div class="card tree-photo">
+                <!-- 아래 src 속성에 나무 이미지 경로를 넣어주세요 -->
+                <img src="https://via.placeholder.com/400x500?text=Tree+Image" alt="나무 사진">
+            </div>
+        </div>
+
+        <!-- 오른쪽 영역 -->
+        <div class="right-column">
+            <!-- 3. 관찰 포인트 -->
+            <div class="card">
+                <h2>관찰 포인트</h2>
+                <p>가을의 감과 붉은 단풍을 관찰할 수 있어요!</p>
+            </div>
+
+            <!-- 4. 주요 특징 -->
+            <div class="card">
+                <h2>주요 특징</h2>
+                <p>잎이 크고 두꺼우며 광택이 있어요</p>
+            </div>
+
+            <!-- 5. 꽃/열매 -->
+            <div class="card">
+                <h2>꽃/열매</h2>
+                <p>가을에 주황색 감이 익으며 잎도 붉게 물들어요.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
