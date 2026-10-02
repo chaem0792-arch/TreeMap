@@ -136,7 +136,7 @@
     font-size: 12.5px;
     line-height: 1.5;
     white-space: normal;
-    width: 168px;
+    width: 220px;
     box-shadow: var(--shadow);
     z-index: 20;
   }
@@ -144,7 +144,7 @@
   .callout-photo{
     display:block;
     width: 100%;
-    height: 100px;
+    height: 150px;
     object-fit: cover;
     border-radius: 6px;
     margin-bottom: 8px;
@@ -153,7 +153,7 @@
   .callout-photo-placeholder{
     display:none;
     width:100%;
-    height:100px;
+    height:150px;
     align-items:center;
     justify-content:center;
     text-align:center;
@@ -363,7 +363,7 @@
       <b>일러두기</b><br>
       <b>편집 모드</b>에서 핀을 눌러 위치·이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
       <b>나무 사진</b><br>
-      편집 모드에서 핀마다 <b>사진 경로</b>를 따로 지정할 수 있어요. 이 파일과 같은 위치에 <code>images</code> 폴더를 만들고 실제 사진을 넣은 뒤, 경로를 <code>./images/파일명.jpg</code> 형태로 입력하면 그 나무만의 사진이 표시돼요. 비워두면 <code>photos/수종코드.jpg</code>(수종 대표 사진)를 대신 찾아요. 예: 소나무 → <code>photos/pine.jpg</code>. 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
+      편집 모드에서 핀마다 <b>사진 경로</b>를 따로 지정할 수 있어요. 이 파일과 같은 위치에 <code>images</code> 폴더를 만들고 실제 사진을 넣은 뒤, 경로를 <code>./images/파일명.JPG</code> 형태로 입력하면 그 나무만의 사진이 표시돼요. 파일 이름은 띄어쓰기 대신 밑줄(_)을 쓰고, 확장자의 대소문자까지 똑같이 적어 주세요.. 비워두면 <code>photos/수종코드.jpg</code>(수종 대표 사진)를 대신 찾아요. 예: 소나무 → <code>photos/pine.jpg</code>. 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
@@ -381,7 +381,7 @@
     <label>수종</label>
     <select id="pinSpeciesInput"></select>
     <label>사진 경로 (선택, 비워두면 수종 대표 사진이 표시돼요)</label>
-    <input type="text" id="pinImageInput" placeholder="예: ./images/본관 앞 감나무.jpg">
+    <input type="text" id="pinImageInput" placeholder="예: ./images/본관_앞_감나무.JPG">
     <div class="modal-actions">
       <button class="btn-danger" id="deletePinBtn" style="display:none;">삭제</button>
       <button class="btn-secondary" id="cancelModalBtn">취소</button>
@@ -414,36 +414,32 @@ const SPECIES = [
   { id: "quince",      name: "모과나무",   color: "#C8892C", pageUrl: "trees/quince.html" },
   { id: "persimmon",    name: "감나무",   color: "#D46FA6", pageUrl: "./indivisualTree/감나무.html" },
   { id: "plum",        name: "매화나무",   color: "#E7DCC0", pageUrl: "trees/plum.html" },
-  { id: "cornus",      name: "산수유나무", color: "#D8A13A", pageUrl: "./indivisualTree/산수유나무.html" },
+  { id: "cornus",      name: "산수유나무", color: "#D8A13A", pageUrl: "./indivisualTree/산수유나무.html", photo: "./images/산수유.JPG" },
 ];
+/* photo(선택): 수종 대표 사진 경로. 개별 사진(image)이 없는 핀에 대신 표시됩니다. */
 const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 let pins = [
-  { "id": 27, "name": "지송관 옆 능소화",     "species": "trumpetvine", "x": 60.8, "y": 78.2 },
-  { "id": 28, "name": "본관 앞 배롱나무",     "species": "crapemyrtle", "x": 26.8, "y": 59.8, "image": "./images/가운데 배롱나무.jpg" },
-  {
-    "id": 29,
-    "name": "본관 앞 매화나무",
-    "species": "plum",
-    "x": 46.1,
-    "y": 52.5,
-    "image": "./images/본관 앞 매화나무"
-  },
-  { "id": 30, "name": "농구장 앞 단풍나무",   "species": "maple",      "x": 76.4, "y": 69.3 },
-  { "id": 31, "name": "본관 앞 산수유나무",   "species": "cornus",     "x": 39.9, "y": 56   },
-  { "id": 32, "name": "언덕길 매화나무",     "species": "plum",       "x": 71.3, "y": 66.6, "image": "./images/가운데 배롱나무.jpg"  },
-  { "id": 33, "name": "본관 앞 감나무",       "species": "persimmon",  "x": 48,   "y": 53.9, "image": "./images/본관 앞 감나무.jpg" }
+  { "id": 27, "name": "지송관 옆 능소화",   "species": "trumpetvine", "x": 60.8, "y": 78.2 },
+  { "id": 28, "name": "본관 앞 배롱나무",   "species": "crapemyrtle", "x": 26.8, "y": 59.8, "image": "./images/가운데_배롱나무.JPG" },
+  { "id": 29, "name": "본관 앞 매화나무",   "species": "plum",        "x": 46.1, "y": 52.5 },
+  { "id": 30, "name": "농구장 앞 단풍나무", "species": "maple",       "x": 76.4, "y": 69.3 },
+  { "id": 31, "name": "본관 앞 산수유나무", "species": "cornus",      "x": 39.9, "y": 56,   "image": "./images/산수유.JPG" },
+  { "id": 32, "name": "언덕길 매화나무",    "species": "plum",        "x": 71.3, "y": 66.6, "image": "./images/언덕길_매화나무.JPG" },
+  { "id": 33, "name": "본관 앞 감나무",     "species": "persimmon",   "x": 48,   "y": 53.9, "image": "./images/본관_앞_감나무.JPG" }
 ];
-let nextId = 27;
+/* 새 핀 id는 기존 핀 id의 최댓값 + 1부터 시작합니다 (id 중복 방지) */
+let nextId = Math.max(0, ...pins.map(p => p.id || 0)) + 1;
 
 /* ---------- 핀 데이터 저장/불러오기 (브라우저 localStorage) ---------- */
 /* 같은 브라우저에서 사이트를 나갔다 들어와도 추가/삭제한 핀이 그대로 남습니다.
    단, localStorage는 "이 브라우저에만" 저장되므로 다른 컴퓨터/브라우저와는
    자동으로 공유되지 않습니다. 여러 기기에서 같은 데이터를 쓰려면 편집 후
    '내보내기(JSON)'로 백업하고, 다른 기기에서 '가져오기(JSON)'로 불러오세요. */
-const PIN_STORAGE_KEY = 'schoolTreeMap_pins_v1';
+/* 저장 키 버전을 v2로 올려, 예전(v1)에 저장된 잘못된 사진 경로 대신 위의 수정된 핀 데이터로 시작합니다 */
+const PIN_STORAGE_KEY = 'schoolTreeMap_pins_v2';
 
 function loadPinsFromStorage(){
   try{
@@ -542,15 +538,18 @@ function renderPins(){
 function showCallout(p, pinEl){
   document.querySelectorAll('.callout').forEach(c => c.remove());
   const sp = speciesById[p.species];
-  const photoSrc = p.image || `photos/${sp.id}.jpg`;
+  /* 사진 우선순위: 핀 개별 사진(image) → 수종 대표 사진(SPECIES의 photo) → 없음 */
+  const photoSrc = p.image || sp.photo || '';
   const c = document.createElement('div');
   c.className = 'callout';
   c.style.left = p.x + '%';
   c.style.top = p.y + '%';
   c.innerHTML = `
-    <img class="callout-photo" src="${photoSrc}" alt="${p.name} 사진"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-    <div class="callout-photo-placeholder">📷 사진 준비 중</div>
+    ${photoSrc
+      ? `<img class="callout-photo" src="${encodeURI(photoSrc)}" alt="${p.name} 사진"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+      : ''}
+    <div class="callout-photo-placeholder" style="display:${photoSrc ? 'none' : 'flex'}">📷 사진 준비 중</div>
     <b>${p.name}</b><br>${sp.name}<br>
     <a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>
   `;
