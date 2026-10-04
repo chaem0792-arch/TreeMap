@@ -437,8 +437,8 @@ let nextId = Math.max(0, ...pins.map(p => p.id || 0)) + 1;
    단, localStorage는 "이 브라우저에만" 저장되므로 다른 컴퓨터/브라우저와는
    자동으로 공유되지 않습니다. 여러 기기에서 같은 데이터를 쓰려면 편집 후
    '내보내기(JSON)'로 백업하고, 다른 기기에서 '가져오기(JSON)'로 불러오세요. */
-/* 저장 키 버전을 v2로 올려, 예전(v1)에 저장된 잘못된 사진 경로 대신 위의 수정된 핀 데이터로 시작합니다 */
-const PIN_STORAGE_KEY = 'schoolTreeMap_pins_v2';
+/* 저장 키 버전을 v3로 올려, 예전(v2)에 저장된 잘못된 사진 경로 대신 위의 수정된 핀 데이터로 시작합니다 */
+const PIN_STORAGE_KEY = 'schoolTreeMap_pins_v3';
 
 function loadPinsFromStorage(){
   try{
@@ -618,9 +618,7 @@ document.getElementById('savePinBtn').addEventListener('click', () => {
   const image = `./images/${name}.JPG`;
   if(editingPinId){
     const p = pins.find(p => p.id === editingPinId);
-    /* 이름이 그대로면 기존 사진 경로를 유지합니다 */
-    if(p.name !== name || !p.image) p.image = image;
-    p.name = name; p.species = species;
+    p.name = name; p.species = species; p.image = image;
   } else if(draftLatLng){
     pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y, image });
   }
