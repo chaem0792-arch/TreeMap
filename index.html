@@ -363,7 +363,7 @@
       <b>일러두기</b><br>
       <b>편집 모드</b>에서 핀을 눌러 위치·이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
       <b>나무 사진</b><br>
-      편집 모드에서 핀마다 <b>사진 경로</b>를 따로 지정할 수 있어요. 이 파일과 같은 위치에 <code>images</code> 폴더를 만들고 실제 사진을 넣은 뒤, 경로를 <code>./images/파일명.JPG</code> 형태로 입력하면 그 나무만의 사진이 표시돼요. 파일 이름은 띄어쓰기 대신 밑줄(_)을 쓰고, 확장자의 대소문자까지 똑같이 적어 주세요.. 비워두면 <code>photos/수종코드.jpg</code>(수종 대표 사진)를 대신 찾아요. 예: 소나무 → <code>photos/pine.jpg</code>. 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
+      편집 모드에서 나무 <b>이름</b>을 입력하면 사진 경로가 <code>./images/나무이름.JPG</code>로 자동 저장돼요. 이 파일과 같은 위치의 <code>images</code> 폴더에 나무 이름과 똑같은 이름의 사진을 넣어 주세요(띄어쓰기와 확장자 <code>.JPG</code>의 대소문자까지 똑같이). 예: 본관 앞 감나무 → <code>./images/본관 앞 감나무.JPG</code>. 해당 사진이 없으면 수종 대표 사진을 대신 보여 주고, 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
@@ -380,8 +380,6 @@
     <input type="text" id="pinNameInput" placeholder="예: 정문 앞 느티나무">
     <label>수종</label>
     <select id="pinSpeciesInput"></select>
-    <label>사진 경로 (선택, 비워두면 수종 대표 사진이 표시돼요)</label>
-    <input type="text" id="pinImageInput" placeholder="예: ./images/본관_앞_감나무.JPG">
     <div class="modal-actions">
       <button class="btn-danger" id="deletePinBtn" style="display:none;">삭제</button>
       <button class="btn-secondary" id="cancelModalBtn">취소</button>
@@ -481,7 +479,6 @@ const modalBackdrop = document.getElementById('modalBackdrop');
 const modalTitle = document.getElementById('modalTitle');
 const pinNameInput = document.getElementById('pinNameInput');
 const pinSpeciesInput = document.getElementById('pinSpeciesInput');
-const pinImageInput = document.getElementById('pinImageInput');
 const deletePinBtn = document.getElementById('deletePinBtn');
 const viewModeBtn = document.getElementById('viewModeBtn');
 const editModeBtn = document.getElementById('editModeBtn');
@@ -538,8 +535,10 @@ function renderPins(){
 function showCallout(p, pinEl){
   document.querySelectorAll('.callout').forEach(c => c.remove());
   const sp = speciesById[p.species];
-  /* 사진 우선순위: 핀 개별 사진(image) → 수종 대표 사진(SPECIES의 photo) → 없음 */
+  /* 사진 우선순위: 핀 개별 사진(image) → 수종 대표 사진(SPECIES의 photo) → 없음
+     개별 사진 파일이 없어 불러오지 못하면 수종 대표 사진으로 한 번 더 시도합니다 */
   const photoSrc = p.image || sp.photo || '';
+  const fallbackSrc = (p.image && sp.photo) ? encodeURI(sp.photo) : '';
   const c = document.createElement('div');
   c.className = 'callout';
   c.style.left = p.x + '%';
@@ -547,7 +546,8 @@ function showCallout(p, pinEl){
   c.innerHTML = `
     ${photoSrc
       ? `<img class="callout-photo" src="${encodeURI(photoSrc)}" alt="${p.name} 사진"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+             data-fallback="${fallbackSrc}"
+             onerror="const f=this.dataset.fallback; if(f){ this.dataset.fallback=''; this.src=f; } else { this.style.display='none'; this.nextElementSibling.style.display='flex'; }">`
       : ''}
     <div class="callout-photo-placeholder" style="display:${photoSrc ? 'none' : 'flex'}">📷 사진 준비 중</div>
     <b>${p.name}</b><br>${sp.name}<br>
@@ -587,7 +587,6 @@ function fillSpeciesSelect(selectedId){
 function openAddModal(){
   modalTitle.textContent = '나무 추가';
   pinNameInput.value = '';
-  pinImageInput.value = '';
   fillSpeciesSelect(SPECIES[0].id);
   deletePinBtn.style.display = 'none';
   modalBackdrop.classList.add('show');
@@ -598,7 +597,6 @@ function openEditModal(pin){
   draftLatLng = null;
   modalTitle.textContent = '나무 정보 수정';
   pinNameInput.value = pin.name;
-  pinImageInput.value = pin.image || '';
   fillSpeciesSelect(pin.species);
   deletePinBtn.style.display = 'block';
   modalBackdrop.classList.add('show');
@@ -614,16 +612,16 @@ function closeModal(){
 document.getElementById('savePinBtn').addEventListener('click', () => {
   const name = pinNameInput.value.trim();
   const species = pinSpeciesInput.value;
-  const image = pinImageInput.value.trim();
   if(!name){ pinNameInput.focus(); return; }
+  /* 사진 경로는 나무 이름으로 자동 지정합니다 */
+  const image = `./images/${name}.JPG`;
   if(editingPinId){
     const p = pins.find(p => p.id === editingPinId);
+    /* 이름이 그대로면 기존 사진 경로를 유지합니다 */
+    if(p.name !== name || !p.image) p.image = image;
     p.name = name; p.species = species;
-    if(image) p.image = image; else delete p.image;
   } else if(draftLatLng){
-    const newPin = { id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y };
-    if(image) newPin.image = image;
-    pins.push(newPin);
+    pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y, image });
   }
   savePinsToStorage();
   closeModal();
