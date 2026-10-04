@@ -420,13 +420,14 @@ const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 let pins = [
-  { "id": 27, "name": "지송관 옆 능소화",   "species": "trumpetvine", "x": 60.8, "y": 78.2 },
-  { "id": 28, "name": "본관 앞 배롱나무",   "species": "crapemyrtle", "x": 26.8, "y": 59.8, "image": "./images/가운데 배롱나무.JPG" },
+  { "id": 27, "name": "지송관 옆 능소화",   "species": "trumpetvine", "x": 60.8, "y": 78.2, "image": "./images/지송관 옆 능소화.JPG" },
+  { "id": 28, "name": "본관 왼편 배롱나무",   "species": "crapemyrtle", "x": 26.8, "y": 59.8, "image": "./images/본관 왼편 배롱나무.JPG" },
   { "id": 29, "name": "본관 앞 매화나무",   "species": "plum",        "x": 46.1, "y": 52.5, "image": "./images/본관 앞 매화나무.JPG" },
   { "id": 30, "name": "농구장 앞 단풍나무", "species": "maple",       "x": 76.4, "y": 69.3, "image": "./images/농구장 앞 단풍나무.JPG" },
   { "id": 31, "name": "본관 앞 산수유나무", "species": "cornus",      "x": 39.9, "y": 56,   "image": "./images/본관 앞 산수유나무.JPG" },
   { "id": 32, "name": "언덕길 매화나무",    "species": "plum",        "x": 71.3, "y": 66.6, "image": "./images/언덕길 매화나무.JPG" },
-  { "id": 33, "name": "본관 앞 감나무",     "species": "persimmon",   "x": 48,   "y": 53.9, "image": "./images/본관 앞 감나무.JPG" }
+  { "id": 33, "name": "본관 앞 감나무",     "species": "persimmon",   "x": 48,   "y": 53.9, "image": "./images/본관 앞 감나무.JPG" },
+  { "id": 34, "name": "언덕길 배롱나무",    "species": "crapemyrtle", "x": 52,   "y": 55.2, "image": "./images/언덕길 배롱나무.JPG"  }
 ];
 /* 새 핀 id는 기존 핀 id의 최댓값 + 1부터 시작합니다 (id 중복 방지) */
 let nextId = Math.max(0, ...pins.map(p => p.id || 0)) + 1;
