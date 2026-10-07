@@ -416,6 +416,7 @@ const SPECIES = [
 ];
 /* photo(선택): 수종 대표 사진 경로. 개별 사진(image)이 없는 핀에 대신 표시됩니다. */
 const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
+SPECIES.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
 
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
