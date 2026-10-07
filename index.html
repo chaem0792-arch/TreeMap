@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>교내 나무 지도</title>
+<title>중앙여고 나무 지도</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -377,7 +377,6 @@
 <header>
   <div class="title-block">
     <h1>중앙여고 나무 지도</h1>
-    <p>삽화 지도 위에 교내 나무 위치를 핀으로 표시했습니다. 오른쪽 목록에서 수종별로 켜고 끌 수 있고, 핀을 눌러 이름을 확인할 수 있어요.</p>
   </div>
   <div class="mode-toggle">
     <button id="viewModeBtn" class="active">보기 모드</button>
@@ -388,9 +387,9 @@
 <div class="layout">
   <div class="map-wrap">
     <div class="map-frame" id="mapFrame">
-      <div class="hint-banner">편집 모드입니다. 지도를 클릭해서 나무 핀을 추가하고, 핀을 끌어서 위치를 옮길 수 있어요.</div>
+      <div class="hint-banner">편집 모드입니다. 지도를 클릭해서 나무 핀을 추가하고, 핀을 끌어서 위치를 옮기세요.</div>
       <div class="map-stage" id="mapStage">
-        <img alt="학교 캠퍼스 삽화 지도" id="mapImage">  <!-- 지도 이미지는 파일 맨 아래에서 불러와요 -->
+        <img alt="학교 지도 이미지" id="mapImage">  <!-- 지도 이미지는 파일 맨 아래에서 불러와요 -->
       </div>
       <div class="zoom-controls">
         <button type="button" id="zoomInBtn" title="확대" aria-label="지도 확대">+</button>
@@ -410,8 +409,6 @@
     <div class="tools-note">
       <b>일러두기</b><br>
       <b>편집 모드</b>에서 핀을 끌어서 위치를 옮기거나, 핀을 눌러 이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
-      <b>나무 사진</b><br>
-      편집 모드에서 핀마다 <b>사진 경로</b>를 따로 지정할 수 있어요. 이 파일과 같은 위치에 <code>images</code> 폴더를 만들고 실제 사진을 넣은 뒤, 경로를 <code>./images/파일명.JPG</code> 형태로 입력하면 그 나무만의 사진이 표시돼요. 파일 이름은 띄어쓰기 대신 밑줄(_)을 쓰고, 확장자의 대소문자까지 똑같이 적어 주세요.. 비워두면 <code>photos/수종코드.jpg</code>(수종 대표 사진)를 대신 찾아요. 예: 소나무 → <code>photos/pine.jpg</code>. 둘 다 없는 나무는 팝업에 "사진 준비 중"이 표시돼요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
