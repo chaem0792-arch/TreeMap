@@ -408,7 +408,7 @@
         <img alt="학교 지도 이미지" id="mapImage">  <!-- 지도 이미지는 파일 맨 아래에서 불러와요 -->
       </div>
       <div class="zoom-controls">
-        <button type="button" class="fs-btn" id="fullscreenBtn" title="전체 화면으로 보기" aria-label="전체 화면으로 보기">&lt;&gt;</button>
+        <button type="button" class="fs-btn" id="fullscreenBtn" title="전체 화면으로 보기" aria-label="전체 화면으로 보기">&lt; &gt;</button>
         <button type="button" class="zoom-btn" id="zoomInBtn" title="확대" aria-label="지도 확대">+</button>
         <button type="button" class="zoom-btn" id="zoomOutBtn" title="축소" aria-label="지도 축소">−</button>
         <button type="button" class="zoom-btn" id="zoomResetBtn" title="원래 크기로" aria-label="원래 크기로">⟲</button>
@@ -867,7 +867,7 @@ function setFullscreen(on){
   zoom = 1; panX = 0; panY = 0;
   mapFrame.classList.toggle('fullscreen', on);
   document.body.classList.toggle('map-fullscreen', on);
-  fullscreenBtn.textContent = on ? '><' : '<>';
+  fullscreenBtn.textContent = on ? '> <' : '< >';
   fullscreenBtn.title = on ? '전체 화면 닫기' : '전체 화면으로 보기';
   fullscreenBtn.setAttribute('aria-label', fullscreenBtn.title);
   document.querySelectorAll('.callout').forEach(c => c.remove());
