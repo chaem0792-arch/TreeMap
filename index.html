@@ -426,6 +426,8 @@
     <div class="tools-note">
       <b>일러두기</b><br><br>
       <b>편집 모드</b>에서 핀을 끌어서 위치를 옮기거나, 핀을 눌러 이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
+      <b>나무 사진</b><br>
+      핀의 사진 경로는 나무 이름으로 자동 지정돼요: <code>./images/나무이름.JPG</code>. 이 파일 옆 <code>images</code> 폴더에 나무 이름과 똑같은 이름(띄어쓰기 포함)의 사진을 넣어 주세요.
     </div>
     <div class="io-row">
       <button id="exportBtn">내보내기(JSON)</button>
@@ -442,8 +444,6 @@
     <input type="text" id="pinNameInput" placeholder="예: 정문 앞 느티나무">
     <label>수종</label>
     <select id="pinSpeciesInput"></select>
-    <label>사진 경로 (선택, 비워두면 수종 대표 사진이 표시돼요)</label>
-    <input type="text" id="pinImageInput" placeholder="예: ./images/본관_앞_감나무.JPG">
     <div class="modal-actions">
       <button class="btn-danger" id="deletePinBtn" style="display:none;">삭제</button>
       <button class="btn-secondary" id="cancelModalBtn">취소</button>
@@ -576,7 +576,6 @@ const modalBackdrop = document.getElementById('modalBackdrop');
 const modalTitle = document.getElementById('modalTitle');
 const pinNameInput = document.getElementById('pinNameInput');
 const pinSpeciesInput = document.getElementById('pinSpeciesInput');
-const pinImageInput = document.getElementById('pinImageInput');
 const deletePinBtn = document.getElementById('deletePinBtn');
 const viewModeBtn = document.getElementById('viewModeBtn');
 const editModeBtn = document.getElementById('editModeBtn');
@@ -727,7 +726,6 @@ function fillSpeciesSelect(selectedId){
 function openAddModal(){
   modalTitle.textContent = '나무 추가';
   pinNameInput.value = '';
-  pinImageInput.value = '';
   fillSpeciesSelect(SPECIES[0].id);
   deletePinBtn.style.display = 'none';
   modalBackdrop.classList.add('show');
@@ -738,7 +736,6 @@ function openEditModal(pin){
   draftLatLng = null;
   modalTitle.textContent = '나무 정보 수정';
   pinNameInput.value = pin.name;
-  pinImageInput.value = pin.image || '';
   fillSpeciesSelect(pin.species);
   deletePinBtn.style.display = 'block';
   modalBackdrop.classList.add('show');
@@ -754,16 +751,14 @@ function closeModal(){
 document.getElementById('savePinBtn').addEventListener('click', () => {
   const name = pinNameInput.value.trim();
   const species = pinSpeciesInput.value;
-  const image = pinImageInput.value.trim();
   if(!name){ pinNameInput.focus(); return; }
+  /* 사진 경로는 나무 이름으로 자동 지정합니다: ./images/나무이름.JPG */
+  const image = `./images/${name}.JPG`;
   if(editingPinId){
     const p = pins.find(p => p.id === editingPinId);
-    p.name = name; p.species = species;
-    if(image) p.image = image; else delete p.image;
+    p.name = name; p.species = species; p.image = image;
   } else if(draftLatLng){
-    const newPin = { id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y };
-    if(image) newPin.image = image;
-    pins.push(newPin);
+    pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y, image });
   }
   savePinsToStorage();
   closeModal();
