@@ -424,7 +424,7 @@
 
     <div class="divider"></div>
     <div class="tools-note">
-      <b>일러두기</b><br>
+      <b>일러두기</b><br><br>
       <b>편집 모드</b>에서 핀을 끌어서 위치를 옮기거나, 핀을 눌러 이름을 고치거나, 지도를 클릭해 새 핀을 추가해 실제 위치에 맞게 다듬어 주세요.<br><br>
     </div>
     <div class="io-row">
@@ -867,7 +867,7 @@ function setFullscreen(on){
   zoom = 1; panX = 0; panY = 0;
   mapFrame.classList.toggle('fullscreen', on);
   document.body.classList.toggle('map-fullscreen', on);
-  fullscreenBtn.textContent = on ? '> <' : '< >';
+  fullscreenBtn.textContent = on ? 'X' : '< >';
   fullscreenBtn.title = on ? '전체 화면 닫기' : '전체 화면으로 보기';
   fullscreenBtn.setAttribute('aria-label', fullscreenBtn.title);
   document.querySelectorAll('.callout').forEach(c => c.remove());
