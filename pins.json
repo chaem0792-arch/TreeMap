@@ -773,15 +773,15 @@
     "species": "juniper",
     "x": 49,
     "y": 43,
-    "image": "./images/향나무7.JPG"
+    "image": "./images/향7.JPG"
   },
   {
     "id": 124,
-    "name": "향나무8",
+    "name": "향나무",
     "species": "juniper",
     "x": 48.2,
     "y": 58.9,
-    "image": "./images/향나무8.JPG"
+    "image": "./images/향7.JPG"
   },
   {
     "id": 125,
@@ -789,7 +789,7 @@
     "species": "juniper",
     "x": 47.5,
     "y": 58.3,
-    "image": "./images/향나무9.JPG"
+    "image": "./images/향9.JPG"
   },
   {
     "id": 126,
@@ -797,7 +797,7 @@
     "species": "juniper",
     "x": 49.4,
     "y": 58,
-    "image": "./images/향나무10.JPG"
+    "image": "./images/향10.JPG"
   },
   {
     "id": 127,
@@ -825,7 +825,7 @@
   },
   {
     "id": 130,
-    "name": "소나무와철쭉",
+    "name": "소나무",
     "species": "azalea",
     "x": 39.5,
     "y": 58.1,
@@ -833,7 +833,7 @@
   },
   {
     "id": 131,
-    "name": "소나무와철쭉",
+    "name": "철쭉",
     "species": "pine",
     "x": 38.7,
     "y": 58,
