@@ -515,14 +515,1054 @@ SPECIES.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 let pins = [
-  { "id": 27, "name": "지송관 옆 능소화",   "species": "trumpetvine", "x": 60.8, "y": 78.2, "image": "./images/지송관 옆 능소화.JPG" },
-  { "id": 28, "name": "본관 왼편 배롱나무",   "species": "crapemyrtle", "x": 26.8, "y": 59.8, "image": "./images/본관 왼편 배롱나무.JPG" },
-  { "id": 29, "name": "본관 앞 매화나무",   "species": "plum",        "x": 46.1, "y": 52.5, "image": "./images/본관 앞 매화나무.JPG" },
-  { "id": 30, "name": "농구장 앞 단풍나무", "species": "maple",       "x": 76.4, "y": 69.3, "image": "./images/농구장 앞 단풍나무.JPG" },
-  { "id": 31, "name": "본관 앞 산수유나무", "species": "cornus",      "x": 39.9, "y": 56,   "image": "./images/본관 앞 산수유나무.JPG" },
-  { "id": 32, "name": "언덕길 매화나무",    "species": "plum",        "x": 71.3, "y": 66.6, "image": "./images/언덕길 매화나무.JPG" },
-  { "id": 33, "name": "본관 앞 감나무",     "species": "persimmon",   "x": 48,   "y": 53.9, "image": "./images/본관 앞 감나무.JPG" },
-  { "id": 34, "name": "언덕길 배롱나무",    "species": "crapemyrtle", "x": 52,   "y": 55.2, "image": "./images/언덕길 배롱나무.JPG"  }
+  {
+    "id": 27,
+    "name": "지송관 옆 능소화",
+    "species": "trumpetvine",
+    "x": 60.8,
+    "y": 78.2,
+    "image": "./images/지송관 옆 능소화.JPG"
+  },
+  {
+    "id": 28,
+    "name": "본관 왼편 배롱나무",
+    "species": "crapemyrtle",
+    "x": 30.9,
+    "y": 63.6,
+    "image": "./images/본관 왼편 배롱나무.JPG"
+  },
+  {
+    "id": 29,
+    "name": "본관 앞 매화나무",
+    "species": "plum",
+    "x": 44.8,
+    "y": 55.9,
+    "image": "./images/본관 앞 매화나무.JPG"
+  },
+  {
+    "id": 30,
+    "name": "농구장 앞 단풍나무",
+    "species": "maple",
+    "x": 74.7,
+    "y": 70.6,
+    "image": "./images/농구장 앞 단풍나무.JPG"
+  },
+  {
+    "id": 31,
+    "name": "본관 앞 산수유나무",
+    "species": "cornus",
+    "x": 40.5,
+    "y": 56.7,
+    "image": "./images/본관 앞 산수유나무.JPG"
+  },
+  {
+    "id": 32,
+    "name": "언덕길 매화나무",
+    "species": "plum",
+    "x": 71.3,
+    "y": 66.6,
+    "image": "./images/언덕길 매화나무.JPG"
+  },
+  {
+    "id": 33,
+    "name": "본관 앞 감나무",
+    "species": "persimmon",
+    "x": 52.8,
+    "y": 40.9,
+    "image": "./images/본관 앞 감나무.JPG"
+  },
+  {
+    "id": 34,
+    "name": "언덕길 배롱나무",
+    "species": "crapemyrtle",
+    "x": 52,
+    "y": 55.2,
+    "image": "./images/언덕길 배롱나무.JPG"
+  },
+  {
+    "id": 35,
+    "name": "능소화1",
+    "species": "trumpetvine",
+    "x": 88.1,
+    "y": 66.3,
+    "image": "./images/능소화1.JPG"
+  },
+  {
+    "id": 36,
+    "name": "메타1",
+    "species": "metasequoia",
+    "x": 83.8,
+    "y": 57.6,
+    "image": "./images/메타1.JPG"
+  },
+  {
+    "id": 37,
+    "name": "향1",
+    "species": "juniper",
+    "x": 82.3,
+    "y": 65,
+    "image": "./images/향1.JPG"
+  },
+  {
+    "id": 38,
+    "name": "철쭉1",
+    "species": "azalea",
+    "x": 75.5,
+    "y": 64.8,
+    "image": "./images/철쭉1.JPG"
+  },
+  {
+    "id": 39,
+    "name": "쥐똥1",
+    "species": "privet",
+    "x": 77.3,
+    "y": 64.2,
+    "image": "./images/쥐똥1.JPG"
+  },
+  {
+    "id": 40,
+    "name": "주목1",
+    "species": "yew",
+    "x": 76.9,
+    "y": 65.1,
+    "image": "./images/주목1.JPG"
+  },
+  {
+    "id": 41,
+    "name": "모과1",
+    "species": "quince",
+    "x": 75.8,
+    "y": 64.5,
+    "image": "./images/모과1.JPG"
+  },
+  {
+    "id": 42,
+    "name": "철쭉2",
+    "species": "azalea",
+    "x": 75,
+    "y": 64,
+    "image": "./images/철쭉2.JPG"
+  },
+  {
+    "id": 43,
+    "name": "소나무1",
+    "species": "pine",
+    "x": 74.4,
+    "y": 64.9,
+    "image": "./images/소나무1.JPG"
+  },
+  {
+    "id": 44,
+    "name": "대나무1",
+    "species": "bamboo",
+    "x": 73.5,
+    "y": 63.7,
+    "image": "./images/대나무1.JPG"
+  },
+  {
+    "id": 45,
+    "name": "은행1",
+    "species": "ginkgo",
+    "x": 76.2,
+    "y": 67.1,
+    "image": "./images/은행1.JPG"
+  },
+  {
+    "id": 46,
+    "name": "향나무2",
+    "species": "juniper",
+    "x": 82,
+    "y": 70.4,
+    "image": "./images/향나무2.JPG"
+  },
+  {
+    "id": 47,
+    "name": "주목2",
+    "species": "yew",
+    "x": 83.7,
+    "y": 69.8,
+    "image": "./images/주목2.JPG"
+  },
+  {
+    "id": 48,
+    "name": "장미1",
+    "species": "rose",
+    "x": 80.3,
+    "y": 71.2,
+    "image": "./images/장미1.JPG"
+  },
+  {
+    "id": 49,
+    "name": "산딸나무",
+    "species": "spruce",
+    "x": 81.2,
+    "y": 70.9,
+    "image": "./images/산딸나무.JPG"
+  },
+  {
+    "id": 50,
+    "name": "농구장 앞 은행나무(은행2)",
+    "species": "ginkgo",
+    "x": 76.4,
+    "y": 69.9,
+    "image": "./images/농구장 앞 은행나무(은행2).JPG"
+  },
+  {
+    "id": 51,
+    "name": "철쭉3",
+    "species": "azalea",
+    "x": 75,
+    "y": 69.5,
+    "image": "./images/철쭉3.JPG"
+  },
+  {
+    "id": 52,
+    "name": "매실2",
+    "species": "plum",
+    "x": 73.6,
+    "y": 70.8,
+    "image": "./images/매실2.JPG"
+  },
+  {
+    "id": 53,
+    "name": "주목",
+    "species": "yew",
+    "x": 73,
+    "y": 71.5,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 54,
+    "name": "배롱1",
+    "species": "crapemyrtle",
+    "x": 71.2,
+    "y": 71.5,
+    "image": "./images/배롱1.JPG"
+  },
+  {
+    "id": 55,
+    "name": "향나무3",
+    "species": "juniper",
+    "x": 69.7,
+    "y": 71.8,
+    "image": "./images/향나무3.JPG"
+  },
+  {
+    "id": 56,
+    "name": "농구장",
+    "species": "ginkgo",
+    "x": 75.6,
+    "y": 78.3,
+    "image": "./images/농구장.JPG"
+  },
+  {
+    "id": 57,
+    "name": "농구장 뒤 단풍나무",
+    "species": "maple",
+    "x": 80.3,
+    "y": 78,
+    "image": "./images/농구장 뒤 단풍나무.JPG"
+  },
+  {
+    "id": 58,
+    "name": "잣나무",
+    "species": "spruce",
+    "x": 77.8,
+    "y": 78.1,
+    "image": "./images/잣나무.JPG"
+  },
+  {
+    "id": 59,
+    "name": "단풍",
+    "species": "maple",
+    "x": 74.4,
+    "y": 79.1,
+    "image": "./images/단풍.JPG"
+  },
+  {
+    "id": 60,
+    "name": "은행",
+    "species": "ginkgo",
+    "x": 73.6,
+    "y": 79.5,
+    "image": "./images/은행.JPG"
+  },
+  {
+    "id": 61,
+    "name": "단풍",
+    "species": "maple",
+    "x": 73.1,
+    "y": 79.7,
+    "image": "./images/단풍.JPG"
+  },
+  {
+    "id": 62,
+    "name": "은행",
+    "species": "ginkgo",
+    "x": 72.6,
+    "y": 79.9,
+    "image": "./images/은행.JPG"
+  },
+  {
+    "id": 63,
+    "name": "철쭉4",
+    "species": "azalea",
+    "x": 70.6,
+    "y": 79,
+    "image": "./images/철쭉4.JPG"
+  },
+  {
+    "id": 64,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 70.5,
+    "y": 77.8,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 65,
+    "name": "소나무",
+    "species": "pine",
+    "x": 70.2,
+    "y": 76.6,
+    "image": "./images/소나무.JPG"
+  },
+  {
+    "id": 66,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 69.9,
+    "y": 76.1,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 67,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 69.8,
+    "y": 75.5,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 68,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 69.2,
+    "y": 73.5,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 69,
+    "name": "층층나무",
+    "species": "dogwood",
+    "x": 72.4,
+    "y": 64,
+    "image": "./images/층층나무.JPG"
+  },
+  {
+    "id": 70,
+    "name": "매실1",
+    "species": "plum",
+    "x": 72.1,
+    "y": 66,
+    "image": "./images/매실1.JPG"
+  },
+  {
+    "id": 71,
+    "name": "은행2",
+    "species": "ginkgo",
+    "x": 71.6,
+    "y": 67.9,
+    "image": "./images/은행2.JPG"
+  },
+  {
+    "id": 72,
+    "name": "은행2",
+    "species": "ginkgo",
+    "x": 71,
+    "y": 69.4,
+    "image": "./images/은행2.JPG"
+  },
+  {
+    "id": 73,
+    "name": "대나무2",
+    "species": "bamboo",
+    "x": 68.9,
+    "y": 65.1,
+    "image": "./images/대나무2.JPG"
+  },
+  {
+    "id": 74,
+    "name": "능소화2",
+    "species": "trumpetvine",
+    "x": 63.9,
+    "y": 69.2,
+    "image": "./images/능소화2.JPG"
+  },
+  {
+    "id": 75,
+    "name": "은행",
+    "species": "ginkgo",
+    "x": 63.3,
+    "y": 69.2,
+    "image": "./images/은행.JPG"
+  },
+  {
+    "id": 76,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 62.8,
+    "y": 68.7,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 77,
+    "name": "철쭉",
+    "species": "spruce",
+    "x": 60.7,
+    "y": 68.3,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 78,
+    "name": "능소화",
+    "species": "trumpetvine",
+    "x": 62,
+    "y": 69.1,
+    "image": "./images/능소화.JPG"
+  },
+  {
+    "id": 79,
+    "name": "향나무3",
+    "species": "juniper",
+    "x": 61.7,
+    "y": 69.8,
+    "image": "./images/향나무3.JPG"
+  },
+  {
+    "id": 80,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 59.8,
+    "y": 70.1,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 81,
+    "name": "팔손이",
+    "species": "fatsia",
+    "x": 60.9,
+    "y": 70.6,
+    "image": "./images/팔손이.JPG"
+  },
+  {
+    "id": 82,
+    "name": "주목",
+    "species": "yew",
+    "x": 59.8,
+    "y": 70.8,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 83,
+    "name": "능소화3",
+    "species": "trumpetvine",
+    "x": 57.8,
+    "y": 68.5,
+    "image": "./images/능소화3.JPG"
+  },
+  {
+    "id": 84,
+    "name": "주목",
+    "species": "yew",
+    "x": 57.7,
+    "y": 67.5,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 85,
+    "name": "목련",
+    "species": "magnolia",
+    "x": 58.9,
+    "y": 71.2,
+    "image": "./images/목련.JPG"
+  },
+  {
+    "id": 86,
+    "name": "장미",
+    "species": "rose",
+    "x": 57.9,
+    "y": 71.4,
+    "image": "./images/장미.JPG"
+  },
+  {
+    "id": 87,
+    "name": "느티1",
+    "species": "zelkova",
+    "x": 57,
+    "y": 65.3,
+    "image": "./images/느티1.JPG"
+  },
+  {
+    "id": 88,
+    "name": "산수유",
+    "species": "cornus",
+    "x": 57.3,
+    "y": 66.3,
+    "image": "./images/산수유.JPG"
+  },
+  {
+    "id": 89,
+    "name": "단풍나무",
+    "species": "maple",
+    "x": 56.6,
+    "y": 63.8,
+    "image": "./images/단풍나무.JPG"
+  },
+  {
+    "id": 90,
+    "name": "사철1",
+    "species": "euonymus",
+    "x": 59.5,
+    "y": 74.8,
+    "image": "./images/사철1.JPG"
+  },
+  {
+    "id": 91,
+    "name": "주목",
+    "species": "yew",
+    "x": 55.7,
+    "y": 51.6,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 92,
+    "name": "소나무",
+    "species": "pine",
+    "x": 56.5,
+    "y": 49.9,
+    "image": "./images/소나무.JPG"
+  },
+  {
+    "id": 93,
+    "name": "소나무",
+    "species": "pine",
+    "x": 57.3,
+    "y": 50.8,
+    "image": "./images/소나무.JPG"
+  },
+  {
+    "id": 94,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 55.9,
+    "y": 48.2,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 95,
+    "name": "소나무",
+    "species": "pine",
+    "x": 57.1,
+    "y": 52,
+    "image": "./images/소나무.JPG"
+  },
+  {
+    "id": 96,
+    "name": "들장미",
+    "species": "spruce",
+    "x": 57.7,
+    "y": 49.2,
+    "image": "./images/들장미.JPG"
+  },
+  {
+    "id": 97,
+    "name": "배롱2",
+    "species": "crapemyrtle",
+    "x": 47.2,
+    "y": 100,
+    "image": "./images/배롱2.JPG"
+  },
+  {
+    "id": 98,
+    "name": "무궁화1",
+    "species": "hibiscus",
+    "x": 53.5,
+    "y": 59.5,
+    "image": "./images/무궁화1.JPG"
+  },
+  {
+    "id": 99,
+    "name": "향나무4",
+    "species": "juniper",
+    "x": 52,
+    "y": 58.6,
+    "image": "./images/향나무4.JPG"
+  },
+  {
+    "id": 100,
+    "name": "덩굴장미",
+    "species": "spruce",
+    "x": 51,
+    "y": 60.1,
+    "image": "./images/덩굴장미.JPG"
+  },
+  {
+    "id": 101,
+    "name": "덩굴장미",
+    "species": "spruce",
+    "x": 49.2,
+    "y": 60.9,
+    "image": "./images/덩굴장미.JPG"
+  },
+  {
+    "id": 102,
+    "name": "덩굴장미",
+    "species": "spruce",
+    "x": 46.9,
+    "y": 61.5,
+    "image": "./images/덩굴장미.JPG"
+  },
+  {
+    "id": 103,
+    "name": "구기자나무",
+    "species": "spruce",
+    "x": 49.9,
+    "y": 59.7,
+    "image": "./images/구기자나무.JPG"
+  },
+  {
+    "id": 104,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 48.3,
+    "y": 60.7,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 105,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 46.1,
+    "y": 61.4,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 106,
+    "name": "덩굴장미",
+    "species": "spruce",
+    "x": 42.9,
+    "y": 63,
+    "image": "./images/덩굴장미.JPG"
+  },
+  {
+    "id": 107,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 41.9,
+    "y": 63.3,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 108,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 40,
+    "y": 64,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 109,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 38.7,
+    "y": 64.7,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 110,
+    "name": "구기자2",
+    "species": "spruce",
+    "x": 33.5,
+    "y": 66.8,
+    "image": "./images/구기자2.JPG"
+  },
+  {
+    "id": 111,
+    "name": "사철",
+    "species": "euonymus",
+    "x": 34.2,
+    "y": 68.3,
+    "image": "./images/사철.JPG"
+  },
+  {
+    "id": 112,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 33.8,
+    "y": 71.8,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 113,
+    "name": "향나무5",
+    "species": "juniper",
+    "x": 33.9,
+    "y": 73.1,
+    "image": "./images/향나무5.JPG"
+  },
+  {
+    "id": 114,
+    "name": "향나무5",
+    "species": "juniper",
+    "x": 34.7,
+    "y": 74.6,
+    "image": "./images/향나무5.JPG"
+  },
+  {
+    "id": 115,
+    "name": "딱총",
+    "species": "elder",
+    "x": 31.6,
+    "y": 67.7,
+    "image": "./images/딱총.JPG"
+  },
+  {
+    "id": 116,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 30.1,
+    "y": 67.7,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 117,
+    "name": "사철나무",
+    "species": "euonymus",
+    "x": 30.7,
+    "y": 68.7,
+    "image": "./images/사철나무.JPG"
+  },
+  {
+    "id": 118,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 32.3,
+    "y": 69.1,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 119,
+    "name": "배롱3",
+    "species": "crapemyrtle",
+    "x": 46.5,
+    "y": 60,
+    "image": "./images/배롱3.JPG"
+  },
+  {
+    "id": 120,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 45.4,
+    "y": 60.4,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 121,
+    "name": "계암나무",
+    "species": "spruce",
+    "x": 43,
+    "y": 61.2,
+    "image": "./images/계암나무.JPG"
+  },
+  {
+    "id": 122,
+    "name": "무궁화",
+    "species": "hibiscus",
+    "x": 51.4,
+    "y": 58.1,
+    "image": "./images/무궁화.JPG"
+  },
+  {
+    "id": 123,
+    "name": "향나무7",
+    "species": "juniper",
+    "x": 49,
+    "y": 43,
+    "image": "./images/향나무7.JPG"
+  },
+  {
+    "id": 124,
+    "name": "향나무8",
+    "species": "juniper",
+    "x": 48.2,
+    "y": 58.9,
+    "image": "./images/향나무8.JPG"
+  },
+  {
+    "id": 125,
+    "name": "향나무9",
+    "species": "juniper",
+    "x": 47.5,
+    "y": 58.3,
+    "image": "./images/향나무9.JPG"
+  },
+  {
+    "id": 126,
+    "name": "향나무10",
+    "species": "juniper",
+    "x": 49.4,
+    "y": 58,
+    "image": "./images/향나무10.JPG"
+  },
+  {
+    "id": 127,
+    "name": "소나무3",
+    "species": "pine",
+    "x": 48.4,
+    "y": 58.2,
+    "image": "./images/소나무3.JPG"
+  },
+  {
+    "id": 128,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 37.5,
+    "y": 79,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 129,
+    "name": "대표 벚나무",
+    "species": "cherry",
+    "x": 40.9,
+    "y": 57.5,
+    "image": "./images/대표 벚나무.JPG"
+  },
+  {
+    "id": 130,
+    "name": "소나무와철쭉",
+    "species": "azalea",
+    "x": 39.5,
+    "y": 58.1,
+    "image": "./images/소나무와철쭉.JPG"
+  },
+  {
+    "id": 131,
+    "name": "소나무와철쭉",
+    "species": "pine",
+    "x": 38.7,
+    "y": 58,
+    "image": "./images/소나무와철쭉.JPG"
+  },
+  {
+    "id": 132,
+    "name": "석류1",
+    "species": "pomegranate",
+    "x": 40.2,
+    "y": 56.4,
+    "image": "./images/석류1.JPG"
+  },
+  {
+    "id": 133,
+    "name": "석류1",
+    "species": "pomegranate",
+    "x": 39.2,
+    "y": 56.8,
+    "image": "./images/석류1.JPG"
+  },
+  {
+    "id": 134,
+    "name": "목수국",
+    "species": "spruce",
+    "x": 39.6,
+    "y": 57.5,
+    "image": "./images/목수국.JPG"
+  },
+  {
+    "id": 135,
+    "name": "주목",
+    "species": "yew",
+    "x": 37.4,
+    "y": 58.2,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 136,
+    "name": "자귀2",
+    "species": "albizia",
+    "x": 37.6,
+    "y": 59.4,
+    "image": "./images/자귀2.JPG"
+  },
+  {
+    "id": 137,
+    "name": "소철주",
+    "species": "pine",
+    "x": 34.9,
+    "y": 60.2,
+    "image": "./images/소철주.JPG"
+  },
+  {
+    "id": 138,
+    "name": "소철주",
+    "species": "albizia",
+    "x": 34.6,
+    "y": 59.7,
+    "image": "./images/소철주.JPG"
+  },
+  {
+    "id": 139,
+    "name": "소철주",
+    "species": "azalea",
+    "x": 34.3,
+    "y": 60.9,
+    "image": "./images/소철주.JPG"
+  },
+  {
+    "id": 140,
+    "name": "소철주",
+    "species": "yew",
+    "x": 34.3,
+    "y": 60.2,
+    "image": "./images/소철주.JPG"
+  },
+  {
+    "id": 141,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 33.4,
+    "y": 61.8,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 142,
+    "name": "주목",
+    "species": "yew",
+    "x": 32.1,
+    "y": 61.8,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 143,
+    "name": "배롱나무",
+    "species": "crapemyrtle",
+    "x": 32.7,
+    "y": 62.1,
+    "image": "./images/배롱나무.JPG"
+  },
+  {
+    "id": 144,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 32.4,
+    "y": 60.4,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 145,
+    "name": "불두화",
+    "species": "spruce",
+    "x": 32.5,
+    "y": 61.3,
+    "image": "./images/불두화.JPG"
+  },
+  {
+    "id": 146,
+    "name": "소나무4",
+    "species": "pine",
+    "x": 31,
+    "y": 62.3,
+    "image": "./images/소나무4.JPG"
+  },
+  {
+    "id": 147,
+    "name": "철쭉",
+    "species": "azalea",
+    "x": 30.7,
+    "y": 61.5,
+    "image": "./images/철쭉.JPG"
+  },
+  {
+    "id": 148,
+    "name": "단풍4",
+    "species": "maple",
+    "x": 30.3,
+    "y": 62.7,
+    "image": "./images/단풍4.JPG"
+  },
+  {
+    "id": 149,
+    "name": "단풍5",
+    "species": "maple",
+    "x": 29.2,
+    "y": 63.1,
+    "image": "./images/단풍5.JPG"
+  },
+  {
+    "id": 150,
+    "name": "석류2",
+    "species": "pomegranate",
+    "x": 29.6,
+    "y": 61.2,
+    "image": "./images/석류2.JPG"
+  },
+  {
+    "id": 151,
+    "name": "미확인",
+    "species": "spruce",
+    "x": 29.7,
+    "y": 62,
+    "image": "./images/미확인.JPG"
+  },
+  {
+    "id": 152,
+    "name": "산국",
+    "species": "spruce",
+    "x": 29,
+    "y": 62.2,
+    "image": "./images/산국.JPG"
+  },
+  {
+    "id": 153,
+    "name": "개암",
+    "species": "spruce",
+    "x": 27,
+    "y": 59.8,
+    "image": "./images/개암.JPG"
+  },
+  {
+    "id": 154,
+    "name": "쥐똥5",
+    "species": "privet",
+    "x": 27.6,
+    "y": 58.7,
+    "image": "./images/쥐똥5.JPG"
+  },
+  {
+    "id": 155,
+    "name": "소나무6",
+    "species": "pine",
+    "x": 28.4,
+    "y": 59.5,
+    "image": "./images/소나무6.JPG"
+  },
+  {
+    "id": 156,
+    "name": "소나무6",
+    "species": "pine",
+    "x": 29.3,
+    "y": 59,
+    "image": "./images/소나무6.JPG"
+  },
+  {
+    "id": 157,
+    "name": "주목7",
+    "species": "yew",
+    "x": 30.2,
+    "y": 58.2,
+    "image": "./images/주목7.JPG"
+  }
 ];
 /* 새 핀 id는 기존 핀 id의 최댓값 + 1부터 시작합니다 (id 중복 방지) */
 let nextId = Math.max(0, ...pins.map(p => p.id || 0)) + 1;
