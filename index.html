@@ -303,6 +303,19 @@
   .species-row .name{ flex:1; }
   .species-row .count{ color: var(--ink-soft); font-size: 12px; }
   .species-row input{ margin:0; accent-color: var(--moss); }
+  .toggle-all-btn{
+    width:100%;
+    font-family: inherit;
+    font-size: 12.5px;
+    padding: 7px 6px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #FBFAF5;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .toggle-all-btn:hover{ border-color: var(--moss); color: var(--moss-dark); }
 
   .divider{ height:1px; background: var(--line); margin: 14px 0; }
 
@@ -420,6 +433,7 @@
     <h2>수종 목록</h2>
     <p class="sub">체크를 해제하면 지도에서 해당 나무가 숨겨져요.</p>
     <input type="text" class="search-box" id="searchBox" placeholder="나무 이름으로 검색">
+    <button type="button" class="toggle-all-btn" id="toggleAllSpeciesBtn">전체 해제</button>
     <div id="speciesList"></div>
 
     <div class="divider"></div>
@@ -1640,10 +1654,22 @@ function renderSpeciesList(){
     cb.addEventListener('change', e => {
       const sid = e.target.getAttribute('data-sid');
       if(e.target.checked) hiddenSpecies.delete(sid); else hiddenSpecies.add(sid);
+      updateToggleAllBtn();
       renderPins();
     });
   });
+  updateToggleAllBtn();
 }
+/* 전체 선택/해제: 하나라도 꺼져 있으면 모두 켜고, 모두 켜져 있으면 모두 끕니다 */
+const toggleAllSpeciesBtn = document.getElementById('toggleAllSpeciesBtn');
+function updateToggleAllBtn(){
+  toggleAllSpeciesBtn.textContent = hiddenSpecies.size ? '전체 선택' : '전체 해제';
+}
+toggleAllSpeciesBtn.addEventListener('click', () => {
+  hiddenSpecies = hiddenSpecies.size ? new Set() : new Set(SPECIES.map(s => s.id));
+  renderSpeciesList();
+  renderPins();
+});
 
 /* ---------- 핀 렌더 ---------- */
 function renderPins(){
