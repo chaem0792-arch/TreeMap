@@ -17,11 +17,11 @@
   },
   {
     "id": 29,
-    "name": "본관 앞 매화나무",
+    "name": "본관 앞 매실나무",
     "species": "plum",
     "x": 44.8,
     "y": 55.9,
-    "image": "./images/본관 앞 매화나무.JPG"
+    "image": "./images/본관 앞 매실나무.JPG"
   },
   {
     "id": 30,
@@ -41,11 +41,11 @@
   },
   {
     "id": 32,
-    "name": "언덕길 매화나무",
+    "name": "언덕길 매실나무",
     "species": "plum",
     "x": 71.3,
     "y": 66.6,
-    "image": "./images/언덕길 매화나무.JPG"
+    "image": "./images/언덕길 매실나무.JPG"
   },
   {
     "id": 33,
