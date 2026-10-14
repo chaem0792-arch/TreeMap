@@ -257,11 +257,11 @@
   },
   {
     "id": 59,
-    "name": "단풍",
+    "name": "단풍나무",
     "species": "maple",
     "x": 74.4,
     "y": 79.1,
-    "image": "./images/단풍.JPG"
+    "image": "./images/단풍1.JPG"
   },
   {
     "id": 60,
@@ -273,11 +273,11 @@
   },
   {
     "id": 61,
-    "name": "단풍",
+    "name": "단풍나무",
     "species": "maple",
     "x": 73.1,
     "y": 79.7,
-    "image": "./images/단풍.JPG"
+    "image": "./images/단풍1.JPG"
   },
   {
     "id": 62,
@@ -285,7 +285,7 @@
     "species": "ginkgo",
     "x": 72.6,
     "y": 79.9,
-    "image": "./images/은행.JPG"
+    "image": "./images/은행1.JPG"
   },
   {
     "id": 63,
@@ -977,11 +977,11 @@
   },
   {
     "id": 149,
-    "name": "단풍5",
+    "name": "단풍나무",
     "species": "maple",
     "x": 29.2,
     "y": 63.1,
-    "image": "./images/단풍5.JPG"
+    "image": "./images/단풍1.JPG"
   },
   {
     "id": 150,
