@@ -29,7 +29,7 @@
     "species": "maple",
     "x": 74.7,
     "y": 70.6,
-    "image": "./images/농구장 앞 단풍나무.JPG"
+    "image": "./images/단풍1.JPG"
   },
   {
     "id": 31,
@@ -185,11 +185,11 @@
   },
   {
     "id": 50,
-    "name": "농구장 앞 은행나무(은행2)",
+    "name": "농구장 앞 은행나무",
     "species": "ginkgo",
     "x": 76.4,
     "y": 69.9,
-    "image": "./images/농구장 앞 은행나무(은행2).JPG"
+    "image": "./images/은행2.JPG"
   },
   {
     "id": 51,
@@ -233,7 +233,7 @@
   },
   {
     "id": 56,
-    "name": "농구장",
+    "name": "농구장 은행나무",
     "species": "ginkgo",
     "x": 75.6,
     "y": 78.3,
@@ -245,7 +245,7 @@
     "species": "maple",
     "x": 80.3,
     "y": 78,
-    "image": "./images/농구장 뒤 단풍나무.JPG"
+    "image": "./images/농구장.JPG"
   },
   {
     "id": 58,
