@@ -125,7 +125,7 @@
     "species": "azalea",
     "x": 75,
     "y": 64,
-    "image": "./images/철쭉.JPG"
+    "image": "./images/철쭉2.JPG"
   },
   {
     "id": 43,
@@ -289,11 +289,11 @@
   },
   {
     "id": 63,
-    "name": "철쭉",
+    "name": "철쭉4",
     "species": "azalea",
     "x": 70.6,
     "y": 79,
-    "image": "./images/철쭉.JPG"
+    "image": "./images/철쭉4.JPG"
   },
   {
     "id": 64,
@@ -761,11 +761,11 @@
   },
   {
     "id": 122,
-    "name": "무궁화",
+    "name": "무궁화2",
     "species": "hibiscus",
     "x": 51.4,
     "y": 58.1,
-    "image": "./images/무궁화.JPG"
+    "image": "./images/무궁화2.JPG"
   },
   {
     "id": 123,
@@ -1061,7 +1061,7 @@
     "species": "magnolia",
     "x": 32,
     "y": 66.5,
-    "image": "./images/운동장 계단 목련.JPG"
+    "image": "./images/운동장 계단 목련1.JPG"
   },
   {
     "id": 160,
@@ -1077,7 +1077,7 @@
     "species": "magnolia",
     "x": 35.1,
     "y": 64.7,
-    "image": "./images/운동장 계단 목련.JPG"
+    "image": "./images/운동장 계단 목련2.JPG"
   },
   {
     "id": 162,
@@ -1149,7 +1149,7 @@
     "species": "yew",
     "x": 47.6,
     "y": 48.4,
-    "image": "./images/주차장 오른편 배롱나무.JPG"
+    "image": "./images/주차장 오른편 주목.JPG"
   },
   {
     "id": 171,
@@ -1158,5 +1158,13 @@
     "x": 49.2,
     "y": 51.8,
     "image": "./images/주차장 언덕 철쭉.JPG"
+  },
+  {
+    "id": 172,
+    "name": "주차장 왼편 배롱나무",
+    "species": "crapemyrtle",
+    "x": 45.3,
+    "y": 50.2,
+    "image": "./images/주차장 왼편 배롱나무.JPG"
   }
 ]
