@@ -51,16 +51,16 @@
     "id": 33,
     "name": "본관 앞 감나무",
     "species": "persimmon",
-    "x": 52.8,
-    "y": 40.9,
+    "x": 52.1,
+    "y": 50.4,
     "image": "./images/본관 앞 감나무.JPG"
   },
   {
     "id": 34,
     "name": "언덕길 배롱나무",
     "species": "crapemyrtle",
-    "x": 52,
-    "y": 55.2,
+    "x": 52.1,
+    "y": 55.7,
     "image": "./images/언덕길 배롱나무.JPG"
   },
   {
@@ -771,8 +771,8 @@
     "id": 123,
     "name": "향나무7",
     "species": "juniper",
-    "x": 49,
-    "y": 43,
+    "x": 44.9,
+    "y": 59,
     "image": "./images/향7.JPG"
   },
   {
@@ -1126,5 +1126,37 @@
     "x": 34.7,
     "y": 63.9,
     "image": "./images/운동장 위 배롱나무.JPG"
+  },
+  {
+    "id": 168,
+    "name": "언덕길 주목",
+    "species": "yew",
+    "x": 52.1,
+    "y": 53.1,
+    "image": "./images/언덕길 주목.JPG"
+  },
+  {
+    "id": 169,
+    "name": "주차장 오른편 배롱나무",
+    "species": "crapemyrtle",
+    "x": 46.9,
+    "y": 48.1,
+    "image": "./images/주차장 오른편 배롱나무.JPG"
+  },
+  {
+    "id": 170,
+    "name": "주차장 오른편 주목",
+    "species": "yew",
+    "x": 47.6,
+    "y": 48.4,
+    "image": "./images/주차장 오른편 주목.JPG"
+  },
+  {
+    "id": 171,
+    "name": "주차장 언덕 철쭉",
+    "species": "azalea",
+    "x": 49.2,
+    "y": 51.8,
+    "image": "./images/주차장 언덕 철쭉.JPG"
   }
 ]
