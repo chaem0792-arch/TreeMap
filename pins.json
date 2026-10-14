@@ -125,7 +125,7 @@
     "species": "azalea",
     "x": 75,
     "y": 64,
-    "image": "./images/철쭉2.JPG"
+    "image": "./images/철쭉.JPG"
   },
   {
     "id": 43,
@@ -1061,7 +1061,7 @@
     "species": "magnolia",
     "x": 32,
     "y": 66.5,
-    "image": "./images/운동장 계단 목련1.JPG"
+    "image": "./images/운동장 계단 목련.JPG"
   },
   {
     "id": 160,
@@ -1077,7 +1077,7 @@
     "species": "magnolia",
     "x": 35.1,
     "y": 64.7,
-    "image": "./images/운동장 계단 목련2.JPG"
+    "image": "./images/운동장 계단 목련.JPG"
   },
   {
     "id": 162,
