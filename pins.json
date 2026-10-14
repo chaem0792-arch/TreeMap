@@ -309,7 +309,7 @@
     "species": "pine",
     "x": 70.2,
     "y": 76.6,
-    "image": "./images/농구장2.JPG"
+    "image": "./images/소나무.JPG"
   },
   {
     "id": 66,
@@ -517,7 +517,7 @@
     "species": "yew",
     "x": 55.7,
     "y": 51.6,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/주목.JPG"
   },
   {
     "id": 92,
@@ -525,7 +525,7 @@
     "species": "pine",
     "x": 56.5,
     "y": 49.9,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/소나무.JPG"
   },
   {
     "id": 93,
@@ -533,7 +533,7 @@
     "species": "pine",
     "x": 57.3,
     "y": 50.8,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/소나무.JPG"
   },
   {
     "id": 94,
@@ -541,7 +541,7 @@
     "species": "azalea",
     "x": 55.9,
     "y": 48.2,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/철쭉.JPG"
   },
   {
     "id": 95,
@@ -549,7 +549,7 @@
     "species": "pine",
     "x": 57.1,
     "y": 52,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/소나무.JPG"
   },
   {
     "id": 96,
@@ -557,22 +557,22 @@
     "species": "wildrose",
     "x": 57.7,
     "y": 49.2,
-    "image": "./images/과학관 오른편.JPG"
+    "image": "./images/들장미.JPG"
   },
   {
     "id": 97,
     "name": "배롱2",
     "species": "crapemyrtle",
-    "x": 47.2,
-    "y": 100,
+    "x": 54.9,
+    "y": 59,
     "image": "./images/배롱2.JPG"
   },
   {
     "id": 98,
     "name": "무궁화1",
     "species": "hibiscus",
-    "x": 53.5,
-    "y": 59.5,
+    "x": 53.7,
+    "y": 58.3,
     "image": "./images/무궁화1.JPG"
   },
   {
@@ -825,7 +825,7 @@
   },
   {
     "id": 130,
-    "name": "철쭉",
+    "name": "소나무",
     "species": "azalea",
     "x": 39.5,
     "y": 58.1,
@@ -833,7 +833,7 @@
   },
   {
     "id": 131,
-    "name": "소나무",
+    "name": "철쭉",
     "species": "pine",
     "x": 38.7,
     "y": 58,
