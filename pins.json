@@ -667,16 +667,16 @@
     "id": 110,
     "name": "구기자2",
     "species": "goji",
-    "x": 33.5,
-    "y": 66.8,
+    "x": 33.1,
+    "y": 67,
     "image": "./images/구기자.JPG"
   },
   {
     "id": 111,
     "name": "사철",
     "species": "euonymus",
-    "x": 34.2,
-    "y": 68.3,
+    "x": 33.1,
+    "y": 68.7,
     "image": "./images/사철.JPG"
   },
   {
@@ -707,8 +707,8 @@
     "id": 115,
     "name": "딱총",
     "species": "elder",
-    "x": 31.6,
-    "y": 67.7,
+    "x": 32.2,
+    "y": 68.2,
     "image": "./images/딱총.JPG"
   },
   {
@@ -1046,5 +1046,85 @@
     "x": 30.2,
     "y": 58.2,
     "image": "./images/주목7.JPG"
+  },
+  {
+    "id": 158,
+    "name": "찔레",
+    "species": "multiflora",
+    "x": 42.7,
+    "y": 61.7,
+    "image": "./images/찔레.JPG"
+  },
+  {
+    "id": 159,
+    "name": "운동장 계단 목련1",
+    "species": "magnolia",
+    "x": 32,
+    "y": 66.5,
+    "image": "./images/운동장 계단 목련1.JPG"
+  },
+  {
+    "id": 160,
+    "name": "운동장 계단 모란",
+    "species": "etc",
+    "x": 33.5,
+    "y": 65.6,
+    "image": "./images/운동장 계단 모란.JPG"
+  },
+  {
+    "id": 161,
+    "name": "운동장 계단 목련2",
+    "species": "magnolia",
+    "x": 35.1,
+    "y": 64.7,
+    "image": "./images/운동장 계단 목련2.JPG"
+  },
+  {
+    "id": 162,
+    "name": "중학교 쪽 진달래",
+    "species": "rhododendron",
+    "x": 31.9,
+    "y": 67.5,
+    "image": "./images/중학교 쪽 진달래.JPG"
+  },
+  {
+    "id": 163,
+    "name": "운동장 계단 장미",
+    "species": "rose",
+    "x": 34.3,
+    "y": 67.8,
+    "image": "./images/운동장 계단 장미.JPG"
+  },
+  {
+    "id": 164,
+    "name": "운동장 계단 소나무1",
+    "species": "pine",
+    "x": 33.6,
+    "y": 66.7,
+    "image": "./images/운동장 계단 소나무1.JPG"
+  },
+  {
+    "id": 165,
+    "name": "운동장 계단 소나무2",
+    "species": "pine",
+    "x": 35.1,
+    "y": 66,
+    "image": "./images/운동장 계단 소나무2.JPG"
+  },
+  {
+    "id": 166,
+    "name": "운동장 위 장미",
+    "species": "rose",
+    "x": 40.6,
+    "y": 61.3,
+    "image": "./images/운동장 위 장미.JPG"
+  },
+  {
+    "id": 167,
+    "name": "운동장 위 배롱나무",
+    "species": "crapemyrtle",
+    "x": 34.7,
+    "y": 63.9,
+    "image": "./images/운동장 위 배롱나무.JPG"
   }
 ]
