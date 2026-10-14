@@ -613,7 +613,7 @@
     "species": "goji",
     "x": 49.9,
     "y": 59.7,
-    "image": "./images/구기자나무.JPG"
+    "image": "./images/구기자.JPG"
   },
   {
     "id": 104,
@@ -669,7 +669,7 @@
     "species": "goji",
     "x": 33.5,
     "y": 66.8,
-    "image": "./images/구기자2.JPG"
+    "image": "./images/구기자.JPG"
   },
   {
     "id": 111,
