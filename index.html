@@ -530,9 +530,14 @@ const SPECIES = [
   { id: "wildrose", name: "들장미", color: "#E7A3B6", pageUrl: "./indivisualTree/들장미.html", photo: "./images/들장미.JPG" },
   { id: "kousa", name: "산딸나무", color: "#B9C99A", pageUrl: "./indivisualTree/산딸나무.html", photo: "./images/산딸나무.JPG" },
   { id: "koreanpine", name: "잣나무", color: "#2F5A3A", pageUrl: "./indivisualTree/잣나무.html", photo: "./images/잣나무.JPG" },
+  { id: "panicledhydrangea", name: "목수국", color: "#D9E4F0", photo: "./images/목수국.JPG" },
   /* 목록에 없는 나무용. 개별 페이지가 없어서 핀 설명에 페이지 링크가 나오지 않아요 */
   { id: "etc",         name: "기타",       color: "#8C8C80", pageUrl: "" },
 ];
+/* pageUrl을 적지 않은 수종은 ./indivisualTree/수종이름.html 로 자동 연결합니다.
+   아직 페이지가 없어도 괜찮아요. 나중에 indivisualTree 폴더에 같은 이름의 파일을 올리면 바로 이어져요.
+   ('기타'처럼 pageUrl: "" 로 적으면 링크를 만들지 않습니다) */
+SPECIES.forEach(s => { if(s.pageUrl === undefined) s.pageUrl = `./indivisualTree/${s.name}.html`; });
 /* photo(선택): 수종 대표 사진 경로. 개별 사진(image)이 없는 핀에 대신 표시됩니다. */
 const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 /* 가나다순으로 정렬하고 '기타'는 맨 뒤에 둡니다 */
