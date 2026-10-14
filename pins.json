@@ -517,7 +517,7 @@
     "species": "yew",
     "x": 55.7,
     "y": 51.6,
-    "image": "./images/주목.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 92,
@@ -525,7 +525,7 @@
     "species": "pine",
     "x": 56.5,
     "y": 49.9,
-    "image": "./images/소나무.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 93,
@@ -533,7 +533,7 @@
     "species": "pine",
     "x": 57.3,
     "y": 50.8,
-    "image": "./images/소나무.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 94,
@@ -541,7 +541,7 @@
     "species": "azalea",
     "x": 55.9,
     "y": 48.2,
-    "image": "./images/철쭉.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 95,
@@ -549,7 +549,7 @@
     "species": "pine",
     "x": 57.1,
     "y": 52,
-    "image": "./images/소나무.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 96,
@@ -557,7 +557,7 @@
     "species": "wildrose",
     "x": 57.7,
     "y": 49.2,
-    "image": "./images/들장미.JPG"
+    "image": "./images/과학관 오른편.JPG"
   },
   {
     "id": 97,
