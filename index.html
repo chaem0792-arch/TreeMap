@@ -1763,10 +1763,36 @@ mapFrame.addEventListener('click', (e) => {
 function fillSpeciesSelect(selectedId){
   pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}</option>`).join('');
 }
+/* 나무 이름에 들어 있는 수종을 찾습니다. "산수유"처럼 '나무'를 뺀 이름(2글자 이상)도 인정하고,
+   더 길게 일치한 수종을 앞에 둡니다(예: "공작단풍"은 단풍나무보다 공작단풍이 먼저). */
+function matchSpeciesByName(name){
+  const text = name.replace(/\s+/g, '');
+  if(!text) return [];
+  return SPECIES.map(s => {
+    const core = s.name.replace(/나무$/, '');
+    const len = text.includes(s.name) ? s.name.length : (core.length >= 2 && text.includes(core)) ? core.length : 0;
+    return { s, len };
+  }).filter(m => m.len > 0).sort((a, b) => b.len - a.len).map(m => m.s);
+}
+/* 이름과 일치하는 수종을 목록 맨 위에 모아 보여 주고 첫 번째를 고릅니다. 일치하는 게 없으면 전체 목록 그대로. */
+let speciesPickedByUser = false;
+function filterSpeciesByName(){
+  if(speciesPickedByUser) return;
+  const matches = matchSpeciesByName(pinNameInput.value);
+  if(!matches.length){ fillSpeciesSelect(pinSpeciesInput.value); return; }
+  const opt = (s, sel) => `<option value="${s.id}" ${sel?'selected':''}>${s.name}</option>`;
+  const rest = SPECIES.filter(s => !matches.includes(s));
+  pinSpeciesInput.innerHTML =
+    `<optgroup label="이름과 일치 (${matches.length})">${matches.map((s, i) => opt(s, i === 0)).join('')}</optgroup>` +
+    `<optgroup label="전체 수종">${rest.map(s => opt(s, false)).join('')}</optgroup>`;
+}
+pinNameInput.addEventListener('input', filterSpeciesByName);
+pinSpeciesInput.addEventListener('change', () => { speciesPickedByUser = true; });
 function openAddModal(){
   modalTitle.textContent = '나무 추가';
   pinNameInput.value = '';
   fillSpeciesSelect(SPECIES[0].id);
+  speciesPickedByUser = false;
   deletePinBtn.style.display = 'none';
   modalBackdrop.classList.add('show');
   pinNameInput.focus();
@@ -1777,6 +1803,7 @@ function openEditModal(pin){
   modalTitle.textContent = '나무 정보 수정';
   pinNameInput.value = pin.name;
   fillSpeciesSelect(pin.species);
+  speciesPickedByUser = false;
   deletePinBtn.style.display = 'block';
   modalBackdrop.classList.add('show');
   pinNameInput.focus();
