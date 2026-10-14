@@ -6,7 +6,7 @@ name: 사진 확장자 .JPG로 통일
 on:
   push:
     branches: [main]
-    paths: ['images/**']
+    paths: ['images/**', '.github/workflows/normalize-image-ext.yml']
   workflow_dispatch:
 
 permissions:
@@ -20,21 +20,33 @@ jobs:
 
       - name: 확장자 바꾸기
         run: |
-          command -v convert >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick; }
-          shopt -s nullglob nocaseglob
+          shopt -s nullglob
           changed=0
-          for f in images/*.jpg images/*.jpeg images/*.png images/*.webp; do
+          tools_ready=0
+          to_jpeg() {
+            # PNG·WEBP·BMP·GIF·TIFF·HEIC 같은 사진을 진짜 JPEG로 변환
+            if [ "$tools_ready" = 0 ]; then
+              sudo apt-get update -qq
+              sudo apt-get install -y -qq imagemagick libheif-plugin-libde265 >/dev/null || sudo apt-get install -y -qq imagemagick >/dev/null
+              tools_ready=1
+            fi
+            convert "$1[0]" -auto-orient -quality 90 "$2.tmp.jpg" && mv "$2.tmp.jpg" "$2"
+          }
+          for f in images/*; do
+            [ -f "$f" ] || continue
+            mime=$(file -b --mime-type "$f")
+            case "$mime" in image/*) ;; *) continue ;; esac
             base="${f%.*}"
-            ext="${f##*.}"
             target="$base.JPG"
-            [ "$ext" = "JPG" ] && continue
-            case "${ext,,}" in
-              jpg|jpeg)
-                git mv -f "$f" "$target" ;;
-              *)
-                # PNG·WEBP는 진짜 JPEG로 변환해서 저장
-                convert "$f" -quality 90 "$target" && git rm -q "$f" && git add "$target" ;;
-            esac
+            if [ "$mime" = "image/jpeg" ]; then
+              [ "$f" = "$target" ] && continue
+              git mv -f "$f" "$target"
+            else
+              # 확장자가 무엇이든(.JPG로 이름만 바꾼 BMP 포함) 내용을 JPEG로 변환
+              to_jpeg "$f" "$target" || { echo "변환 실패: $f"; continue; }
+              [ "$f" != "$target" ] && git rm -q "$f"
+              git add "$target"
+            fi
             echo "$f -> $target"
             changed=1
           done
