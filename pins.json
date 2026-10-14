@@ -261,15 +261,15 @@
     "species": "maple",
     "x": 74.4,
     "y": 79.1,
-    "image": "./images/단풍1.JPG"
+    "image": "./images/농구장.JPG"
   },
   {
     "id": 60,
-    "name": "은행",
+    "name": "은행나무",
     "species": "ginkgo",
     "x": 73.6,
     "y": 79.5,
-    "image": "./images/은행.JPG"
+    "image": "./images/농구장.JPG"
   },
   {
     "id": 61,
@@ -277,15 +277,15 @@
     "species": "maple",
     "x": 73.1,
     "y": 79.7,
-    "image": "./images/단풍1.JPG"
+    "image": "./images/농구장.JPG"
   },
   {
     "id": 62,
-    "name": "은행",
+    "name": "은행나무",
     "species": "ginkgo",
     "x": 72.6,
     "y": 79.9,
-    "image": "./images/은행1.JPG"
+    "image": "./images/농구장.JPG"
   },
   {
     "id": 63,
