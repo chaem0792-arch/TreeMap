@@ -1,0 +1,49 @@
+# images 폴더에 올라온 사진의 확장자를 모두 .JPG로 맞춰요.
+# 사이트(index.html)는 사진을 ./images/이름.JPG 로만 불러오고,
+# GitHub Pages는 대소문자를 구분하기 때문에 .jpg / .jpeg 로 올리면 사진이 안 보여요.
+name: 사진 확장자 .JPG로 통일
+
+on:
+  push:
+    branches: [main]
+    paths: ['images/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 확장자 바꾸기
+        run: |
+          command -v convert >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick; }
+          shopt -s nullglob nocaseglob
+          changed=0
+          for f in images/*.jpg images/*.jpeg images/*.png images/*.webp; do
+            base="${f%.*}"
+            ext="${f##*.}"
+            target="$base.JPG"
+            [ "$ext" = "JPG" ] && continue
+            case "${ext,,}" in
+              jpg|jpeg)
+                git mv -f "$f" "$target" ;;
+              *)
+                # PNG·WEBP는 진짜 JPEG로 변환해서 저장
+                convert "$f" -quality 90 "$target" && git rm -q "$f" && git add "$target" ;;
+            esac
+            echo "$f -> $target"
+            changed=1
+          done
+          echo "changed=$changed" >> "$GITHUB_ENV"
+
+      - name: 커밋하고 올리기
+        if: env.changed == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git commit -m "images: 사진 확장자를 .JPG로 통일"
+          git push
