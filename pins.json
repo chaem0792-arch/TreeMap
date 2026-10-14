@@ -178,7 +178,7 @@
   {
     "id": 49,
     "name": "산딸나무",
-    "species": "spruce",
+    "species": "kousa",
     "x": 81.2,
     "y": 70.9,
     "image": "./images/산딸나무.JPG"
@@ -250,7 +250,7 @@
   {
     "id": 58,
     "name": "잣나무",
-    "species": "spruce",
+    "species": "koreanpine",
     "x": 77.8,
     "y": 78.1,
     "image": "./images/잣나무.JPG"
@@ -554,7 +554,7 @@
   {
     "id": 96,
     "name": "들장미",
-    "species": "spruce",
+    "species": "wildrose",
     "x": 57.7,
     "y": 49.2,
     "image": "./images/들장미.JPG"
@@ -586,7 +586,7 @@
   {
     "id": 100,
     "name": "덩굴장미",
-    "species": "spruce",
+    "species": "climbingrose",
     "x": 51,
     "y": 60.1,
     "image": "./images/덩굴장미.JPG"
@@ -594,7 +594,7 @@
   {
     "id": 101,
     "name": "덩굴장미",
-    "species": "spruce",
+    "species": "climbingrose",
     "x": 49.2,
     "y": 60.9,
     "image": "./images/덩굴장미.JPG"
@@ -602,7 +602,7 @@
   {
     "id": 102,
     "name": "덩굴장미",
-    "species": "spruce",
+    "species": "climbingrose",
     "x": 46.9,
     "y": 61.5,
     "image": "./images/덩굴장미.JPG"
@@ -610,7 +610,7 @@
   {
     "id": 103,
     "name": "구기자나무",
-    "species": "spruce",
+    "species": "goji",
     "x": 49.9,
     "y": 59.7,
     "image": "./images/구기자나무.JPG"
@@ -634,7 +634,7 @@
   {
     "id": 106,
     "name": "덩굴장미",
-    "species": "spruce",
+    "species": "climbingrose",
     "x": 42.9,
     "y": 63,
     "image": "./images/덩굴장미.JPG"
@@ -666,7 +666,7 @@
   {
     "id": 110,
     "name": "구기자2",
-    "species": "spruce",
+    "species": "goji",
     "x": 33.5,
     "y": 66.8,
     "image": "./images/구기자2.JPG"
@@ -754,7 +754,7 @@
   {
     "id": 121,
     "name": "개암나무",
-    "species": "spruce",
+    "species": "hazel",
     "x": 43,
     "y": 61.2,
     "image": "./images/개암나무.JPG"
@@ -858,7 +858,7 @@
   {
     "id": 134,
     "name": "목수국",
-    "species": "spruce",
+    "species": "panicledhydrangea",
     "x": 39.6,
     "y": 57.5,
     "image": "./images/목수국.JPG"
@@ -946,7 +946,7 @@
   {
     "id": 145,
     "name": "불두화",
-    "species": "spruce",
+    "species": "snowball",
     "x": 32.5,
     "y": 61.3,
     "image": "./images/불두화.JPG"
@@ -1002,7 +1002,7 @@
   {
     "id": 152,
     "name": "산국",
-    "species": "spruce",
+    "species": "chrysanthemum",
     "x": 29,
     "y": 62.2,
     "image": "./images/산국.JPG"
@@ -1010,7 +1010,7 @@
   {
     "id": 153,
     "name": "개암",
-    "species": "spruce",
+    "species": "hazel",
     "x": 27,
     "y": 59.8,
     "image": "./images/개암.JPG"
