@@ -1166,5 +1166,109 @@
     "x": 45.3,
     "y": 50.2,
     "image": "./images/주차장 왼편 배롱나무.JPG"
+  },
+   {
+    "id": 156,
+    "name": "소나무6",
+    "species": "pine",
+    "x": 29.3,
+    "y": 59,
+    "image": "./images/소나무6.JPG"
+  },
+  {
+    "id": 157,
+    "name": "주목7",
+    "species": "yew",
+    "x": 30.2,
+    "y": 58.2,
+    "image": "./images/주목7.JPG"
+  },
+  {
+    "id": 158,
+    "name": "소나무5",
+    "species": "pine",
+    "x": 38.3,
+    "y": 54.4,
+    "image": "./images/소나무5.JPG"
+  },
+  {
+    "id": 159,
+    "name": "주목8",
+    "species": "yew",
+    "x": 39.2,
+    "y": 54,
+    "image": "./images/주목8.JPG"
+  },
+  {
+    "id": 160,
+    "name": "쥐똥",
+    "species": "privet",
+    "x": 38.8,
+    "y": 53.7,
+    "image": "./images/쥐똥.JPG"
+  },
+  {
+    "id": 161,
+    "name": "단풍5",
+    "species": "maple",
+    "x": 40.5,
+    "y": 52.4,
+    "image": "./images/단풍5.JPG"
+  },
+  {
+    "id": 162,
+    "name": "주목",
+    "species": "yew",
+    "x": 40.3,
+    "y": 53.6,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 163,
+    "name": "주목",
+    "species": "yew",
+    "x": 41.8,
+    "y": 53.5,
+    "image": "./images/주목.JPG"
+  },
+  {
+    "id": 164,
+    "name": "본관 앞 단풍",
+    "species": "maple",
+    "x": 41.5,
+    "y": 52.1,
+    "image": "./images/본관 앞 단풍.JPG"
+  },
+  {
+    "id": 165,
+    "name": "본관 앞 단풍",
+    "species": "maple",
+    "x": 42.6,
+    "y": 52.4,
+    "image": "./images/본관 앞 단풍.JPG"
+  },
+  {
+    "id": 166,
+    "name": "회양목1",
+    "species": "boxwood",
+    "x": 53.5,
+    "y": 55.3,
+    "image": "./images/회양목1.JPG"
+  },
+  {
+    "id": 167,
+    "name": "사철2",
+    "species": "euonymus",
+    "x": 52.3,
+    "y": 55.4,
+    "image": "./images/사철2.JPG"
+  },
+  {
+    "id": 168,
+    "name": "목련2",
+    "species": "magnolia",
+    "x": 49.3,
+    "y": 54.8,
+    "image": "./images/목련2.JPG"
   }
 ]
