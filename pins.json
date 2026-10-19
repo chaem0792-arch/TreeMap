@@ -1270,5 +1270,141 @@
     "x": 49.3,
     "y": 54.8,
     "image": "./images/목련2.JPG"
+  },
+  {
+    "id": 173,
+    "name": "향나무 ㅇ",
+    "species": "juniper",
+    "x": 51.5,
+    "y": 55.3,
+    "image": "./images/향나무 ㅇ.JPG"
+  },
+  {
+    "id": 174,
+    "name": "소나무 ㅇ",
+    "species": "pine",
+    "x": 50.9,
+    "y": 55.3,
+    "image": "./images/소나무 ㅇ.JPG"
+  },
+  {
+    "id": 175,
+    "name": "장미 ㅇ1",
+    "species": "rose",
+    "x": 49.8,
+    "y": 55.4,
+    "image": "./images/장미 ㅇ1.JPG"
+  },
+  {
+    "id": 176,
+    "name": "수국 ㅇ",
+    "species": "etc",
+    "x": 48.9,
+    "y": 55.5,
+    "image": "./images/수국 ㅇ.JPG"
+  },
+  {
+    "id": 177,
+    "name": "장미 ㅇ",
+    "species": "rose",
+    "x": 48.1,
+    "y": 55.5,
+    "image": "./images/장미 ㅇ.JPG"
+  },
+  {
+    "id": 178,
+    "name": "철쭉 ㅇ",
+    "species": "azalea",
+    "x": 49,
+    "y": 54.8,
+    "image": "./images/철쭉 ㅇ.JPG"
+  },
+  {
+    "id": 179,
+    "name": "앞 명자 ㅇ",
+    "species": "chaenomeles",
+    "x": 49.6,
+    "y": 54.8,
+    "image": "./images/앞 명자 ㅇ.JPG"
+  },
+  {
+    "id": 180,
+    "name": "감나무 ㅇ2",
+    "species": "persimmon",
+    "x": 51.4,
+    "y": 53.6,
+    "image": "./images/감나무 ㅇ2.JPG"
+  },
+  {
+    "id": 181,
+    "name": "자귀 ㅇ",
+    "species": "albizia",
+    "x": 49.5,
+    "y": 55.7,
+    "image": "./images/자귀 ㅇ.JPG"
+  },
+  {
+    "id": 182,
+    "name": "감나무 ㅇ",
+    "species": "persimmon",
+    "x": 50.4,
+    "y": 54.2,
+    "image": "./images/감나무 ㅇ.JPG"
+  },
+  {
+    "id": 183,
+    "name": "감나무 ㅇ",
+    "species": "persimmon",
+    "x": 50.9,
+    "y": 54,
+    "image": "./images/감나무 ㅇ.JPG"
+  },
+  {
+    "id": 184,
+    "name": "산수유 ㅇ",
+    "species": "cornus",
+    "x": 49.7,
+    "y": 53.4,
+    "image": "./images/산수유 ㅇ.JPG"
+  },
+  {
+    "id": 185,
+    "name": "산수유 ㅇ",
+    "species": "cornus",
+    "x": 49.3,
+    "y": 53.7,
+    "image": "./images/산수유 ㅇ.JPG"
+  },
+  {
+    "id": 186,
+    "name": "벚나무 ㅇ",
+    "species": "cherry",
+    "x": 52.3,
+    "y": 53.8,
+    "image": "./images/벚나무 ㅇ.JPG"
+  },
+  {
+    "id": 187,
+    "name": "목련 ㅇ",
+    "species": "magnolia",
+    "x": 51.8,
+    "y": 53.3,
+    "image": "./images/목련 ㅇ.JPG"
+  },
+  {
+    "id": 188,
+    "name": "모란 ㅇ",
+    "species": "etc",
+    "x": 50.3,
+    "y": 54.8,
+    "image": "./images/모란 ㅇ.JPG"
+  },
+  {
+    "id": 189,
+    "name": "모란 ㅇ1",
+    "species": "etc",
+    "x": 49.2,
+    "y": 55.1,
+    "image": "./images/모란 ㅇ1.JPG"
   }
 ]
