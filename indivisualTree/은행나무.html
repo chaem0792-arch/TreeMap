@@ -1,270 +1,153 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>은행나무</title>
+<!-- ✏️ [수정 1] 브라우저 탭에 보이는 제목 -->
+<title>배롱나무</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-        rel="stylesheet"
-    >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+/* ===== 기본 설정 ===== */
+* { box-sizing: border-box; }
 
-        body {
-            margin: 0;
-            padding: 28px 4%;
-            background: #f8f7ee;
-            color: #405044;
-            font-family: Arial, sans-serif;
-        }
+body {
+    margin: 0;
+    background: #f8f8f5;
+    color: #333;
+    font-family: "Noto Sans KR", sans-serif;
+    word-break: keep-all;  /* 한글이 단어 중간에서 끊기지 않게 */
+}
 
-        .page {
-            max-width: 1680px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1.08fr;
-            gap: 24px;
-        }
+/* ===== 전체 카드: 왼쪽 사진 / 오른쪽 정보 ===== */
+.tree-card {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
 
-        .box {
-            background: #e5efe1;
-            border: 3px solid #c6dac8;
-            border-radius: 28px;
-            box-shadow: 0 7px 0 #d5dfd6;
-            padding: 30px;
-        }
+/* ===== 왼쪽: 나무 사진 ===== */
+.tree-photo {
+    background: #edf2ed;
+    border-radius: 18px;
+    min-height: 460px;
+    overflow: hidden;
+}
 
-        .item-title {
-            display: table;
-            margin: 0 auto 20px;
-            padding: 9px 34px 11px;
-            background: #fffdf4;
-            border: 3px solid #c9dbca;
-            border-radius: 40px;
-            box-shadow: 0 6px 0 #d3ddd4;
-            font-family: "Jua", sans-serif;
-            font-size: 31px;
-            line-height: 1;
-            color: #42604b;
-        }
+.tree-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-        .left,
-        .right {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
+/* ===== 오른쪽: 이름 + 특징 ===== */
+.tree-info {
+    background: #e8eee9;
+    border-radius: 18px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        .name-box {
-            height: 155px;
-            position: relative;
-        }
+.tree-name {
+    margin: 0 0 6px;
+    font-family: "Jua", sans-serif;
+    font-size: 40px;
+    color: #355443;
+    letter-spacing: 1px;
+}
 
-        .tree-name {
-            text-align: center;
-            margin: 12px 0 0;
-            font-family: "Jua", sans-serif;
-            font-size: 34px;
-            color: #55745a;
-        }
+.tree-summary {
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #4b514d;
+}
 
-        .name-box:before {
-            content: "🌿";
-            position: absolute;
-            top: 25px;
-            left: 35px;
-            font-size: 28px;
-        }
+.feature-title {
+    font-family: "Jua", sans-serif;
+    font-size: 23px;
+    color: #42604d;
+    margin-bottom: 10px;
+}
 
-        .name-box:after {
-            content: "🍃";
-            position: absolute;
-            right: 35px;
-            bottom: 22px;
-            font-size: 25px;
-        }
+.feature-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
-        .photo-box {
-            min-height: 620px;
-            padding: 18px;
-            position: relative;
-        }
+.feature-list li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4b514d;
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-top: 1px dashed #c9d6cc;
+}
 
-        .photo-box .item-title {
-            position: absolute;
-            top: 7px;
-            left: 28px;
-            z-index: 2;
-            margin: 0;
-            padding: 9px 28px 11px;
-            font-size: 27px;
-        }
+.feature-list li::before {
+    content: "🌿";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 15px;
+}
 
-        .tree-photo {
-            width: 100%;
-            height: 590px;
-            display: block;
-            object-fit: cover;
-            background: #f0f3ea;
-            border: 3px solid #c7d8ca;
-            border-radius: 22px;
-        }
-
-        .info-box {
-            min-height: 265px;
-            position: relative;
-            padding: 28px 42px;
-        }
-
-        .content {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 2.25;
-        }
-
-        .content ul {
-            margin: 0;
-            padding-left: 22px;
-        }
-
-        .content li {
-            padding-left: 4px;
-        }
-
-        .observation:after {
-            content: "🌱";
-            position: absolute;
-            right: 25px;
-            bottom: 18px;
-            font-size: 25px;
-        }
-
-        .features {
-            background: #e3eee9;
-        }
-
-        .features:after {
-            content: "🍀";
-            position: absolute;
-            right: 25px;
-            bottom: 18px;
-            font-size: 23px;
-        }
-
-        .flower {
-            background: #eef1e1;
-            min-height: 285px;
-        }
-
-        .flower:after {
-            content: "🌼";
-            position: absolute;
-            right: 25px;
-            bottom: 18px;
-            font-size: 24px;
-        }
-
-        .flower-text {
-            font-size: 17px;
-            line-height: 2.5;
-            font-weight: 600;
-        }
-
-        @media (max-width: 900px) {
-            .page {
-                grid-template-columns: 1fr;
-            }
-
-            .tree-photo {
-                height: 450px;
-            }
-
-            .photo-box {
-                min-height: 480px;
-            }
-        }
-    </style>
+/* ===== 모바일: 사진 위, 정보 아래 ===== */
+@media (max-width: 700px) {
+    .tree-card { width: 92%; grid-template-columns: 1fr; margin: 25px auto; gap: 16px; }
+    .tree-photo { min-height: 320px; }
+    .tree-info { padding: 26px 22px; }
+    .tree-name { font-size: 32px; }
+    .tree-summary { font-size: 15px; }
+    .feature-list li { font-size: 15px; }
+}
+</style>
 </head>
-
 <body>
 
-    <div class="page">
+<main class="tree-card">
 
-        <div class="left">
+    <!-- ===== 왼쪽: 나무 사진 ===== -->
+    <section class="tree-photo">
+        <!-- ✏️ [수정 2] 사진 경로(src)와 설명(alt) -->
+        <img src="../images/본관 왼편 배롱나무.JPG" alt="배롱나무 사진">
+    </section>
 
-            <section class="box name-box">
-                <div class="item-title">나무 이름</div>
+    <!-- ===== 오른쪽: 나무 정보 ===== -->
+    <section class="tree-info">
 
-                <p class="tree-name">
-                    은행나무
-                </p>
-            </section>
+        <!-- ✏️ [수정 3] 나무 이름 -->
+        <h1 class="tree-name">배롱나무</h1>
 
+        <!-- ✏️ [수정 4] 한두 문장 요약 -->
+        <p class="tree-summary">
+            여름 내내 분홍빛 꽃을 피우는, 매끈한 껍질이 매력적인 나무예요.
+        </p>
 
-            <section class="box photo-box">
-                <div class="item-title">나무 사진</div>
+        <div class="feature-title">특징</div>
 
-                <img
-                    src="../images/언덕길 은행나무.JPG"
-                    alt="나무 사진"
-                    class="tree-photo"
-                >
-            </section>
+        <!-- ✏️ [수정 5] 특징 목록: <li>…</li> 한 줄이 항목 하나예요. 늘리거나 지워도 돼요. -->
+        <ul class="feature-list">
+            <li>나무껍질이 매끈하고, 벗겨지면서 얼룩덜룩한 무늬가 생겨요.</li>
+            <li>여름에 분홍·붉은색 꽃이 100일 가까이 피어 '백일홍나무'라고도 불려요.</li>
+            <li>수명이 길어 오래된 사찰이나 정원에서 수백 년 된 나무도 볼 수 있어요.</li>
+        </ul>
 
-        </div>
+    </section>
 
-
-        <div class="right">
-
-            <section class="box info-box observation">
-                <div class="item-title">관찰 포인트</div>
-
-                <div class="content">
-                    <ul>
-                        <li>관찰할 때 주의 깊게 볼 부분</li>
-                        <li>나무의 생김새에서 눈에 띄는 점</li>
-                        <li>주변에서 쉽게 발견할 수 있는 특징</li>
-                    </ul>
-                </div>
-            </section>
-
-
-            <section class="box info-box features">
-                <div class="item-title">주요 특징</div>
-
-                <div class="content">
-                    <ul>
-                        <li>나무의 주요 특징을 입력하세요.</li>
-                        <li>잎과 줄기의 특징을 입력하세요.</li>
-                        <li>나무가 자라는 환경을 입력하세요.</li>
-                    </ul>
-                </div>
-            </section>
-
-
-            <section class="box info-box flower">
-                <div class="item-title">꽃 / 열매</div>
-
-                <div class="flower-text">
-                    꽃: 꽃의 색깔과 피는 시기를 입력하세요.<br>
-                    열매: 열매의 모양과 색깔을 입력하세요.
-                </div>
-            </section>
-
-        </div>
-
-    </div>
+</main>
 
 </body>
-
 </html>
