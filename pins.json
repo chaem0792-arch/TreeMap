@@ -1066,7 +1066,7 @@
   {
     "id": 160,
     "name": "운동장 계단 모란",
-    "species": "etc",
+    "species": "peony",
     "x": 33.5,
     "y": 65.6,
     "image": "./images/운동장 계단 모란.JPG"
@@ -1167,7 +1167,7 @@
     "y": 50.2,
     "image": "./images/주차장 왼편 배롱나무.JPG"
   },
-   {
+  {
     "id": 156,
     "name": "소나무6",
     "species": "pine",
@@ -1298,7 +1298,7 @@
   {
     "id": 176,
     "name": "수국 ㅇ",
-    "species": "etc",
+    "species": "hydrangea",
     "x": 48.9,
     "y": 55.5,
     "image": "./images/수국 ㅇ.JPG"
@@ -1394,7 +1394,7 @@
   {
     "id": 188,
     "name": "모란 ㅇ",
-    "species": "etc",
+    "species": "peony",
     "x": 50.3,
     "y": 54.8,
     "image": "./images/모란 ㅇ.JPG"
@@ -1402,7 +1402,7 @@
   {
     "id": 189,
     "name": "모란 ㅇ1",
-    "species": "etc",
+    "species": "peony",
     "x": 49.2,
     "y": 55.1,
     "image": "./images/모란 ㅇ1.JPG"
@@ -1546,7 +1546,7 @@
   {
     "id": 199,
     "name": "안개10",
-    "species": "etc",
+    "species": "smoketree",
     "x": 42.2,
     "y": 22.7,
     "image": "./images/안개10.JPG"
@@ -1554,7 +1554,7 @@
   {
     "id": 200,
     "name": "사과10",
-    "species": "etc",
+    "species": "apple",
     "x": 43.4,
     "y": 22.2,
     "image": "./images/사과10.JPG"
