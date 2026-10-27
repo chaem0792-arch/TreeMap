@@ -1,177 +1,220 @@
-/*20606 김지후*/
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나무 소개 페이지</title>
-    <!-- 귀여운 눈에 띄는 한국어 폰트 불러오기 (Gamja Flower, Gaegu) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gamja+Flower&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감나무 소개</title>
 
-    <style>
-        /* 기본 스타일 및 폰트 설정 */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Gamja Flower', 'Gaegu', cursive, sans-serif;
-        }
+  <style>
+    /* ===== 전체 페이지 디자인 ===== */
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            background-color: #f7f9f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    body {
+      margin: 0;
+      padding: 12px;
+      background-color: #fffaf3; /* 페이지 배경색 */
+      font-family: "Malgun Gothic", sans-serif;
+      color: #493629;
+    }
 
-        /* 전체 그리드 레이아웃 컨테이너 */
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr; /* 왼쪽:오른쪽 비율 */
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 24px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-        }
+    /* ===== 왼쪽 사진 + 오른쪽 설명 배치 ===== */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-        /* 왼쪽 Column (나무이름 + 나무사진) */
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    /* ===== 왼쪽 사진 카드 ===== */
+    .photo-card {
+      min-height: 570px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f9c66b, #f5a34c);
+      position: relative;
+    }
 
-        /* 오른쪽 Column (관찰 포인트 + 주요 특징 + 꽃/열매) */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 570px;
+      display: block;
+      object-fit: cover;
+    }
 
-        /* 각 박스 공통 카드 스타일 */
-        .card {
-            background-color: #dce3ea; /* 이미지의 연회색/소라색 느낌 반영 */
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
+    /* 사진이 없을 때 나타나는 안내 문구 */
+    .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #754321;
+      pointer-events: none;
+    }
 
-        .card:hover {
-            transform: translateY(-2px);
-        }
+    .photo-placeholder .fruit {
+      font-size: 90px;
+      margin-bottom: 12px;
+    }
 
-        /* 헤더/제목 스타일 */
-        .card h2 {
-            font-size: 1.6rem;
-            color: #334155;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
+    .photo-placeholder p {
+      font-size: 20px;
+      font-weight: bold;
+    }
 
-        /* 내용 텍스트 스타일 */
-        .card p {
-            font-size: 1.2rem;
-            color: #475569;
-            line-height: 1.5;
-            word-break: keep-all;
-        }
+    /* ===== 오른쪽 설명 카드 ===== */
+    .info-card {
+      min-height: 570px;
+      padding: 40px;
+      border-radius: 24px;
+      background-color: #fff0dc;
+    }
 
-        /* 나무 이름 박스 특별 높이 지정 */
-        .card.tree-name {
-            min-height: 80px;
-            background-color: #d0dbe5;
-        }
+    /* 나무 이름 - 여기서 수정하세요! */
+    h1 {
+      margin: 0 0 14px;
+      font-size: 44px;
+      color: #a64b18;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
 
-        /* 나무 사진 영역 */
-        .card.tree-photo {
-            flex: 1;
-            min-height: 380px;
-            padding: 12px;
-            overflow: hidden;
-        }
+    /* 나무 소개 문장 */
+    .description {
+      font-size: 19px;
+      line-height: 1.8;
+      margin: 0 0 28px;
+      color: #594332;
+      word-break: keep-all;
+    }
 
-        /* <img> 태그 스타일 */
-        .tree-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
+    /* 특징 제목 */
+    h2 {
+      font-size: 25px;
+      color: #a64b18;
+      margin: 0 0 16px;
+    }
 
-        /* 오른쪽 박스들의 균등 비율 채우기 */
-        .right-column .card {
-            flex: 1;
-            min-height: 140px;
-            align-items: flex-start; /* 텍스트는 좌측 정렬되도록 변경 설정 가능 */
-            text-align: left;
-        }
+    /* 특징 목록 */
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        .right-column .card h2 {
-            align-self: center; /* 타이틀은 중앙 정렬 */
-        }
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 4px;
+      border-top: 1px dashed #e4c7a8;
+      font-size: 18px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
 
-        /* 반응형 (모바일) 대응 */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .card.tree-photo {
-                min-height: 280px;
-            }
-        }
-    </style>
+    /* 감 열매 아이콘 */
+    .features li::before {
+      content: "🍊";
+      flex-shrink: 0;
+      font-size: 17px;
+      padding-top: 2px;
+    }
+
+    /* ===== 작은 화면에서도 보기 좋게 ===== */
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .photo-card,
+      .photo-card img {
+        min-height: 350px;
+      }
+
+      .info-card {
+        min-height: auto;
+        padding: 28px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .description {
+        font-size: 17px;
+      }
+
+      .features li {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <main class="container">
 
-    <div class="container">
-        <!-- 왼쪽 영역 -->
-        <div class="left-column">
-            <!-- 1. 나무 이름 -->
-            <div class="card tree-name">
-                <h2>나무이름</h2>
-                <!-- <p>예: 느티나무</p> -->
-            </div>
+    <!-- ===== 왼쪽: 감나무 사진 ===== -->
+    <section class="photo-card">
 
-            <!-- 2. 나무 사진 -->
-            <div class="card tree-photo">
-                <!-- 아래 src 속성에 나무 이미지 경로를 넣어주세요 -->
-                <img src="https://via.placeholder.com/400x500?text=Tree+Image" alt="나무 사진">
-            </div>
-        </div>
+      <!-- gamnamu.jpg를 원하는 감나무 사진으로 교체하세요. -->
+      <img
+        src="gamnamu.jpg"
+        alt="감나무 사진"
+        onerror="this.style.display='none'"
+      >
 
-        <!-- 오른쪽 영역 -->
-        <div class="right-column">
-            <!-- 3. 관찰 포인트 -->
-            <div class="card">
-                <h2>관찰 포인트</h2>
-                <p>가을의 감과 붉은 단풍을 관찰할 수 있어요!</p>
-            </div>
+      <!-- 사진이 없을 때 보여 주는 기본 화면 -->
+      <div class="photo-placeholder">
+        <div class="fruit">🌳 🟠</div>
+        <p>가을을 담은 감나무</p>
+      </div>
 
-            <!-- 4. 주요 특징 -->
-            <div class="card">
-                <h2>주요 특징</h2>
-                <p>잎이 크고 두꺼우며 광택이 있어요</p>
-            </div>
+    </section>
 
-            <!-- 5. 꽃/열매 -->
-            <div class="card">
-                <h2>꽃/열매</h2>
-                <p>가을에 주황색 감이 익으며 잎도 붉게 물들어요.</p>
-            </div>
-        </div>
-    </div>
+    <!-- ===== 오른쪽: 감나무 정보 ===== -->
+    <section class="info-card">
 
+      <!-- 1. 나무 이름 수정 -->
+      <h1>감나무</h1>
+
+      <!-- 2. 나무 소개 문장 수정 -->
+      <p class="description">
+        가을이 되면 주황빛 열매가 탐스럽게 익어 가는,
+        우리에게 친숙하고 아름다운 나무예요.
+      </p>
+
+      <!-- 3. 특징 제목 수정 -->
+      <h2>특징</h2>
+
+      <!-- 4. 아래 목록에서 특징을 자유롭게 수정하세요 -->
+      <ul class="features">
+        <li>
+          감나무는 봄에 새잎이 나고 여름에는
+          초록빛 잎이 무성하게 자라요.
+        </li>
+
+        <li>
+          가을이 되면 감 열매가 주황색으로 익으며,
+          단감과 떫은감 등 다양한 종류가 있어요.
+        </li>
+
+        <li>
+          감나무는 낙엽이 지는 나무로,
+          잘 자라면 오랫동안 열매를 맺을 수 있어요.
+        </li>
+      </ul>
+
+    </section>
+  </main>
 </body>
 </html>
