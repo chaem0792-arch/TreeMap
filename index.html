@@ -46,6 +46,19 @@
     color: var(--moss-dark);
     letter-spacing: -0.01em;
   }
+  .title-row{ display:flex; align-items:center; gap: 12px; flex-wrap: wrap; margin: 0 0 6px; }
+  .title-row h1{ margin: 0; }
+  .plant-search-btn{
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--moss);
+    color: var(--moss-dark);
+    background: #FBFAF5;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .plant-search-btn:hover{ background: var(--moss); color: #fff; }
   .title-block p{
     margin:0;
     color: var(--ink-soft);
@@ -416,7 +429,10 @@
 
 <header>
   <div class="title-block">
-    <h1>중앙여고 나무 지도</h1>
+    <div class="title-row">
+      <h1>중앙여고 나무 지도</h1>
+      <a class="plant-search-btn" href="https://chaem0792-arch.github.io/plantedia/" target="_blank" rel="noopener">🔍 식물 검색하기</a>
+    </div>
   </div>
   <div class="mode-toggle">
     <button id="viewModeBtn" class="active">보기 모드</button>
