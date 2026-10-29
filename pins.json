@@ -1563,32 +1563,160 @@
     "id": 201,
     "name": "주목소나무",
     "species": "pine",
-    "x": 46.1,
-    "y": 21.4,
+    "x": 45,
+    "y": 21.7,
     "image": "./images/주목소나무.JPG"
   },
   {
     "id": 202,
     "name": "주목소나무",
     "species": "pine",
-    "x": 46.8,
-    "y": 20.8,
+    "x": 45.4,
+    "y": 21.5,
     "image": "./images/주목소나무.JPG"
   },
   {
     "id": 203,
     "name": "장미",
     "species": "rose",
-    "x": 47.5,
-    "y": 20.6,
+    "x": 45.8,
+    "y": 21.4,
     "image": "./images/장미.JPG"
   },
   {
     "id": 204,
     "name": "미확인10",
     "species": "etc",
-    "x": 48,
-    "y": 20.2,
+    "x": 46.1,
+    "y": 21.2,
     "image": "./images/미확인10.JPG"
+  },
+  {
+    "id": 226,
+    "name": "1목련",
+    "species": "magnolia",
+    "x": 46.4,
+    "y": 21,
+    "image": "./images/1목련.JPG"
+  },
+  {
+    "id": 227,
+    "name": "2장미",
+    "species": "rose",
+    "x": 46.9,
+    "y": 20.8,
+    "image": "./images/2장미.JPG"
+  },
+  {
+    "id": 228,
+    "name": "3영산홍",
+    "species": "etc",
+    "x": 47.2,
+    "y": 20.6,
+    "image": "./images/3영산홍.JPG"
+  },
+  {
+    "id": 229,
+    "name": "4장미",
+    "species": "rose",
+    "x": 47.5,
+    "y": 20.5,
+    "image": "./images/4장미.JPG"
+  },
+  {
+    "id": 230,
+    "name": "5배롱",
+    "species": "crapemyrtle",
+    "x": 47.8,
+    "y": 20.4,
+    "image": "./images/5배롱.JPG"
+  },
+  {
+    "id": 231,
+    "name": "6영산홍",
+    "species": "etc",
+    "x": 48.1,
+    "y": 20.3,
+    "image": "./images/6영산홍.JPG"
+  },
+  {
+    "id": 232,
+    "name": "7장미",
+    "species": "rose",
+    "x": 48.4,
+    "y": 20.1,
+    "image": "./images/7장미.JPG"
+  },
+  {
+    "id": 233,
+    "name": "8병꽃나무",
+    "species": "etc",
+    "x": 48.7,
+    "y": 20.1,
+    "image": "./images/8병꽃나무.JPG"
+  },
+  {
+    "id": 234,
+    "name": "9동백나무",
+    "species": "camellia",
+    "x": 49.1,
+    "y": 20,
+    "image": "./images/9동백나무.JPG"
+  },
+  {
+    "id": 235,
+    "name": "10소나무",
+    "species": "pine",
+    "x": 49.4,
+    "y": 19.6,
+    "image": "./images/10소나무.JPG"
+  },
+  {
+    "id": 236,
+    "name": "11벚나무",
+    "species": "cherry",
+    "x": 49.8,
+    "y": 19.4,
+    "image": "./images/11벚나무.JPG"
+  },
+  {
+    "id": 237,
+    "name": "12수국",
+    "species": "hydrangea",
+    "x": 50.1,
+    "y": 19.3,
+    "image": "./images/12수국.JPG"
+  },
+  {
+    "id": 238,
+    "name": "13자엽배롱나무",
+    "species": "crapemyrtle",
+    "x": 50.5,
+    "y": 19.1,
+    "image": "./images/13자엽배롱나무.JPG"
+  },
+  {
+    "id": 239,
+    "name": "회화나무",
+    "species": "pagoda",
+    "x": 52.5,
+    "y": 17.4,
+    "image": "./images/회화나무.JPG"
+  },
+  {
+    "id": 240,
+    "name": "귤나무14",
+    "species": "etc",
+    "x": 50.8,
+    "y": 19.1,
+    "image": "./images/귤나무14.JPG"
+  },
+  {
+    "id": 241,
+    "name": "앞뜰자귀",
+    "species": "albizia",
+    "x": 34.6,
+    "y": 60.4,
+    "image": "./images/앞뜰자귀.JPG"
   }
 ]
