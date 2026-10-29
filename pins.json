@@ -1586,10 +1586,10 @@
   {
     "id": 204,
     "name": "서양등골나물",
-    "species": "etc",
+    "species": "eupatorium",
     "x": 46.1,
     "y": 21.2,
-    "image": "./images/서양등골나물10.JPG"
+    "image": "./images/서양등골나물.JPG"
   },
   {
     "id": 226,
@@ -1610,7 +1610,7 @@
   {
     "id": 228,
     "name": "3영산홍",
-    "species": "etc",
+    "species": "yeongsanhong",
     "x": 47.2,
     "y": 20.6,
     "image": "./images/3영산홍.JPG"
@@ -1634,7 +1634,7 @@
   {
     "id": 231,
     "name": "6영산홍",
-    "species": "etc",
+    "species": "yeongsanhong",
     "x": 48.1,
     "y": 20.3,
     "image": "./images/6영산홍.JPG"
@@ -1650,7 +1650,7 @@
   {
     "id": 233,
     "name": "8병꽃나무",
-    "species": "etc",
+    "species": "weigela",
     "x": 48.7,
     "y": 20.1,
     "image": "./images/8병꽃나무.JPG"
@@ -1706,7 +1706,7 @@
   {
     "id": 240,
     "name": "귤나무14",
-    "species": "etc",
+    "species": "citrus",
     "x": 50.8,
     "y": 19.1,
     "image": "./images/귤나무14.JPG"
