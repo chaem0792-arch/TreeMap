@@ -1529,11 +1529,11 @@
   },
   {
     "id": 197,
-    "name": "향12",
+    "name": "향나무12",
     "species": "juniper",
     "x": 41.4,
     "y": 23.9,
-    "image": "./images/향12.JPG"
+    "image": "./images/향나무12.JPG"
   },
   {
     "id": 198,
