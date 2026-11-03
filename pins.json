@@ -857,11 +857,11 @@
   },
   {
     "id": 134,
-    "name": "목수국",
-    "species": "panicledhydrangea",
+    "name": "수국",
+    "species": "hydrangea",
     "x": 39.6,
     "y": 57.5,
-    "image": "./images/목수국.JPG"
+    "image": "./images/수국.JPG"
   },
   {
     "id": 135,
