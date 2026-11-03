@@ -1057,7 +1057,7 @@
   },
   {
     "id": 159,
-    "name": "운동장 계단 목련1",
+    "name": "운동장 계단 목련",
     "species": "magnolia",
     "x": 32,
     "y": 66.5,
@@ -1073,7 +1073,7 @@
   },
   {
     "id": 161,
-    "name": "운동장 계단 목련2",
+    "name": "운동장 계단 목련",
     "species": "magnolia",
     "x": 35.1,
     "y": 64.7,
@@ -1097,27 +1097,27 @@
   },
   {
     "id": 164,
-    "name": "운동장 계단 소나무1",
+    "name": "오른쪽 소나무",
     "species": "pine",
     "x": 33.6,
     "y": 66.7,
-    "image": "./images/운동장 계단 소나무1.JPG"
+    "image": "./images/오른쪽 소나무.JPG"
   },
   {
     "id": 165,
-    "name": "운동장 계단 소나무2",
+    "name": "오른쪽 소나무",
     "species": "pine",
     "x": 35.1,
     "y": 66,
-    "image": "./images/운동장 계단 소나무2.JPG"
+    "image": "./images/오른쪽 소나무.JPG"
   },
   {
     "id": 166,
-    "name": "운동장 위 장미",
+    "name": "장미",
     "species": "rose",
     "x": 40.6,
     "y": 61.3,
-    "image": "./images/운동장 위 장미.JPG"
+    "image": "./images/장미.JPG"
   },
   {
     "id": 167,
