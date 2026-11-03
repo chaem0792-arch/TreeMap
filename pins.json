@@ -1344,28 +1344,12 @@
     "image": "./images/자귀 ㅇ.JPG"
   },
   {
-    "id": 182,
-    "name": "감나무 ㅇ",
-    "species": "persimmon",
-    "x": 50.4,
-    "y": 54.2,
-    "image": "./images/감나무 ㅇ.JPG"
-  },
-  {
     "id": 183,
     "name": "감나무 ㅇ",
     "species": "persimmon",
     "x": 50.9,
     "y": 54,
     "image": "./images/감나무 ㅇ.JPG"
-  },
-  {
-    "id": 184,
-    "name": "산수유 ㅇ",
-    "species": "cornus",
-    "x": 49.7,
-    "y": 53.4,
-    "image": "./images/산수유 ㅇ.JPG"
   },
   {
     "id": 185,
