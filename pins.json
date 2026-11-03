@@ -721,11 +721,11 @@
   },
   {
     "id": 117,
-    "name": "사철나무",
+    "name": "사철",
     "species": "euonymus",
     "x": 30.7,
     "y": 68.7,
-    "image": "./images/사철나무.JPG"
+    "image": "./images/사철.JPG"
   },
   {
     "id": 118,
