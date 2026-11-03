@@ -1125,7 +1125,7 @@
     "species": "crapemyrtle",
     "x": 34.7,
     "y": 63.9,
-    "image": "./images/운동장 위 배롱나무.JPG"
+    "image": "./images/배롱.JPG"
   },
   {
     "id": 168,
@@ -1230,14 +1230,6 @@
     "x": 41.8,
     "y": 53.5,
     "image": "./images/주목.JPG"
-  },
-  {
-    "id": 213,
-    "name": "본관 앞 단풍",
-    "species": "maple",
-    "x": 41.5,
-    "y": 52.1,
-    "image": "./images/본관 앞 단풍.JPG"
   },
   {
     "id": 214,
