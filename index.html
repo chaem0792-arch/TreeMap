@@ -558,7 +558,6 @@
     border-radius: 8px;
   }
   .group-head:hover{ background: #F6F3EA; }
-  .group-head input{ margin:0; accent-color: var(--moss); }
   .group-head .initial{
     width: 20px; height: 20px;
     flex-shrink: 0;
@@ -1041,7 +1040,7 @@ function speciesRowHtml(s, count){
 }
 /* ---------- 수종 묶음 (초성별 + 지금은 없는 나무) ---------- */
 /* 수종이 많아서, 이름 첫 글자의 초성(ㄱ, ㄴ, ㄷ …)으로 묶어 접고 펼 수 있게 했어요.
-   묶음 머리의 체크박스로 그 묶음의 수종을 한꺼번에 켜고 끌 수 있어요.
+   켜고 끄기는 묶음 안의 수종마다 따로 해요.
    접힘 상태는 이 브라우저에 기억해 두고, 처음에는 모두 접혀 있어요. */
 const CHOSEONG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
 const BASE_CHOSEONG = { 'ㄲ':'ㄱ', 'ㄸ':'ㄷ', 'ㅃ':'ㅂ', 'ㅆ':'ㅅ', 'ㅉ':'ㅈ' }; // 된소리는 예사소리 묶음에 넣어요
@@ -1075,13 +1074,10 @@ function buildSpeciesGroups(){
 }
 function groupHtml(g, counts, isOpen, searchHit){
   if(g.plain) return g.list.map(s => speciesRowHtml(s, counts[s.id])).join('');
-  const onCount = g.list.filter(s => !hiddenSpecies.has(s.id)).length;
   const pinTotal = g.list.reduce((n, s) => n + (counts[s.id]||0), 0);
   return `
     <div class="species-group${g.gone ? ' gone-group' : ''}${isOpen ? '' : ' folded'}${searchHit ? ' search-hit' : ''}" data-gkey="${g.key}">
       <div class="group-head">
-        <input type="checkbox" class="group-toggle" data-gkey="${g.key}" ${onCount === g.list.length ? 'checked' : ''}
-               data-partial="${onCount > 0 && onCount < g.list.length ? 1 : 0}" title="${g.label} 묶음 모두 켜기/끄기">
         ${g.gone ? stumpSvg('stump-icon') : `<span class="initial">${g.label}</span>`}
         <span class="name">${g.gone ? `${g.label} (${g.list.length})` : `${g.list.map(s => s.name).slice(0, 3).join(', ')}${g.list.length > 3 ? ' …' : ''}`}</span>
         ${g.gone ? '' : `<span class="count" title="수종 ${g.list.length}개 · 핀 ${pinTotal}개">${g.list.length}종</span>`}
@@ -1099,19 +1095,9 @@ function renderSpeciesList(){
   /* 검색어가 있으면 이름이 맞는 수종이 든 묶음은 저절로 펼쳐요 */
   const hitKeys = new Set(searchTerm ? speciesGroups.filter(g => g.list.some(s => s.name.toLowerCase().includes(searchTerm))).map(g => g.key) : []);
   speciesListEl.innerHTML = speciesGroups.map(g => groupHtml(g, counts, openGroups.has(g.key) || hitKeys.has(g.key), hitKeys.has(g.key))).join('');
-  speciesListEl.querySelectorAll('.group-toggle').forEach(cb => {
-    cb.indeterminate = cb.dataset.partial === '1';
-    cb.addEventListener('change', e => {
-      const g = speciesGroups.find(x => x.key === e.target.dataset.gkey);
-      g.list.forEach(s => e.target.checked ? hiddenSpecies.delete(s.id) : hiddenSpecies.add(s.id));
-      renderSpeciesList();
-      renderPins();
-    });
-  });
-  /* 묶음 머리(체크박스 말고 나머지)를 누르면 접고 펼쳐요 */
+  /* 묶음 머리를 누르면 접고 펼쳐요 */
   speciesListEl.querySelectorAll('.group-head').forEach(head => {
-    head.addEventListener('click', e => {
-      if(e.target.closest('input')) return;
+    head.addEventListener('click', () => {
       const groupEl = head.closest('.species-group');
       const key = groupEl.dataset.gkey;
       const set = loadOpenGroups();
@@ -1125,7 +1111,7 @@ function renderSpeciesList(){
     cb.addEventListener('change', e => {
       const sid = e.target.getAttribute('data-sid');
       if(e.target.checked) hiddenSpecies.delete(sid); else hiddenSpecies.add(sid);
-      renderSpeciesList(); // 묶음 머리 체크박스 상태도 같이 바꿔요
+      updateToggleAllBtn();
       renderPins();
     });
   });
@@ -1279,8 +1265,10 @@ mapFrame.addEventListener('click', (e) => {
 });
 
 /* ---------- 모달 ---------- */
+/* 맨 위 '선택하기'는 아직 수종을 고르지 않았다는 뜻이에요. 이대로는 저장되지 않아요. */
+const SPECIES_PLACEHOLDER = `<option value="" disabled>선택하기</option>`;
 function fillSpeciesSelect(selectedId){
-  pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}${s.gone ? ' (지금은 없는 나무)' : ''}</option>`).join('');
+  pinSpeciesInput.innerHTML = (selectedId ? SPECIES_PLACEHOLDER : SPECIES_PLACEHOLDER.replace('disabled', 'disabled selected')) + SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}${s.gone ? ' (지금은 없는 나무)' : ''}</option>`).join('');
 }
 /* 나무 이름에 들어 있는 수종을 찾습니다. "산수유"처럼 '나무'를 뺀 이름(2글자 이상)도 인정하고,
    더 길게 일치한 수종을 앞에 둡니다(예: "공작단풍"은 단풍나무보다 공작단풍이 먼저). */
@@ -1299,18 +1287,21 @@ function filterSpeciesByName(){
   if(speciesPickedByUser) return;
   const matches = matchSpeciesByName(pinNameInput.value);
   if(!matches.length){ fillSpeciesSelect(pinSpeciesInput.value); return; }
+  pinSpeciesInput.setCustomValidity('');
   const opt = (s, sel) => `<option value="${s.id}" ${sel?'selected':''}>${s.name}</option>`;
   const rest = SPECIES.filter(s => !matches.includes(s));
-  pinSpeciesInput.innerHTML =
+  pinSpeciesInput.innerHTML = SPECIES_PLACEHOLDER +
     `<optgroup label="이름과 일치 (${matches.length})">${matches.map((s, i) => opt(s, i === 0)).join('')}</optgroup>` +
     `<optgroup label="전체 수종">${rest.map(s => opt(s, false)).join('')}</optgroup>`;
 }
 pinNameInput.addEventListener('input', filterSpeciesByName);
-pinSpeciesInput.addEventListener('change', () => { speciesPickedByUser = true; });
+pinSpeciesInput.addEventListener('change', () => { speciesPickedByUser = true; pinSpeciesInput.setCustomValidity(''); });
 function openAddModal(){
   modalTitle.textContent = '나무 추가';
   pinNameInput.value = '';
-  fillSpeciesSelect(SPECIES[0].id);
+  fillSpeciesSelect('');
+  pinSpeciesInput.value = '';
+  pinSpeciesInput.setCustomValidity('');
   speciesPickedByUser = false;
   deletePinBtn.style.display = 'none';
   modalBackdrop.classList.add('show');
@@ -1322,6 +1313,7 @@ function openEditModal(pin){
   modalTitle.textContent = '나무 정보 수정';
   pinNameInput.value = pin.name;
   fillSpeciesSelect(pin.species);
+  pinSpeciesInput.setCustomValidity('');
   speciesPickedByUser = false;
   deletePinBtn.style.display = 'block';
   modalBackdrop.classList.add('show');
@@ -1338,6 +1330,12 @@ document.getElementById('savePinBtn').addEventListener('click', () => {
   const name = pinNameInput.value.trim();
   const species = pinSpeciesInput.value;
   if(!name){ pinNameInput.focus(); return; }
+  if(!species){
+    pinSpeciesInput.setCustomValidity('수종을 선택해 주세요.');
+    pinSpeciesInput.reportValidity();
+    pinSpeciesInput.focus();
+    return;
+  }
   /* 사진 경로는 나무 이름으로 자동 지정합니다: ./images/나무이름.JPG */
   const image = `./images/${name}.JPG`;
   if(editingPinId){
