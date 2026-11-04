@@ -1798,5 +1798,77 @@
     "x": 27,
     "y": 59.8,
     "image": "./images/개암.JPG"
+  },
+  {
+    "id": 255,
+    "name": "개나리1",
+    "species": "forsythia",
+    "x": 55.2,
+    "y": 42.8,
+    "image": "./images/개나리1.JPG"
+  },
+  {
+    "id": 256,
+    "name": "개나리2",
+    "species": "forsythia",
+    "x": 56.6,
+    "y": 42,
+    "image": "./images/개나리2.JPG"
+  },
+  {
+    "id": 257,
+    "name": "개나리4",
+    "species": "forsythia",
+    "x": 58,
+    "y": 41.4,
+    "image": "./images/개나리4.JPG"
+  },
+  {
+    "id": 258,
+    "name": "개나리4",
+    "species": "forsythia",
+    "x": 59.3,
+    "y": 40.5,
+    "image": "./images/개나리4.JPG"
+  },
+  {
+    "id": 222,
+    "name": "향나무",
+    "species": "juniper",
+    "x": 60.2,
+    "y": 40,
+    "image": "./images/향나무.JPG"
+  },
+  {
+    "id": 223,
+    "name": "가죽나무",
+    "species": "ailanthus",
+    "x": 61.6,
+    "y": 39.4,
+    "image": "./images/가죽나무.JPG"
+  },
+  {
+    "id": 224,
+    "name": "앵두나무",
+    "species": "etc",
+    "x": 62.6,
+    "y": 38.7,
+    "image": "./images/앵두나무.JPG"
+  },
+  {
+    "id": 225,
+    "name": "음나무",
+    "species": "etc",
+    "x": 63.9,
+    "y": 38,
+    "image": "./images/음나무.JPG"
+  },
+  {
+    "id": 226,
+    "name": "뽕나무",
+    "species": "mulberry",
+    "x": 65,
+    "y": 37.2,
+    "image": "./images/뽕나무.JPG"
   }
 ]
