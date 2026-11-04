@@ -543,6 +543,82 @@
     flex-shrink: 0;
   }
   .species-row .page-link:hover{ border-color: var(--moss); color: var(--moss-dark); }
+  /* ---------- 지금은 없는 나무 (베어져 사라진 수종) ---------- */
+  .toggle-all-row{ display:flex; gap: 6px; }
+  .toggle-all-row .toggle-all-btn{ flex:1; }
+  /* ---------- 수종 묶음 (초성별 + 지금은 없는 나무) ---------- */
+  .species-group{ border-bottom: 1px solid #EFEBE0; }
+  .group-head{
+    display:flex;
+    align-items:center;
+    gap: 9px;
+    padding: 7px 4px;
+    font-size: 13.5px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .group-head:hover{ background: #F6F3EA; }
+  .group-head input{ margin:0; accent-color: var(--moss); }
+  .group-head .initial{
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius: 6px;
+    background: var(--moss);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12.5px;
+  }
+  .group-head .name{
+    flex:1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+  }
+  .group-head .count{ color: var(--ink-soft); font-size: 12px; }
+  .group-head .fold{
+    font-family: inherit;
+    font-size: 11.5px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: #FBFAF5;
+    color: var(--ink-soft);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .group-head .fold:hover{ border-color: var(--moss); color: var(--moss-dark); }
+  .group-rows{ padding-left: 14px; }
+  .species-group.folded .group-rows,
+  .species-group.folded .gone-note{ display:none; }
+  .gone-group{
+    margin-top: 12px;
+    border-top: 1px dashed var(--line);
+    border-bottom: 0;
+    padding-top: 6px;
+  }
+  .gone-group .group-head .name{ color: var(--ink-soft); font-weight: 600; font-size: 13.5px; }
+  .gone-note{
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin: 0 4px 6px;
+    line-height: 1.5;
+  }
+  .species-row.gone .name{ color: var(--ink-soft); }
+  .stump-icon{ width: 14px; height: 14px; flex-shrink: 0; display:block; }
+  .pin.gone-pin{ opacity: .85; }
+  .callout .gone-tag{
+    display:inline-block;
+    font-size: 11px;
+    padding: 1px 6px;
+    margin: 2px 0 4px;
+    border-radius: 6px;
+    background: #ECEAE3;
+    color: #6B675C;
+  }
   .toggle-all-btn{
     width:100%;
     font-family: inherit;
@@ -830,6 +906,32 @@ const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 /* 가나다순으로 정렬하고 '기타'는 맨 뒤에 둡니다 */
 SPECIES.sort((a, b) => (a.id === 'etc') - (b.id === 'etc') || a.name.localeCompare(b.name, 'ko'));
 
+/* ---------- 지금은 없는 나무 ---------- */
+/* 예전에는 학교에 있었지만 지금은 베어져서 없는 수종이에요.
+   수종 목록 아래 '지금은 없는 나무' 묶음에 회색으로 따로 보여 주고,
+   이 수종으로 핀을 찍으면(예: 예전에 있던 자리) 회색 그루터기 모양 핀으로 표시돼요.
+   다시 심었거나 잘못 넣은 수종은 이 목록에서 id만 지우면 원래대로 돌아가요. */
+const GONE_SPECIES_IDS = [
+  'forsythia',   // 개나리
+  'thuja',       // 측백나무
+  'sawara',      // 실화백
+  'skunkvine',   // 계요등
+  'whitepine',   // 섬잣나무
+  'nanking',     // 앵도나무
+  'ailanthus',   // 가죽나무
+  'laceleaf',    // 공작단풍
+  'gumi',        // 뜰보리수
+  'rugosa',      // 만첩해당화
+  'mulberry',    // 뽕나무
+  'apricot',     // 살구나무
+  'chinarose',   // 월계화
+  'spruce',      // 가문비나무
+  'beautyberry', // 작살나무
+  'peach',       // 복사나무
+];
+const GONE_COLOR = '#9A968A';
+GONE_SPECIES_IDS.forEach(id => { if(speciesById[id]) speciesById[id].gone = true; });
+
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 /* 핀 목록은 같은 폴더의 pins.json 파일에 따로 저장돼 있고, 페이지가 열릴 때 불러옵니다(맨 아래 '초기화').
@@ -921,24 +1023,109 @@ function pinSvg(color){
   return `<svg viewBox="0 0 24 24"><path d="M12 0C6.9 0 2.7 4.1 2.7 9.2c0 6.9 8.3 14 8.7 14.3.3.3.9.3 1.2 0 .4-.3 8.7-7.4 8.7-14.3C21.3 4.1 17.1 0 12 0z" fill="${color}" stroke="#fff" stroke-width="1"/><circle cx="12" cy="9" r="3.4" fill="rgba(255,255,255,.85)"/></svg>`;
 }
 
+/* 지금은 없는 나무: 회색 그루터기 모양 (핀과 수종 목록 아이콘에 같이 써요) */
+function stumpSvg(cls){
+  return `<svg ${cls ? `class="${cls}"` : ''} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21h14l-1.6-2.2V10.5c0-.6-.4-1-1-1H7.6c-.6 0-1 .4-1 1v8.3z" fill="${GONE_COLOR}" stroke="#fff" stroke-width="1"/><ellipse cx="12" cy="9.6" rx="5.4" ry="2.2" fill="#C9C4B6" stroke="#fff" stroke-width="1"/><ellipse cx="12" cy="9.6" rx="2.4" ry=".9" fill="none" stroke="${GONE_COLOR}" stroke-width=".8"/><path d="M12 7.4V4.2M12 5.4l2-1.6" stroke="${GONE_COLOR}" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg>`;
+}
+
 /* ---------- 수종 목록 렌더 ---------- */
+function speciesRowHtml(s, count){
+  return `
+    <label class="species-row${s.gone ? ' gone' : ''}">
+      <input type="checkbox" data-sid="${s.id}" ${hiddenSpecies.has(s.id) ? '' : 'checked'}>
+      ${s.gone ? stumpSvg('stump-icon') : `<span class="dot" style="background:${s.color}"></span>`}
+      <span class="name">${s.name}</span>
+      <span class="count">${count||0}</span>
+      ${s.pageUrl ? `<a class="page-link" href="${encodeURI(s.pageUrl)}" target="_blank" rel="noopener" title="${s.name} 상세 페이지">보기</a>` : ''}
+    </label>`;
+}
+/* ---------- 수종 묶음 (초성별 + 지금은 없는 나무) ---------- */
+/* 수종이 많아서, 이름 첫 글자의 초성(ㄱ, ㄴ, ㄷ …)으로 묶어 접고 펼 수 있게 했어요.
+   묶음 머리의 체크박스로 그 묶음의 수종을 한꺼번에 켜고 끌 수 있어요.
+   접힘 상태는 이 브라우저에 기억해 두고, 처음에는 모두 접혀 있어요. */
+const CHOSEONG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const BASE_CHOSEONG = { 'ㄲ':'ㄱ', 'ㄸ':'ㄷ', 'ㅃ':'ㅂ', 'ㅆ':'ㅅ', 'ㅉ':'ㅈ' }; // 된소리는 예사소리 묶음에 넣어요
+function initialConsonant(name){
+  const code = name.charCodeAt(0) - 0xAC00;
+  if(code < 0 || code > 11171) return '#';
+  const c = CHOSEONG[Math.floor(code / 588)];
+  return BASE_CHOSEONG[c] || c;
+}
+const GROUP_FOLD_KEY = 'schoolTreeMap_openGroups';
+function loadOpenGroups(){
+  try{ return new Set(JSON.parse(localStorage.getItem(GROUP_FOLD_KEY) || '[]')); }catch(err){ return new Set(); }
+}
+function saveOpenGroups(set){
+  try{ localStorage.setItem(GROUP_FOLD_KEY, JSON.stringify([...set])); }catch(err){}
+}
+let speciesGroups = []; // [{ key, label, list }] — 마지막으로 그린 묶음 목록
+function buildSpeciesGroups(){
+  const groups = [];
+  const byKey = {};
+  SPECIES.filter(s => !s.gone && s.id !== 'etc').forEach(s => {
+    const k = initialConsonant(s.name);
+    if(!byKey[k]){ byKey[k] = { key: k, label: k, list: [] }; groups.push(byKey[k]); }
+    byKey[k].list.push(s);
+  });
+  const etc = SPECIES.find(s => s.id === 'etc');
+  if(etc) groups.push({ key: 'etc', label: '', list: [etc], plain: true });
+  const gone = SPECIES.filter(s => s.gone);
+  if(gone.length) groups.push({ key: 'gone', label: '지금은 없는 나무', list: gone, gone: true });
+  return groups;
+}
+function groupHtml(g, counts, isOpen, searchHit){
+  if(g.plain) return g.list.map(s => speciesRowHtml(s, counts[s.id])).join('');
+  const onCount = g.list.filter(s => !hiddenSpecies.has(s.id)).length;
+  const pinTotal = g.list.reduce((n, s) => n + (counts[s.id]||0), 0);
+  return `
+    <div class="species-group${g.gone ? ' gone-group' : ''}${isOpen ? '' : ' folded'}${searchHit ? ' search-hit' : ''}" data-gkey="${g.key}">
+      <div class="group-head">
+        <input type="checkbox" class="group-toggle" data-gkey="${g.key}" ${onCount === g.list.length ? 'checked' : ''}
+               data-partial="${onCount > 0 && onCount < g.list.length ? 1 : 0}" title="${g.label} 묶음 모두 켜기/끄기">
+        ${g.gone ? stumpSvg('stump-icon') : `<span class="initial">${g.label}</span>`}
+        <span class="name">${g.gone ? `${g.label} (${g.list.length})` : `${g.list.map(s => s.name).slice(0, 3).join(', ')}${g.list.length > 3 ? ' …' : ''}`}</span>
+        ${g.gone ? '' : `<span class="count" title="수종 ${g.list.length}개 · 핀 ${pinTotal}개">${g.list.length}종</span>`}
+        <button type="button" class="fold" aria-expanded="${isOpen}">${isOpen ? '접기' : '펼치기'}</button>
+      </div>
+      ${g.gone ? `<p class="gone-note">예전에는 학교에 있었지만 지금은 베어져 없는 나무들이에요. '보기'를 누르면 어떤 나무였는지 볼 수 있어요.</p>` : ''}
+      <div class="group-rows">${g.list.map(s => speciesRowHtml(s, counts[s.id])).join('')}</div>
+    </div>`;
+}
 function renderSpeciesList(){
   const counts = {};
   pins.forEach(p => counts[p.species] = (counts[p.species]||0)+1);
-  speciesListEl.innerHTML = SPECIES.map(s => `
-    <label class="species-row">
-      <input type="checkbox" data-sid="${s.id}" ${hiddenSpecies.has(s.id) ? '' : 'checked'}>
-      <span class="dot" style="background:${s.color}"></span>
-      <span class="name">${s.name}</span>
-      <span class="count">${counts[s.id]||0}</span>
-      ${s.pageUrl ? `<a class="page-link" href="${encodeURI(s.pageUrl)}" target="_blank" rel="noopener" title="${s.name} 상세 페이지">보기</a>` : ''}
-    </label>
-  `).join('');
-  speciesListEl.querySelectorAll('input[type=checkbox]').forEach(cb => {
+  speciesGroups = buildSpeciesGroups();
+  const openGroups = loadOpenGroups();
+  /* 검색어가 있으면 이름이 맞는 수종이 든 묶음은 저절로 펼쳐요 */
+  const hitKeys = new Set(searchTerm ? speciesGroups.filter(g => g.list.some(s => s.name.toLowerCase().includes(searchTerm))).map(g => g.key) : []);
+  speciesListEl.innerHTML = speciesGroups.map(g => groupHtml(g, counts, openGroups.has(g.key) || hitKeys.has(g.key), hitKeys.has(g.key))).join('');
+  speciesListEl.querySelectorAll('.group-toggle').forEach(cb => {
+    cb.indeterminate = cb.dataset.partial === '1';
+    cb.addEventListener('change', e => {
+      const g = speciesGroups.find(x => x.key === e.target.dataset.gkey);
+      g.list.forEach(s => e.target.checked ? hiddenSpecies.delete(s.id) : hiddenSpecies.add(s.id));
+      renderSpeciesList();
+      renderPins();
+    });
+  });
+  /* 묶음 머리(체크박스 말고 나머지)를 누르면 접고 펼쳐요 */
+  speciesListEl.querySelectorAll('.group-head').forEach(head => {
+    head.addEventListener('click', e => {
+      if(e.target.closest('input')) return;
+      const groupEl = head.closest('.species-group');
+      const key = groupEl.dataset.gkey;
+      const set = loadOpenGroups();
+      const open = !groupEl.classList.contains('folded');
+      if(open) set.delete(key); else set.add(key);
+      saveOpenGroups(set);
+      renderSpeciesList();
+    });
+  });
+  speciesListEl.querySelectorAll('.species-row input[type=checkbox]').forEach(cb => {
     cb.addEventListener('change', e => {
       const sid = e.target.getAttribute('data-sid');
       if(e.target.checked) hiddenSpecies.delete(sid); else hiddenSpecies.add(sid);
-      updateToggleAllBtn();
+      renderSpeciesList(); // 묶음 머리 체크박스 상태도 같이 바꿔요
       renderPins();
     });
   });
@@ -946,11 +1133,32 @@ function renderSpeciesList(){
 }
 /* 전체 선택/해제: 하나라도 꺼져 있으면 모두 켜고, 모두 켜져 있으면 모두 끕니다 */
 const toggleAllSpeciesBtn = document.getElementById('toggleAllSpeciesBtn');
+/* '있는 나무' 전체 선택/해제: 지금은 없는 나무 묶음은 그대로 두고, 지금 있는 수종만 켜고 끕니다.
+   버튼은 기존 '전체 선택/해제' 버튼 옆에 스크립트로 붙여요 */
+const togglePresentSpeciesBtn = document.createElement('button');
+togglePresentSpeciesBtn.type = 'button';
+togglePresentSpeciesBtn.className = 'toggle-all-btn';
+togglePresentSpeciesBtn.id = 'togglePresentSpeciesBtn';
+{
+  const row = document.createElement('div');
+  row.className = 'toggle-all-row';
+  toggleAllSpeciesBtn.replaceWith(row);
+  row.append(toggleAllSpeciesBtn, togglePresentSpeciesBtn);
+}
+function presentSpecies(){ return SPECIES.filter(s => !s.gone); }
 function updateToggleAllBtn(){
   toggleAllSpeciesBtn.textContent = hiddenSpecies.size ? '전체 선택' : '전체 해제';
+  togglePresentSpeciesBtn.textContent = presentSpecies().some(s => hiddenSpecies.has(s.id)) ? '있는 나무 전체 선택' : '있는 나무 전체 해제';
 }
 toggleAllSpeciesBtn.addEventListener('click', () => {
   hiddenSpecies = hiddenSpecies.size ? new Set() : new Set(SPECIES.map(s => s.id));
+  renderSpeciesList();
+  renderPins();
+});
+togglePresentSpeciesBtn.addEventListener('click', () => {
+  const list = presentSpecies();
+  const turnOn = list.some(s => hiddenSpecies.has(s.id));
+  list.forEach(s => turnOn ? hiddenSpecies.delete(s.id) : hiddenSpecies.add(s.id));
   renderSpeciesList();
   renderPins();
 });
@@ -962,11 +1170,11 @@ function renderPins(){
     const sp = speciesById[p.species];
     const matchesSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm) || sp.name.toLowerCase().includes(searchTerm);
     const el = document.createElement('div');
-    el.className = 'pin' + ((hiddenSpecies.has(p.species) || !matchesSearch) ? ' hidden-species' : '');
+    el.className = 'pin' + (sp.gone ? ' gone-pin' : '') + ((hiddenSpecies.has(p.species) || !matchesSearch) ? ' hidden-species' : '');
     el.style.left = p.x + '%';
     el.style.top = p.y + '%';
-    el.innerHTML = pinSvg(sp.color);
-    el.title = p.name;
+    el.innerHTML = sp.gone ? stumpSvg() : pinSvg(sp.color);
+    el.title = sp.gone ? `${p.name} (지금은 없는 나무)` : p.name;
     el.addEventListener('pointerdown', (e) => startPinDrag(e, p, el));
     el.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -1038,6 +1246,7 @@ function showCallout(p, pinEl){
       : ''}
     <div class="callout-photo-placeholder" style="display:${photoSrc ? 'none' : 'flex'}">📷 사진 준비 중</div>
     <b>${p.name}</b><br>${sp.name}<br>
+    ${sp.gone ? `<span class="gone-tag">지금은 없는 나무</span><br>` : ''}
     ${sp.pageUrl ? `<a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>` : ''}
   `;
   mapStage.appendChild(c);
@@ -1071,7 +1280,7 @@ mapFrame.addEventListener('click', (e) => {
 
 /* ---------- 모달 ---------- */
 function fillSpeciesSelect(selectedId){
-  pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}</option>`).join('');
+  pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}${s.gone ? ' (지금은 없는 나무)' : ''}</option>`).join('');
 }
 /* 나무 이름에 들어 있는 수종을 찾습니다. "산수유"처럼 '나무'를 뺀 이름(2글자 이상)도 인정하고,
    더 길게 일치한 수종을 앞에 둡니다(예: "공작단풍"은 단풍나무보다 공작단풍이 먼저). */
@@ -1153,6 +1362,7 @@ deletePinBtn.addEventListener('click', () => {
 /* ---------- 검색 ---------- */
 document.getElementById('searchBox').addEventListener('input', (e) => {
   searchTerm = e.target.value.trim().toLowerCase();
+  renderSpeciesList();
   renderPins();
 });
 
