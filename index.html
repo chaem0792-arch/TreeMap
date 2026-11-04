@@ -327,6 +327,54 @@
     flex-shrink: 0;
   }
   .species-row .page-link:hover{ border-color: var(--moss); color: var(--moss-dark); }
+  /* ---------- 지금은 없는 나무 (베어져 사라진 수종) ---------- */
+  .gone-group{
+    margin-top: 12px;
+    border-top: 1px dashed var(--line);
+    padding-top: 10px;
+  }
+  .gone-head{
+    display:flex;
+    align-items:center;
+    gap: 9px;
+    padding: 6px 4px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .gone-head input{ margin:0; accent-color: var(--moss); }
+  .gone-head .name{ flex:1; }
+  .gone-head .fold{
+    font-family: inherit;
+    font-size: 11.5px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: #FBFAF5;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .gone-note{
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin: 0 4px 6px;
+    line-height: 1.5;
+  }
+  .gone-group.folded .gone-note,
+  .gone-group.folded .species-row{ display:none; }
+  .species-row.gone .name{ color: var(--ink-soft); }
+  .stump-icon{ width: 14px; height: 14px; flex-shrink: 0; display:block; }
+  .pin.gone-pin{ opacity: .85; }
+  .callout .gone-tag{
+    display:inline-block;
+    font-size: 11px;
+    padding: 1px 6px;
+    margin: 2px 0 4px;
+    border-radius: 6px;
+    background: #ECEAE3;
+    color: #6B675C;
+  }
   .toggle-all-btn{
     width:100%;
     font-family: inherit;
@@ -576,6 +624,33 @@ const speciesById = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 /* 가나다순으로 정렬하고 '기타'는 맨 뒤에 둡니다 */
 SPECIES.sort((a, b) => (a.id === 'etc') - (b.id === 'etc') || a.name.localeCompare(b.name, 'ko'));
 
+/* ---------- 지금은 없는 나무 ---------- */
+/* 예전에는 학교에 있었지만 지금은 베어져서 없는 수종이에요.
+   수종 목록 아래 '지금은 없는 나무' 묶음에 회색으로 따로 보여 주고,
+   이 수종으로 핀을 찍으면(예: 예전에 있던 자리) 회색 그루터기 모양 핀으로 표시돼요.
+   다시 심었거나 잘못 넣은 수종은 이 목록에서 id만 지우면 원래대로 돌아가요. */
+const GONE_SPECIES_IDS = [
+  'forsythia',   // 개나리
+  'thuja',       // 측백나무
+  'sawara',      // 실화백
+  'skunkvine',   // 계요등
+  'whitepine',   // 섬잣나무
+  'nanking',     // 앵도나무
+  'ailanthus',   // 가죽나무
+  'laceleaf',    // 공작단풍
+  'gumi',        // 뜰보리수
+  'rugosa',      // 만첩해당화
+  'mulberry',    // 뽕나무
+  'apricot',     // 살구나무
+  'chinarose',   // 월계화
+  'spruce',      // 가문비나무
+  'beautyberry', // 작살나무
+  'peach',       // 복사나무
+];
+const GONE_COLOR = '#9A968A';
+GONE_SPECIES_IDS.forEach(id => { if(speciesById[id]) speciesById[id].gone = true; });
+const GONE_FOLD_KEY = 'schoolTreeMap_goneFolded';
+
 /* ---------- 초기 핀 데이터 (대략적 위치 — 편집 모드에서 다듬어 주세요) ---------- */
 /* x, y는 지도 이미지 기준 백분율(%) 좌표입니다 */
 /* 핀 목록은 같은 폴더의 pins.json 파일에 따로 저장돼 있고, 페이지가 열릴 때 불러옵니다(맨 아래 '초기화').
@@ -667,24 +742,61 @@ function pinSvg(color){
   return `<svg viewBox="0 0 24 24"><path d="M12 0C6.9 0 2.7 4.1 2.7 9.2c0 6.9 8.3 14 8.7 14.3.3.3.9.3 1.2 0 .4-.3 8.7-7.4 8.7-14.3C21.3 4.1 17.1 0 12 0z" fill="${color}" stroke="#fff" stroke-width="1"/><circle cx="12" cy="9" r="3.4" fill="rgba(255,255,255,.85)"/></svg>`;
 }
 
+/* 지금은 없는 나무: 회색 그루터기 모양 (핀과 수종 목록 아이콘에 같이 써요) */
+function stumpSvg(cls){
+  return `<svg ${cls ? `class="${cls}"` : ''} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21h14l-1.6-2.2V10.5c0-.6-.4-1-1-1H7.6c-.6 0-1 .4-1 1v8.3z" fill="${GONE_COLOR}" stroke="#fff" stroke-width="1"/><ellipse cx="12" cy="9.6" rx="5.4" ry="2.2" fill="#C9C4B6" stroke="#fff" stroke-width="1"/><ellipse cx="12" cy="9.6" rx="2.4" ry=".9" fill="none" stroke="${GONE_COLOR}" stroke-width=".8"/><path d="M12 7.4V4.2M12 5.4l2-1.6" stroke="${GONE_COLOR}" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg>`;
+}
+
 /* ---------- 수종 목록 렌더 ---------- */
+function speciesRowHtml(s, count){
+  return `
+    <label class="species-row${s.gone ? ' gone' : ''}">
+      <input type="checkbox" data-sid="${s.id}" ${hiddenSpecies.has(s.id) ? '' : 'checked'}>
+      ${s.gone ? stumpSvg('stump-icon') : `<span class="dot" style="background:${s.color}"></span>`}
+      <span class="name">${s.name}</span>
+      <span class="count">${count||0}</span>
+      ${s.pageUrl ? `<a class="page-link" href="${encodeURI(s.pageUrl)}" target="_blank" rel="noopener" title="${s.name} 상세 페이지">보기</a>` : ''}
+    </label>`;
+}
 function renderSpeciesList(){
   const counts = {};
   pins.forEach(p => counts[p.species] = (counts[p.species]||0)+1);
-  speciesListEl.innerHTML = SPECIES.map(s => `
-    <label class="species-row">
-      <input type="checkbox" data-sid="${s.id}" ${hiddenSpecies.has(s.id) ? '' : 'checked'}>
-      <span class="dot" style="background:${s.color}"></span>
-      <span class="name">${s.name}</span>
-      <span class="count">${counts[s.id]||0}</span>
-      ${s.pageUrl ? `<a class="page-link" href="${encodeURI(s.pageUrl)}" target="_blank" rel="noopener" title="${s.name} 상세 페이지">보기</a>` : ''}
-    </label>
-  `).join('');
-  speciesListEl.querySelectorAll('input[type=checkbox]').forEach(cb => {
+  const present = SPECIES.filter(s => !s.gone);
+  const gone = SPECIES.filter(s => s.gone);
+  let folded = false;
+  try{ folded = localStorage.getItem(GONE_FOLD_KEY) === '1'; }catch(err){}
+  const goneAllOn = gone.every(s => !hiddenSpecies.has(s.id));
+  speciesListEl.innerHTML = present.map(s => speciesRowHtml(s, counts[s.id])).join('') + (gone.length ? `
+    <div class="gone-group${folded ? ' folded' : ''}">
+      <label class="gone-head">
+        <input type="checkbox" id="goneGroupToggle" ${goneAllOn ? 'checked' : ''} title="지금은 없는 나무 모두 켜기/끄기">
+        ${stumpSvg('stump-icon')}
+        <span class="name">지금은 없는 나무 (${gone.length})</span>
+        <button type="button" class="fold" id="goneFoldBtn">${folded ? '펼치기' : '접기'}</button>
+      </label>
+      <p class="gone-note">예전에는 학교에 있었지만 지금은 베어져 없는 나무들이에요. '보기'를 누르면 어떤 나무였는지 볼 수 있어요.</p>
+      ${gone.map(s => speciesRowHtml(s, counts[s.id])).join('')}
+    </div>` : '');
+  const goneToggle = document.getElementById('goneGroupToggle');
+  if(goneToggle){
+    goneToggle.indeterminate = !goneAllOn && gone.some(s => !hiddenSpecies.has(s.id));
+    goneToggle.addEventListener('change', e => {
+      gone.forEach(s => e.target.checked ? hiddenSpecies.delete(s.id) : hiddenSpecies.add(s.id));
+      renderSpeciesList();
+      renderPins();
+    });
+    document.getElementById('goneFoldBtn').addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      try{ localStorage.setItem(GONE_FOLD_KEY, folded ? '0' : '1'); }catch(err){}
+      renderSpeciesList();
+    });
+  }
+  speciesListEl.querySelectorAll('.species-row input[type=checkbox]').forEach(cb => {
     cb.addEventListener('change', e => {
       const sid = e.target.getAttribute('data-sid');
       if(e.target.checked) hiddenSpecies.delete(sid); else hiddenSpecies.add(sid);
-      updateToggleAllBtn();
+      if(speciesById[sid].gone){ renderSpeciesList(); } else { updateToggleAllBtn(); }
       renderPins();
     });
   });
@@ -708,11 +820,11 @@ function renderPins(){
     const sp = speciesById[p.species];
     const matchesSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm) || sp.name.toLowerCase().includes(searchTerm);
     const el = document.createElement('div');
-    el.className = 'pin' + ((hiddenSpecies.has(p.species) || !matchesSearch) ? ' hidden-species' : '');
+    el.className = 'pin' + (sp.gone ? ' gone-pin' : '') + ((hiddenSpecies.has(p.species) || !matchesSearch) ? ' hidden-species' : '');
     el.style.left = p.x + '%';
     el.style.top = p.y + '%';
-    el.innerHTML = pinSvg(sp.color);
-    el.title = p.name;
+    el.innerHTML = sp.gone ? stumpSvg() : pinSvg(sp.color);
+    el.title = sp.gone ? `${p.name} (지금은 없는 나무)` : p.name;
     el.addEventListener('pointerdown', (e) => startPinDrag(e, p, el));
     el.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -784,6 +896,7 @@ function showCallout(p, pinEl){
       : ''}
     <div class="callout-photo-placeholder" style="display:${photoSrc ? 'none' : 'flex'}">📷 사진 준비 중</div>
     <b>${p.name}</b><br>${sp.name}<br>
+    ${sp.gone ? `<span class="gone-tag">지금은 없는 나무</span><br>` : ''}
     ${sp.pageUrl ? `<a class="callout-link" href="${sp.pageUrl}" target="_blank" rel="noopener">${sp.name} 페이지 보기 →</a>` : ''}
   `;
   mapStage.appendChild(c);
@@ -817,7 +930,7 @@ mapFrame.addEventListener('click', (e) => {
 
 /* ---------- 모달 ---------- */
 function fillSpeciesSelect(selectedId){
-  pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}</option>`).join('');
+  pinSpeciesInput.innerHTML = SPECIES.map(s => `<option value="${s.id}" ${s.id===selectedId?'selected':''}>${s.name}${s.gone ? ' (지금은 없는 나무)' : ''}</option>`).join('');
 }
 /* 나무 이름에 들어 있는 수종을 찾습니다. "산수유"처럼 '나무'를 뺀 이름(2글자 이상)도 인정하고,
    더 길게 일치한 수종을 앞에 둡니다(예: "공작단풍"은 단풍나무보다 공작단풍이 먼저). */
