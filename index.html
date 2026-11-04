@@ -1310,12 +1310,20 @@ document.getElementById('savePinBtn').addEventListener('click', () => {
     pinSpeciesInput.focus();
     return;
   }
-  /* 사진 경로는 나무 이름으로 자동 지정합니다: ./images/나무이름.JPG */
+  /* 새 핀을 만들 때만 사진 경로를 나무 이름으로 자동 지정합니다: ./images/나무이름.JPG */
   const image = `./images/${name}.JPG`;
   if(editingPinId){
     const p = pins.find(p => p.id === editingPinId);
-    p.name = name; p.species = species; p.image = image;
+    /* 이름을 고쳐도 처음 연결된 사진 경로는 그대로 둡니다 (사진이 없던 핀만 새로 지정) */
+    p.name = name; p.species = species;
+    if(!p.image) p.image = image;
   } else if(draftLatLng){
+    /* 새 핀의 나무 이름이 이미 있으면 한 번 확인합니다. 취소하면 만들지 않고 이름을 고칠 수 있게 창을 그대로 둡니다. */
+    if(pins.some(p => (p.name || '').trim() === name)
+       && !confirm(`'${name}'은 이미 있는 이름입니다. 생성하시겠습니까?`)){
+      pinNameInput.focus();
+      return;
+    }
     pins.push({ id: nextId++, name, species, x: draftLatLng.x, y: draftLatLng.y, image });
   }
   savePinsToStorage();
