@@ -1694,5 +1694,109 @@
     "x": 34.6,
     "y": 60.4,
     "image": "./images/앞뜰자귀.JPG"
+  },
+  {
+    "id": 242,
+    "name": "벚나무",
+    "species": "cherry",
+    "x": 64.8,
+    "y": 35.6,
+    "image": "./images/벚나무.JPG"
+  },
+  {
+    "id": 243,
+    "name": "벚나무",
+    "species": "cherry",
+    "x": 65,
+    "y": 36.1,
+    "image": "./images/벚나무.JPG"
+  },
+  {
+    "id": 244,
+    "name": "벚나무",
+    "species": "cherry",
+    "x": 65.2,
+    "y": 36.4,
+    "image": "./images/벚나무.JPG"
+  },
+  {
+    "id": 245,
+    "name": "메타세쿼이아1",
+    "species": "metasequoia",
+    "x": 54.8,
+    "y": 20,
+    "image": "./images/메타세쿼이아1.JPG"
+  },
+  {
+    "id": 246,
+    "name": "추계초 은행나무1",
+    "species": "ginkgo",
+    "x": 55.7,
+    "y": 21.5,
+    "image": "./images/추계초 은행나무1.JPG"
+  },
+  {
+    "id": 247,
+    "name": "메타세쿼이아2",
+    "species": "metasequoia",
+    "x": 56.1,
+    "y": 22.5,
+    "image": "./images/메타세쿼이아2.JPG"
+  },
+  {
+    "id": 248,
+    "name": "메타세쿼이아3",
+    "species": "metasequoia",
+    "x": 56.7,
+    "y": 23.3,
+    "image": "./images/메타세쿼이아3.JPG"
+  },
+  {
+    "id": 249,
+    "name": "메타세쿼이아4",
+    "species": "metasequoia",
+    "x": 57,
+    "y": 24,
+    "image": "./images/메타세쿼이아4.JPG"
+  },
+  {
+    "id": 250,
+    "name": "메타세쿼이아5",
+    "species": "metasequoia",
+    "x": 57.4,
+    "y": 24.7,
+    "image": "./images/메타세쿼이아5.JPG"
+  },
+  {
+    "id": 251,
+    "name": "추계초 은행나무2",
+    "species": "ginkgo",
+    "x": 58.1,
+    "y": 26,
+    "image": "./images/추계초 은행나무2.JPG"
+  },
+  {
+    "id": 252,
+    "name": "메타세쿼이아6",
+    "species": "metasequoia",
+    "x": 58.6,
+    "y": 26.7,
+    "image": "./images/메타세쿼이아6.JPG"
+  },
+  {
+    "id": 253,
+    "name": "메타세쿼이아7",
+    "species": "metasequoia",
+    "x": 59.1,
+    "y": 27.2,
+    "image": "./images/메타세쿼이아7.JPG"
+  },
+  {
+    "id": 254,
+    "name": "메타세쿼이아8",
+    "species": "metasequoia",
+    "x": 59.4,
+    "y": 27.9,
+    "image": "./images/메타세쿼이아8.JPG"
   }
 ]
