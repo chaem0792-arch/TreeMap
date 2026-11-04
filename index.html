@@ -548,48 +548,25 @@
   .toggle-all-row .toggle-all-btn{ flex:1; }
   /* ---------- 수종 묶음 (초성별 + 지금은 없는 나무) ---------- */
   .species-group{ border-bottom: 1px solid #EFEBE0; }
+  /* 묶음 줄: "▶ ㄱ"처럼 화살표와 초성만 보여요. 펼치면 ▼로 바뀌어요 */
   .group-head{
     display:flex;
     align-items:center;
-    gap: 9px;
-    padding: 7px 4px;
-    font-size: 13.5px;
-    cursor: pointer;
+    gap: 6px;
+    width: 100%;
+    padding: 6px 4px;
+    border: 0;
     border-radius: 8px;
+    background: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--moss-dark);
+    text-align: left;
+    cursor: pointer;
   }
   .group-head:hover{ background: #F6F3EA; }
-  .group-head .initial{
-    width: 20px; height: 20px;
-    flex-shrink: 0;
-    display:flex; align-items:center; justify-content:center;
-    border-radius: 6px;
-    background: var(--moss);
-    color: #fff;
-    font-weight: 700;
-    font-size: 12.5px;
-  }
-  .group-head .name{
-    flex:1;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--ink-soft);
-    font-size: 12.5px;
-  }
-  .group-head .count{ color: var(--ink-soft); font-size: 12px; }
-  .group-head .fold{
-    font-family: inherit;
-    font-size: 11.5px;
-    padding: 2px 7px;
-    border-radius: 6px;
-    border: 1px solid var(--line);
-    background: #FBFAF5;
-    color: var(--ink-soft);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .group-head .fold:hover{ border-color: var(--moss); color: var(--moss-dark); }
+  .group-head .arrow{ width: 12px; font-size: 10px; color: var(--ink-soft); flex-shrink: 0; }
   .group-rows{ padding-left: 14px; }
   .species-group.folded .group-rows,
   .species-group.folded .gone-note{ display:none; }
@@ -599,7 +576,7 @@
     border-bottom: 0;
     padding-top: 6px;
   }
-  .gone-group .group-head .name{ color: var(--ink-soft); font-weight: 600; font-size: 13.5px; }
+  .gone-group .group-head{ color: var(--ink-soft); }
   .gone-note{
     font-size: 11.5px;
     color: var(--ink-soft);
@@ -1074,15 +1051,12 @@ function buildSpeciesGroups(){
 }
 function groupHtml(g, counts, isOpen, searchHit){
   if(g.plain) return g.list.map(s => speciesRowHtml(s, counts[s.id])).join('');
-  const pinTotal = g.list.reduce((n, s) => n + (counts[s.id]||0), 0);
   return `
     <div class="species-group${g.gone ? ' gone-group' : ''}${isOpen ? '' : ' folded'}${searchHit ? ' search-hit' : ''}" data-gkey="${g.key}">
-      <div class="group-head">
-        ${g.gone ? stumpSvg('stump-icon') : `<span class="initial">${g.label}</span>`}
-        <span class="name">${g.gone ? `${g.label} (${g.list.length})` : `${g.list.map(s => s.name).slice(0, 3).join(', ')}${g.list.length > 3 ? ' …' : ''}`}</span>
-        ${g.gone ? '' : `<span class="count" title="수종 ${g.list.length}개 · 핀 ${pinTotal}개">${g.list.length}종</span>`}
-        <button type="button" class="fold" aria-expanded="${isOpen}">${isOpen ? '접기' : '펼치기'}</button>
-      </div>
+      <button type="button" class="group-head" aria-expanded="${isOpen}" title="${g.list.map(s => s.name).join(', ')}">
+        <span class="arrow" aria-hidden="true">${isOpen ? '▼' : '▶'}</span>
+        <span class="label">${g.gone ? `${g.label} (${g.list.length})` : g.label}</span>
+      </button>
       ${g.gone ? `<p class="gone-note">예전에는 학교에 있었지만 지금은 베어져 없는 나무들이에요. '보기'를 누르면 어떤 나무였는지 볼 수 있어요.</p>` : ''}
       <div class="group-rows">${g.list.map(s => speciesRowHtml(s, counts[s.id])).join('')}</div>
     </div>`;
