@@ -1850,7 +1850,7 @@
   {
     "id": 224,
     "name": "음나무1",
-    "species": "etc",
+    "species": "kalopanax",
     "x": 62.6,
     "y": 38.7,
     "image": "./images/음나무1.JPG"
@@ -1858,7 +1858,7 @@
   {
     "id": 225,
     "name": "음나무",
-    "species": "etc",
+    "species": "kalopanax",
     "x": 63.9,
     "y": 38,
     "image": "./images/음나무.JPG"
