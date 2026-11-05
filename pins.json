@@ -1870,5 +1870,93 @@
     "x": 65,
     "y": 37.2,
     "image": "./images/뽕나무.JPG"
+  },
+  {
+    "id": 264,
+    "name": "소나무a",
+    "species": "pine",
+    "x": 36.9,
+    "y": 29,
+    "image": "./images/소나무a.JPG"
+  },
+  {
+    "id": 265,
+    "name": "주목b",
+    "species": "yew",
+    "x": 35,
+    "y": 30.6,
+    "image": "./images/주목b.JPG"
+  },
+  {
+    "id": 266,
+    "name": "개나리c",
+    "species": "forsythia",
+    "x": 40.1,
+    "y": 30.5,
+    "image": "./images/개나리c.JPG"
+  },
+  {
+    "id": 267,
+    "name": "쥐똥d",
+    "species": "privet",
+    "x": 39.1,
+    "y": 31,
+    "image": "./images/쥐똥d.JPG"
+  },
+  {
+    "id": 268,
+    "name": "향나무e",
+    "species": "juniper",
+    "x": 34.1,
+    "y": 31.2,
+    "image": "./images/향나무e.JPG"
+  },
+  {
+    "id": 269,
+    "name": "주목f",
+    "species": "yew",
+    "x": 33,
+    "y": 31.5,
+    "image": "./images/주목f.JPG"
+  },
+  {
+    "id": 270,
+    "name": "음나무g",
+    "species": "kalopanax",
+    "x": 32.4,
+    "y": 33.9,
+    "image": "./images/음나무g.JPG"
+  },
+  {
+    "id": 271,
+    "name": "단풍h",
+    "species": "maple",
+    "x": 32.6,
+    "y": 34.5,
+    "image": "./images/단풍h.JPG"
+  },
+  {
+    "id": 272,
+    "name": "소나무i",
+    "species": "pine",
+    "x": 33.3,
+    "y": 35.6,
+    "image": "./images/소나무i.JPG"
+  },
+  {
+    "id": 273,
+    "name": "참나무j",
+    "species": "etc",
+    "x": 35.3,
+    "y": 34.4,
+    "image": "./images/참나무j.JPG"
+  },
+  {
+    "id": 274,
+    "name": "전나무m",
+    "species": "etc",
+    "x": 32.9,
+    "y": 34.9,
+    "image": "./images/전나무m.JPG"
   }
 ]
