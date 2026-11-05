@@ -632,52 +632,44 @@
     "image": "./images/메타세쿼이아2-7.JPG"
   },
   {
-    "id": 252,
-    "name": "메타세쿼이아2-8",
-    "species": "metasequoia",
-    "x": 58.6,
-    "y": 26.7,
-    "image": "./images/메타세쿼이아2-8.JPG"
-  },
-  {
     "id": 250,
-    "name": "메타세쿼이아2-9",
+    "name": "메타세쿼이아2-8",
     "species": "metasequoia",
     "x": 57.4,
     "y": 24.7,
-    "image": "./images/메타세쿼이아2-9.JPG"
+    "image": "./images/메타세쿼이아2-8.JPG"
   },
   {
     "id": 249,
-    "name": "메타세쿼이아2-10",
+    "name": "메타세쿼이아2-9",
     "species": "metasequoia",
     "x": 57,
     "y": 24,
-    "image": "./images/메타세쿼이아2-10.JPG"
+    "image": "./images/메타세쿼이아2-8.JPG"
   },
   {
     "id": 248,
-    "name": "메타세쿼이아2-11",
+    "name": "메타세쿼이아2-10",
     "species": "metasequoia",
     "x": 56.7,
     "y": 23.3,
-    "image": "./images/메타세쿼이아2-11.JPG"
+    "image": "./images/메타세쿼이아2-8.JPG"
   },
   {
     "id": 247,
-    "name": "메타세쿼이아2-12",
+    "name": "메타세쿼이아2-11",
     "species": "metasequoia",
     "x": 56.1,
     "y": 22.5,
-    "image": "./images/메타세쿼이아2-12.JPG"
+    "image": "./images/메타세쿼이아2-8.JPG"
   },
   {
     "id": 245,
-    "name": "메타세쿼이아2-13",
+    "name": "메타세쿼이아2-12",
     "species": "metasequoia",
     "x": 54.8,
     "y": 20,
-    "image": "./images/메타세쿼이아2-13.JPG"
+    "image": "./images/메타세쿼이아2-8.JPG"
   },
   {
     "id": 195,
