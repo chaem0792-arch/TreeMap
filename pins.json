@@ -1841,19 +1841,19 @@
   },
   {
     "id": 223,
-    "name": "가죽나무",
+    "name": "가죽나무1",
     "species": "ailanthus",
     "x": 61.6,
     "y": 39.4,
-    "image": "./images/가죽나무.JPG"
+    "image": "./images/가죽나무1.JPG"
   },
   {
     "id": 224,
-    "name": "앵두나무",
+    "name": "음나무1",
     "species": "etc",
     "x": 62.6,
     "y": 38.7,
-    "image": "./images/앵두나무.JPG"
+    "image": "./images/음나무1.JPG"
   },
   {
     "id": 225,
