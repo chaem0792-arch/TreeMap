@@ -1958,5 +1958,45 @@
     "x": 32.9,
     "y": 34.9,
     "image": "./images/전나무m.JPG"
+  },
+  {
+    "id": 275,
+    "name": "메타세쿼이아a",
+    "species": "metasequoia",
+    "x": 61.9,
+    "y": 31.4,
+    "image": "./images/메타세쿼이아a.JPG"
+  },
+  {
+    "id": 276,
+    "name": "메타세쿼이아a",
+    "species": "metasequoia",
+    "x": 62.3,
+    "y": 32.2,
+    "image": "./images/메타세쿼이아a.JPG"
+  },
+  {
+    "id": 277,
+    "name": "메타세쿼이아a",
+    "species": "metasequoia",
+    "x": 62.7,
+    "y": 32.7,
+    "image": "./images/메타세쿼이아a.JPG"
+  },
+  {
+    "id": 278,
+    "name": "메타세쿼이아a",
+    "species": "metasequoia",
+    "x": 62.9,
+    "y": 33.2,
+    "image": "./images/메타세쿼이아a.JPG"
+  },
+  {
+    "id": 279,
+    "name": "메타세쿼이아a",
+    "species": "metasequoia",
+    "x": 63.2,
+    "y": 33.9,
+    "image": "./images/메타세쿼이아a.JPG"
   }
 ]
