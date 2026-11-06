@@ -81,11 +81,11 @@
   },
   {
     "id": 96,
-    "name": "들장미1-1",
-    "species": "wildrose",
+    "name": "장미1-2",
+    "species": "rose",
     "x": 57.7,
     "y": 49.2,
-    "image": "./images/들장미1-1.JPG"
+    "image": "./images/장미2-4.JPG"
   },
   {
     "id": 52,
