@@ -310,38 +310,30 @@
   .ht-main span:nth-child(3){ background-position: -2.05em 0; margin-left: 0.15em; transform: rotate(-4deg) scaleX(1.12); }
   .ht-main span:nth-child(4){ background-position: -3em 0; transform: translateY(0.06em) rotate(1.5deg) scaleX(1.12); }
 
-  /* 학교 입구 표시. 꼬리 끝이 입구(바깥 큰길과 학교 안 길이 만나는 곳)를 가리켜요 */
+  /* 학교 입구 표시: 종이비행기(커서) 모양. 뾰족한 끝이 입구(바깥 큰길과 학교 안 길이 만나는 곳)를 가리켜요 */
   .map-gate{
     position: absolute;
     left: 88.7%;
     top: 63.9%;
-    transform: translate(-50%, calc(-100% - 0.7cqw));
-    display: flex;
-    align-items: center;
-    gap: 0.35cqw;
-    padding: 0.3cqw 0.75cqw 0.3cqw 0.55cqw;
-    background: #fff;
-    border: 0.18cqw solid var(--moss);
-    border-radius: 999px;
-    box-shadow: 0 0.2cqw 0.6cqw rgba(44, 42, 34, 0.25);
+    width: 9cqw;
+    height: 5.2cqw;
+    transform: translate(0, -50%);
+    pointer-events: none;
+    filter: drop-shadow(0 0.2cqw 0.35cqw rgba(44, 42, 34, 0.35));
+  }
+  .map-gate svg{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+  .map-gate span{
+    position: absolute;
+    left: 62%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     font-family: "Gowun Dodum", "Noto Sans KR", sans-serif;
     font-weight: 700;
     font-size: 1.45cqw;
-    line-height: 1.2;
-    color: var(--moss-dark);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #fff;
     white-space: nowrap;
-    pointer-events: none;
-  }
-  .map-gate svg{ width: 1.2em; height: 1.2em; display: block; }
-  .map-gate::after{
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    border: 0.7cqw solid transparent;
-    border-top-color: var(--moss);
-    border-bottom: 0;
   }
   /* 지도 위에 얹는 사진 3장 + 사용법. 누르면 크게 열려요 */
   .home-extras{ position: absolute; inset: 0; pointer-events: none; z-index: 2; }
@@ -808,9 +800,9 @@
             </ul>
           </section>
         </div>
-        <!-- 학교 입구 표시 (위치는 .map-gate 의 left/top 으로 바꿔요) -->
+        <!-- 학교 입구 표시: 종이비행기 커서 모양 (위치는 .map-gate 의 left/top 으로 바꿔요) -->
         <div class="map-gate" role="img" aria-label="학교 입구">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M2 30 L98 2 L90 30 L98 58 Z" fill="#3F6247" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></svg>
           <span>입구</span>
         </div>
       </div>
