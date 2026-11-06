@@ -509,7 +509,7 @@
     "species": "forsythia",
     "x": 56.6,
     "y": 42,
-    "image": "./images/개나리2-3.JPG"
+    "image": "./images/개나리2-1.JPG"
   },
   {
     "id": 255,
@@ -517,7 +517,7 @@
     "species": "forsythia",
     "x": 55.2,
     "y": 42.8,
-    "image": "./images/개나리2-4.JPG"
+    "image": "./images/개나리2-1.JPG"
   },
   {
     "id": 266,
@@ -629,7 +629,7 @@
     "species": "metasequoia",
     "x": 59.1,
     "y": 27.2,
-    "image": "./images/메타세쿼이아2-7.JPG"
+    "image": "./images/메타세쿼이아2-6.JPG"
   },
   {
     "id": 250,
