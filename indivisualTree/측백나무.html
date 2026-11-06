@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✏️ [수정 1] 브라우저 탭에 보이는 제목 -->
 <title>측백나무</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,10 +18,10 @@
 
 body {
     margin: 0;
-    background: #f8faf9;
+    background: #f8f8f5;
     color: #333;
     font-family: "Noto Sans KR", sans-serif;
-    word-break: keep-all;
+    word-break: keep-all;  /* 한글이 단어 중간에서 끊기지 않게 */
 }
 
 /* ===== 전체 카드: 왼쪽 사진 / 오른쪽 정보 ===== */
@@ -33,14 +35,12 @@ body {
     align-items: stretch;
 }
 
-/* ===== 왼쪽: 식물 사진 ===== */
+/* ===== 왼쪽: 나무 사진 ===== */
 .tree-photo {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
+    background: #edf2ed;
     border-radius: 18px;
     min-height: 460px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .tree-photo img {
@@ -52,21 +52,19 @@ body {
 
 /* ===== 오른쪽: 이름 + 특징 ===== */
 .tree-info {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
+    background: #e8eee9;
     border-radius: 18px;
     padding: 36px 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .tree-name {
     margin: 0 0 6px;
     font-family: "Jua", sans-serif;
     font-size: 40px;
-    color: #2e4a3b;
+    color: #355443;
     letter-spacing: 1px;
 }
 
@@ -74,13 +72,13 @@ body {
     margin: 0 0 24px;
     font-size: 17px;
     line-height: 1.7;
-    color: #4a5568;
+    color: #4b514d;
 }
 
 .feature-title {
     font-family: "Jua", sans-serif;
     font-size: 23px;
-    color: #3b664f;
+    color: #42604d;
     margin-bottom: 10px;
 }
 
@@ -93,14 +91,14 @@ body {
 .feature-list li {
     font-size: 16px;
     line-height: 1.7;
-    color: #4a5568;
+    color: #4b514d;
     padding: 8px 0 8px 28px;
     position: relative;
-    border-top: 1px dashed #cbd5e1;
+    border-top: 1px dashed #c9d6cc;
 }
 
 .feature-list li::before {
-    content: "🌲";
+    content: "🌿";
     position: absolute;
     left: 0;
     top: 8px;
@@ -109,4 +107,70 @@ body {
 
 /* ===== 모바일: 사진 위, 정보 아래 ===== */
 @media (max-width: 700px) {
-    .tree-card { width: 92%; grid-template-columns: 1fr; margin: 25px auto; gap:
+    .tree-card { width: 92%; grid-template-columns: 1fr; margin: 25px auto; gap: 16px; }
+    .tree-photo { min-height: 320px; }
+    .tree-info { padding: 26px 22px; }
+    .tree-name { font-size: 32px; }
+    .tree-summary { font-size: 15px; }
+    .feature-list li { font-size: 15px; }
+}
+
+/* ===== 지금은 없는 나무: 흑백 참고 사진 + 출처 ===== */
+.tree-photo.gone-photo { position: relative; }
+.tree-photo.gone-photo img { filter: grayscale(100%) contrast(1.05); }
+.photo-credit {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    margin: 0;
+    padding: 22px 14px 9px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
+}
+.photo-credit a { color: inherit; }
+</style>
+</head>
+<body>
+
+<main class="tree-card">
+
+    <!-- ===== 왼쪽: 나무 사진 ===== -->
+    <section class="tree-photo gone-photo">
+        <!-- ✏️ [수정 2] 사진 경로(src)와 설명(alt) -->
+        <img src="../images/측백나무.JPG" alt="측백나무 사진">
+        <!-- 지금은 없는 나무라서 위키미디어 공용의 자유 라이선스 사진을 흑백으로 보여 줘요. 우리 학교 나무 사진이 생기면 바꾸고 아래 출처 줄을 지워 주세요. -->
+        <p class="photo-credit">참고 사진(우리 학교 나무 아님) · <a href="https://commons.wikimedia.org/wiki/File:20250719_Yaowang_Temple_07.jpg" target="_blank" rel="noopener">Windmemories</a>, 위키미디어 공용 · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+    </section>
+
+    <!-- ===== 오른쪽: 나무 정보 ===== -->
+    <section class="tree-info">
+
+        <!-- ✏️ [수정 3] 나무 이름 -->
+        <h1 class="tree-name">측백나무</h1>
+
+        <!-- 지금은 없는 나무 안내. 언제, 왜 베였는지 알게 되면 아래 문장을 고쳐 주세요 -->
+        <p class="gone-notice" style="margin:0 0 18px; padding:10px 14px; border-radius:12px; background:#ECEAE3; color:#5E5A50; font-size:15px; line-height:1.6;">
+            🪵 <b>지금은 없는 나무</b> · 예전에는 학교에 있었지만 지금은 베어져서 볼 수 없어요.
+        </p>
+
+        <!-- ✏️ [수정 4] 한두 문장 요약 -->
+        <p class="tree-summary">
+           측백나무는 납작한 잎이 손바닥을 세운 것처럼 세로로 펼쳐져 자라는 늘푸른 바늘잎나무예요. 사철 푸르고 가지가 촘촘해서 울타리나 정원수로 많이 심어요. 🌲
+        </p>
+
+        <div class="feature-title">특징</div>
+
+        <!-- ✏️ [수정 5] 특징 목록: <li>…</li> 한 줄이 항목 하나예요. 늘리거나 지워도 돼요. -->
+        <ul class="feature-list">
+            <li>잎은 작은 비늘 모양으로 겹겹이 붙어 있고, 가지가 부채처럼 납작하게 퍼져요.</li>
+            <li>가지가 땅과 수직으로 서는 경우가 많아서, 잎의 앞면과 뒷면을 구별하기 어려워요.</li>
+            <li>가을에는 뿔이 달린 듯한 울퉁불퉁한 작은 열매(구과)가 맺혀요.</li>
+        </ul>
+
+    </section>
+
+</main>
+
+</body>
+</html>
