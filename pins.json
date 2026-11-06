@@ -484,7 +484,7 @@
     "name": "가죽나무2-1",
     "species": "ailanthus",
     "x": 61.6,
-    "y": 39.4,
+    "y": 39.3,
     "image": "./images/가죽나무2-1.JPG"
   },
   {
@@ -507,16 +507,16 @@
     "id": 256,
     "name": "개나리2-3",
     "species": "forsythia",
-    "x": 56.6,
-    "y": 42,
+    "x": 56.7,
+    "y": 41.8,
     "image": "./images/개나리2-1.JPG"
   },
   {
     "id": 255,
     "name": "개나리2-4",
     "species": "forsythia",
-    "x": 55.2,
-    "y": 42.8,
+    "x": 55.4,
+    "y": 42.4,
     "image": "./images/개나리2-1.JPG"
   },
   {
@@ -707,22 +707,6 @@
     "id": 244,
     "name": "벚나무2-1",
     "species": "cherry",
-    "x": 65.2,
-    "y": 36.4,
-    "image": "./images/벚나무2-1.JPG"
-  },
-  {
-    "id": 243,
-    "name": "벚나무2-2",
-    "species": "cherry",
-    "x": 65,
-    "y": 36.1,
-    "image": "./images/벚나무2-1.JPG"
-  },
-  {
-    "id": 242,
-    "name": "벚나무2-3",
-    "species": "cherry",
     "x": 64.8,
     "y": 35.6,
     "image": "./images/벚나무2-1.JPG"
@@ -755,8 +739,8 @@
     "id": 263,
     "name": "뽕나무2-1",
     "species": "mulberry",
-    "x": 65,
-    "y": 37.2,
+    "x": 63.9,
+    "y": 38.1,
     "image": "./images/뽕나무2-1.JPG"
   },
   {
@@ -861,7 +845,7 @@
     "species": "ginkgo",
     "x": 58.1,
     "y": 26,
-    "image": "./images/메타세쿼이아2-6.JPG"
+    "image": "./images/은행나무2-1.JPG"
   },
   {
     "id": 246,
@@ -869,7 +853,7 @@
     "species": "ginkgo",
     "x": 55.7,
     "y": 21.5,
-    "image": "./images/메타세쿼이아2-8.JPG"
+    "image": "./images/은행나무2-2.JPG"
   },
   {
     "id": 222,
@@ -915,16 +899,8 @@
     "id": 262,
     "name": "음나무2-1",
     "species": "kalopanax",
-    "x": 63.9,
-    "y": 38,
-    "image": "./images/음나무2-1.JPG"
-  },
-  {
-    "id": 261,
-    "name": "음나무2-2",
-    "species": "kalopanax",
-    "x": 62.6,
-    "y": 38.7,
+    "x": 62.7,
+    "y": 38.6,
     "image": "./images/음나무2-1.JPG"
   },
   {
@@ -1990,5 +1966,37 @@
     "x": 30.1,
     "y": 67.7,
     "image": "./images/향나무1-7.JPG"
+  },
+  {
+    "id": 280,
+    "name": "산딸나무2-1",
+    "species": "kousa",
+    "x": 35.7,
+    "y": 30.2,
+    "image": "./images/산딸나무2-1.JPG"
+  },
+  {
+    "id": 281,
+    "name": "철쭉2-1",
+    "species": "azalea",
+    "x": 52.3,
+    "y": 20.1,
+    "image": "./images/철쭉2-1.JPG"
+  },
+  {
+    "id": 282,
+    "name": "향나무2-7",
+    "species": "juniper",
+    "x": 52,
+    "y": 20.3,
+    "image": "./images/향나무2-7.JPG"
+  },
+  {
+    "id": 283,
+    "name": "향나무2-6",
+    "species": "juniper",
+    "x": 52.7,
+    "y": 20,
+    "image": "./images/향나무2-6.JPG"
   }
 ]
