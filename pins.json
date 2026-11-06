@@ -21,7 +21,7 @@
     "species": "trumpetvine",
     "x": 62.6,
     "y": 69.2,
-    "image": "./images/능소화1-2.JPG"
+    "image": "./images/능소화1-3.JPG"
   },
   {
     "id": 27,
@@ -81,11 +81,11 @@
   },
   {
     "id": 96,
-    "name": "장미1-2",
-    "species": "rose",
+    "name": "들장미1-1",
+    "species": "wildrose",
     "x": 57.7,
     "y": 49.2,
-    "image": "./images/장미2-4.JPG"
+    "image": "./images/들장미1-1.JPG"
   },
   {
     "id": 52,
@@ -181,7 +181,7 @@
     "species": "pine",
     "x": 57.3,
     "y": 50.8,
-    "image": "./images/소나무1-4.JPG"
+    "image": "./images/소나무1-3.JPG"
   },
   {
     "id": 95,
@@ -189,7 +189,7 @@
     "species": "pine",
     "x": 57.1,
     "y": 52,
-    "image": "./images/소나무1-4.JPG"
+    "image": "./images/소나무1-3.JPG"
   },
   {
     "id": 92,
@@ -197,7 +197,7 @@
     "species": "pine",
     "x": 56.5,
     "y": 49.9,
-    "image": "./images/소나무1-4.JPG"
+    "image": "./images/소나무1-3.JPG"
   },
   {
     "id": 50,
@@ -269,7 +269,7 @@
     "species": "koreanpine",
     "x": 77.8,
     "y": 78.1,
-    "image": "./images/단풍나무1-1.JPG"
+    "image": "./images/잣나무1-1.JPG"
   },
   {
     "id": 48,
@@ -845,7 +845,7 @@
     "species": "ginkgo",
     "x": 58.1,
     "y": 26,
-    "image": "./images/메타세쿼이아2-6.JPG"
+    "image": "./images/은행나무2-1.JPG"
   },
   {
     "id": 246,
@@ -853,7 +853,7 @@
     "species": "ginkgo",
     "x": 55.7,
     "y": 21.5,
-    "image": "./images/메타세쿼이아2-8.JPG"
+    "image": "./images/은행나무2-2.JPG"
   },
   {
     "id": 222,
@@ -1187,8 +1187,8 @@
     "id": 34,
     "name": "배롱나무3-2",
     "species": "crapemyrtle",
-    "x": 52.7,
-    "y": 53.6,
+    "x": 51.4,
+    "y": 53,
     "image": "./images/배롱나무3-2.JPG"
   },
   {
@@ -1440,14 +1440,6 @@
     "image": "./images/장미3-2.JPG"
   },
   {
-    "id": 168,
-    "name": "주목3-1",
-    "species": "yew",
-    "x": 51,
-    "y": 53.5,
-    "image": "./images/주목3-1.JPG"
-  },
-  {
     "id": 170,
     "name": "주목3-2",
     "species": "yew",
@@ -1539,8 +1531,8 @@
     "id": 171,
     "name": "철쭉3-1",
     "species": "azalea",
-    "x": 49.2,
-    "y": 51.8,
+    "x": 49.9,
+    "y": 52.2,
     "image": "./images/철쭉3-1.JPG"
   },
   {
@@ -1989,7 +1981,7 @@
     "species": "juniper",
     "x": 52,
     "y": 20.3,
-    "image": "./images/철쭉2-1.JPG"
+    "image": "./images/향나무2-7.JPG"
   },
   {
     "id": 283,
