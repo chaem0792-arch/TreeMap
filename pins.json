@@ -970,7 +970,7 @@
   {
     "id": 274,
     "name": "전나무2-1",
-    "species": "etc",
+    "species": "fir",
     "x": 32.9,
     "y": 34.9,
     "image": "./images/전나무2-1.JPG"
@@ -1010,7 +1010,7 @@
   {
     "id": 273,
     "name": "참나무2-1",
-    "species": "etc",
+    "species": "oak",
     "x": 35.3,
     "y": 34.4,
     "image": "./images/참나무2-1.JPG"
