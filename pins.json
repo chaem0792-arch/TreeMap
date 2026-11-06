@@ -1389,7 +1389,7 @@
     "species": "hydrangea",
     "x": 39.6,
     "y": 57.5,
-    "image": "./images/수국3-2.JPG"
+    "image": "./images/소나무3-3.JPG"
   },
   {
     "id": 181,
@@ -1438,14 +1438,6 @@
     "x": 46.8,
     "y": 57.3,
     "image": "./images/장미3-2.JPG"
-  },
-  {
-    "id": 168,
-    "name": "주목3-1",
-    "species": "yew",
-    "x": 51,
-    "y": 53.5,
-    "image": "./images/주목3-1.JPG"
   },
   {
     "id": 170,
