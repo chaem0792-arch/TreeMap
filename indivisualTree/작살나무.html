@@ -114,6 +114,21 @@ body {
     .tree-summary { font-size: 15px; }
     .feature-list li { font-size: 15px; }
 }
+
+/* ===== 지금은 없는 나무: 흑백 참고 사진 + 출처 ===== */
+.tree-photo.gone-photo { position: relative; }
+.tree-photo.gone-photo img { filter: grayscale(100%) contrast(1.05); }
+.photo-credit {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    margin: 0;
+    padding: 22px 14px 9px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
+}
+.photo-credit a { color: inherit; }
 </style>
 </head>
 <body>
@@ -121,9 +136,11 @@ body {
 <main class="tree-card">
 
     <!-- ===== 왼쪽: 나무 사진 ===== -->
-    <section class="tree-photo">
+    <section class="tree-photo gone-photo">
         <!-- ✏️ [수정 2] 사진 경로(src)와 설명(alt) -->
         <img src="../images/작살나무.JPG" alt="작살나무 사진">
+        <!-- 지금은 없는 나무라서 위키미디어 공용의 자유 라이선스 사진을 흑백으로 보여 줘요. 우리 학교 나무 사진이 생기면 바꾸고 아래 출처 줄을 지워 주세요. -->
+        <p class="photo-credit">참고 사진(우리 학교 나무 아님) · <a href="https://commons.wikimedia.org/wiki/File:Callicarpa_japonica_(1).jpg" target="_blank" rel="noopener">Homoarborea</a>, 위키미디어 공용 · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a></p>
     </section>
 
     <!-- ===== 오른쪽: 나무 정보 ===== -->

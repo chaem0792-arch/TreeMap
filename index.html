@@ -159,6 +159,7 @@
     margin-bottom: 8px;
     background: rgba(255,255,255,.08);
   }
+  .callout-photo.gone-photo{ filter: grayscale(100%); }
   .callout-photo-placeholder{
     display:none;
     width:100%;
@@ -1264,7 +1265,7 @@ function showCallout(p, pinEl){
   c.style.top = p.y + '%';
   c.innerHTML = `
     ${photoSrc
-      ? `<img class="callout-photo" src="${encodeURI(photoSrc)}" alt="${p.name} 사진"
+      ? `<img class="callout-photo${sp.gone ? ' gone-photo' : ''}" src="${encodeURI(photoSrc)}" alt="${p.name} 사진"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
       : ''}
     <div class="callout-photo-placeholder" style="display:${photoSrc ? 'none' : 'flex'}">📷 사진 준비 중</div>
